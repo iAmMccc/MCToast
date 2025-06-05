@@ -5,43 +5,6 @@
 //  Created by Mccc on 2020/6/24.
 //
 
-extension MCToast {
-    /// Toast类型
-    public enum IconType {
-        /// 成功
-        case success
-        /// 失败
-        case failure
-        /// 警告
-        case warning
-        
-        func getImage() -> UIImage? {
-            var showImage: UIImage?
-            switch self {
-            case .success:
-                if let trueImage = MCToastConfig.shared.icon.successImage {
-                    showImage = trueImage
-                } else {
-                    showImage = MCToast.loadImage("toast_success")
-                }
-            case .failure:
-                if let trueImage = MCToastConfig.shared.icon.failureImage {
-                    showImage = trueImage
-                } else {
-                    showImage = MCToast.loadImage("toast_failure")
-                }
-            case .warning:
-                if let trueImage = MCToastConfig.shared.icon.warningImage {
-                    showImage = trueImage
-                } else {
-                    showImage = MCToast.loadImage("toast_warning")
-                }
-            }
-            return showImage
-        }
-    }
-}
-
 
 
 extension UIResponder {
@@ -160,7 +123,7 @@ extension MCToast {
 
         func createWindow() -> UIWindow? {
             // 创建主 Toast Window
-            let window = MCToast.createWindow(respond: respond, size: .zero, toastType: .icon)
+            let window = MCToast.createWindow(respond: respond)
 
             // 创建主视图
             let mainView = MCToast.createMainView()
@@ -219,3 +182,40 @@ extension MCToast {
     }
 }
 
+
+extension MCToast {
+    /// Toast类型
+    public enum IconType {
+        /// 成功
+        case success
+        /// 失败
+        case failure
+        /// 警告
+        case warning
+        
+        func getImage() -> UIImage? {
+            var showImage: UIImage?
+            switch self {
+            case .success:
+                if let trueImage = MCToastConfig.shared.icon.successImage {
+                    showImage = trueImage
+                } else {
+                    showImage = MCToast.loadImage("toast_success")
+                }
+            case .failure:
+                if let trueImage = MCToastConfig.shared.icon.failureImage {
+                    showImage = trueImage
+                } else {
+                    showImage = MCToast.loadImage("toast_failure")
+                }
+            case .warning:
+                if let trueImage = MCToastConfig.shared.icon.warningImage {
+                    showImage = trueImage
+                } else {
+                    showImage = MCToast.loadImage("toast_warning")
+                }
+            }
+            return showImage
+        }
+    }
+}

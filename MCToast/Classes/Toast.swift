@@ -7,6 +7,7 @@
 
 
 /** 适配横竖屏
+ * 【Bug】为啥在viewdidload中加载，会自动隐藏？
  * 将所有的frame修改为layout布局。
  * demo中写横竖屏切换的方法，验证效果。
  * 支持横竖屏的切换，自动适配横竖屏的配置参数。
@@ -31,6 +32,7 @@ public class MCToast: NSObject {
     
     /// 管理所有的windows
     internal static var windows = Array<UIWindow?>()
+    
     internal static var keyWindow: UIWindow? {
         if #available(iOS 13.0, *) {
             return UIApplication.shared.connectedScenes
@@ -41,6 +43,7 @@ public class MCToast: NSObject {
             return UIApplication.shared.keyWindow
         }
     }
+    
     private override init() { }
 }
 
@@ -76,7 +79,7 @@ extension MCToast {
 extension MCToast {
     
     
-    static func createWindow(respond: MCToastRespond, isLandscape: Bool = false, size: CGSize, toastType: ToastType, offset: CGFloat? = nil) -> UIWindow {
+    static func createWindow(respond: MCToastRespond) -> UIWindow {
         let window: ToastWindow
 
         if #available(iOS 13.0, *) {

@@ -26,18 +26,18 @@ class LoadingViewController: UIViewController {
         
 //        MCToast.mc_loading(text: "", duration: 0, respond: .allow)
         
-//        MCToast.mc_statusBar("更新的信息", duration: 4, backgroundColor: UIColor.red)
+        MCToast.mc_statusBar("更新的信息", duration: 4, backgroundColor: UIColor.red)
         
         
-        let customView = UIView()
-        customView.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
-        let label = UILabel()
-        label.text = "自定义的内容"
-        label.sizeToFit()
-        label.center = customView.center
-        label.backgroundColor = UIColor.red
-        customView.addSubview(label)
-        MCToast.showCustomView(customView, duration: 4, respond: .allow)
+//        let customView = UIView()
+//        customView.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
+//        let label = UILabel()
+//        label.text = "自定义的内容"
+//        label.sizeToFit()
+//        label.center = customView.center
+//        label.backgroundColor = UIColor.red
+//        customView.addSubview(label)
+//        MCToast.showCustomView(customView, duration: 4, respond: .allow)
         
         print("点击了")
     }

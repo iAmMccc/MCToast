@@ -75,10 +75,7 @@ extension MCToast {
             let mainLabel = createLabel()
             
             /// 2. 生成window
-            // 这里暂时给一个全屏大小，后面用约束定位mainView和label
-            let window = MCToast.createWindow(respond: respond, size: UIScreen.main.bounds.size, toastType: .text, offset: offset)
-            
-
+            let window = MCToast.createWindow(respond: respond)
             
             /// 3. 生成mainView
             let mainView = MCToast.createMainView()

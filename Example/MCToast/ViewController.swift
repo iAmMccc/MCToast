@@ -171,9 +171,9 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = KeyboardTestViewController()
+//        let vc = KeyboardTestViewController()
 
-//        let vc = LoadingViewController()
+        let vc = LoadingViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         
 //        switch indexPath.section {

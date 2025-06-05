@@ -28,41 +28,47 @@ extension MCToast {
 
 
 internal extension Selector {
-    static let hideNotice = #selector(MCToast.hideNotice(_:))
+    fileprivate static let hideNotice = #selector(MCToast.hideNotice(_:))
 }
 
 extension MCToast {
     
     /// 隐藏
+    private static func hideWindow(_ window: UIWindow) {
+        guard let toastView = window.subviews.first else { return }
+
+        UIView.animate(withDuration: 0.2, animations: {
+            if toastView.tag == sn_topBar {
+                toastView.frame.origin.y = -toastView.frame.height
+            }
+            toastView.alpha = 0
+        }, completion: { _ in
+            toastView.removeFromSuperview()
+            window.isHidden = true
+
+            if let index = windows.firstIndex(of: window) {
+                windows.remove(at: index)
+            }
+        })
+    }
+
     @objc static func hideNotice(_ sender: AnyObject) {
         if let window = sender as? UIWindow {
-            
-            if let v = window.subviews.first {
-                UIView.animate(withDuration: 0.2, animations: {
-                    
-                    if v.tag == sn_topBar {
-                        v.frame = CGRect(x: 0, y: -v.frame.height, width: v.frame.width, height: v.frame.height)
-                    }
-                    v.alpha = 0
-                }, completion: { b in
-                    
-                    if let index = windows.firstIndex(where: { (item) -> Bool in
-                        return item == window
-                    }) {
-                        windows.remove(at: index)
-                    }
-                })
-            }
+            hideWindow(window)
         }
     }
     
     
     /// 清空
     static func clearAllToast(callback: MCToastCallback? = nil) {
-        
         DispatchQueue.main.safeSync {
-            self.cancelPreviousPerformRequests(withTarget: self)
-            windows.removeAll(keepingCapacity: false)
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
+
+            for window in windows {
+                window?.subviews.forEach { $0.removeFromSuperview() }
+                window?.isHidden = true
+            }
+            windows.removeAll()
         }
         callback?()
     }

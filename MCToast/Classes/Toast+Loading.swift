@@ -72,7 +72,7 @@ extension MCToast {
                                     callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
         
         func createWindow() -> UIWindow? {
-            let window = MCToast.createWindow(respond: respond, size: .zero, toastType: .loading)
+            let window = MCToast.createWindow(respond: respond)
             let mainView = MCToast.createMainView()
             window.addSubview(mainView)
             

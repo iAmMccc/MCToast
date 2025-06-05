@@ -22,8 +22,8 @@ extension MCToast {
         
         func createWindow() -> UIWindow? {
             // 创建窗口
-            let window = MCToast.createWindow(respond: respond, isLandscape: false, size: customView.frame.size, toastType: .icon)
-            
+            let window = MCToast.createWindow(respond: respond)
+
             // 创建承载视图
             let mainView = MCToast.createMainView(bgColor: bgColor)
             mainView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,13 +50,7 @@ extension MCToast {
             
             // mainView 居中约束
             let centerX = mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor)
-            var centerY = mainView.centerYAnchor.constraint(equalTo: window.centerYAnchor)
-            
-            // 如果需要响应导航栏，则向上偏移一部分
-            if respond == .allowNav, let vc = UIViewController.current() {
-                let navBarHeight = vc.navigationController?.navigationBar.frame.maxY ?? 0
-                centerY = mainView.centerYAnchor.constraint(equalTo: window.centerYAnchor, constant: -navBarHeight/2)
-            }
+            let centerY = mainView.centerYAnchor.constraint(equalTo: window.centerYAnchor)
             
             NSLayoutConstraint.activate([centerX, centerY])
             

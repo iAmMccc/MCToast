@@ -66,7 +66,7 @@ extension MCToast {
         func createWindow() -> UIWindow {
             clearAllToast()
 
-            let window = MCToast.createWindow(respond: .allow, size: .zero, toastType: .custom)
+            let window = MCToast.createWindow(respond: .allow)
 
             let containerView = UIView()
             containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -100,11 +100,7 @@ extension MCToast {
                 label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12),
                 label.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -labelPadding)
             ])
-
-            // 初始 window 大小（给它高度动画）
-//            let estHeight: CGFloat = topSafeArea + 40
-//            window.frame = CGRect(x: 0, y: -estHeight, width: UIScreen.main.bounds.width, height: estHeight)
-
+            
             windows.append(window)
 
             // 动画滑入
