@@ -7,16 +7,16 @@
 
 
 /** 适配横竖屏
- * 【Bug】为啥在viewdidload中加载，会自动隐藏？
- * 将所有的frame修改为layout布局。
- * demo中写横竖屏切换的方法，验证效果。
+ * 【done】【Bug】为啥在viewdidload中加载，会自动隐藏？
+ * 【done】将所有的frame修改为layout布局。
+ * 【done】demo中写横竖屏切换的方法，验证效果。
+ * 处理键盘事件
  * 支持横竖屏的切换，自动适配横竖屏的配置参数。
  * 支持x号按钮
  * 支持页面返回移除。
  * 支持显示倒计时。
  * 支持json动画。
  * loading的颜色支持配置。
- * 处理键盘事件
  */
 
 
@@ -31,7 +31,7 @@ internal let sn_topBar: Int = 1001
 public class MCToast: NSObject {
     
     /// 管理所有的windows
-    internal static var windows = Array<UIWindow?>()
+    public static var windows: [UIWindow] = []
     
     internal static var keyWindow: UIWindow? {
         if #available(iOS 13.0, *) {
@@ -97,6 +97,8 @@ extension MCToast {
         
 
         window.backgroundColor = .clear
+        
+        // 如果不设置，将无法使用现代 UIKit 的很多功能（比如自动旋转支持、键盘避让、响应链传递等）
         window.rootViewController = UIViewController()
         window.rootViewController?.view.backgroundColor = .clear
         window.windowLevel = .statusBar + 1
