@@ -188,7 +188,7 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            break
+            showToastOnSection0(with: indexPath.row)
         case 1:
             showToastOnSection1(with: indexPath.row)
         case 2:
@@ -203,6 +203,20 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource {
             showToastOnSection6(with: indexPath.row)
         case 7:
             showToastOnSection7(with: indexPath.row)
+        default:
+            break
+        }
+    }
+}
+
+extension ViewController {
+    func showToastOnSection0(with row: Int) {
+        switch row {
+        case 0:
+            let vc = TestOneViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            break
         default:
             break
         }

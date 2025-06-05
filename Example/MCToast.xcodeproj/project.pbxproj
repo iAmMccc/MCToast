@@ -19,6 +19,8 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		86BE291F036F48B4197E92C3 /* Pods_MCToast_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B979722212F45D1198AEB8FA /* Pods_MCToast_Example.framework */; };
 		9901FB382DF1B5C300441373 /* KeyboardTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9901FB372DF1B5C300441373 /* KeyboardTestViewController.swift */; };
+		9901FB3A2DF1C28F00441373 /* README_副本.md in Resources */ = {isa = PBXBuildFile; fileRef = 9901FB392DF1C28F00441373 /* README_副本.md */; };
+		9901FB3C2DF1C2E100441373 /* TestOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9901FB3B2DF1C2E100441373 /* TestOneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		647FA92F35A221ED99438CE9 /* Pods-MCToast_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCToast_Example.debug.xcconfig"; path = "Target Support Files/Pods-MCToast_Example/Pods-MCToast_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9901FB372DF1B5C300441373 /* KeyboardTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTestViewController.swift; sourceTree = "<group>"; };
+		9901FB392DF1C28F00441373 /* README_副本.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README_副本.md"; sourceTree = "<group>"; };
+		9901FB3B2DF1C2E100441373 /* TestOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestOneViewController.swift; sourceTree = "<group>"; };
 		B979722212F45D1198AEB8FA /* Pods_MCToast_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCToast_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3D83EC4ADDD492CD2699827 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CC7DF359FFFBAE39DA9A007F /* Pods_MCToast_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCToast_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +109,7 @@
 				4C5716D424A9886A00841D9E /* JSON动画.json */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				9901FB3B2DF1C2E100441373 /* TestOneViewController.swift */,
 				421684B4238BBD6E00DF1B24 /* ResponseTestViewController.swift */,
 				9901FB372DF1B5C300441373 /* KeyboardTestViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -145,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E2D8225FE1C31C7898109A2B /* MCToast.podspec */,
+				9901FB392DF1C28F00441373 /* README_副本.md */,
 				C3D83EC4ADDD492CD2699827 /* README.md */,
 				FB4BD63C50D2B0F98207B597 /* LICENSE */,
 			);
@@ -263,6 +269,7 @@
 				4C5716D524A9886A00841D9E /* JSON动画.json in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				9901FB3A2DF1C28F00441373 /* README_副本.md in Resources */,
 				4C5716D724A999E900841D9E /* waiting.json in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -350,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				9901FB3C2DF1C2E100441373 /* TestOneViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				9901FB382DF1B5C300441373 /* KeyboardTestViewController.swift in Sources */,
 				421684B5238BBD6E00DF1B24 /* ResponseTestViewController.swift in Sources */,
