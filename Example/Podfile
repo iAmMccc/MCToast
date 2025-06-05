@@ -5,6 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
 target 'MCToast_Example' do
   pod 'MCToast', :path => '../'
+  pod 'SnapKit'
 
   target 'MCToast_Tests' do
     inherit! :search_paths

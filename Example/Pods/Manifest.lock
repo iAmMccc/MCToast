@@ -1,16 +1,23 @@
 PODS:
-  - MCToast (0.2.0)
+  - MCToast (0.2.1)
+  - SnapKit (5.7.1)
 
 DEPENDENCIES:
   - MCToast (from `../`)
+  - SnapKit
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - SnapKit
 
 EXTERNAL SOURCES:
   MCToast:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MCToast: 6d1191a4c2857cf9d29961b783c1659c644b7038
+  MCToast: e51efb0b5bd3edf72066a9709d7823c42b37ad34
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
-PODFILE CHECKSUM: 84e498d019a086a76b680a2fd88b7689ced5ceca
+PODFILE CHECKSUM: f90a78c768315aebe65ffc57d84ef2f3e380f95a
 
 COCOAPODS: 1.15.2

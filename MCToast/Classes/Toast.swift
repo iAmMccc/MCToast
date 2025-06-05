@@ -31,8 +31,16 @@ public class MCToast: NSObject {
     
     /// 管理所有的windows
     internal static var windows = Array<UIWindow?>()
-    internal static let keyWindow = UIApplication.shared.delegate?.window
-    
+    internal static var keyWindow: UIWindow? {
+        if #available(iOS 13.0, *) {
+            return UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap { $0.windows }
+                .first(where: { $0.isKeyWindow })
+        } else {
+            return UIApplication.shared.keyWindow
+        }
+    }
     private override init() { }
 }
 
@@ -72,13 +80,25 @@ extension MCToast {
     ///   - frame: window的frame
     static func createWindow(respond: MCToastRespond, isLandscape: Bool = false, size: CGSize, toastType: ToastType, offset: CGFloat? = nil) -> UIWindow {
         
-        let window = UIWindow()
+        let window: UIWindow
+
+        if #available(iOS 13.0, *) {
+            guard let windowScene = UIApplication.shared.connectedScenes
+                .compactMap({ $0 as? UIWindowScene })
+                .first(where: { $0.activationState == .foregroundActive }) else {
+                fatalError("无法获取当前活跃 Scene")
+            }
+            
+            window = UIWindow(windowScene: windowScene)
+        } else {
+            window = UIWindow()
+        }
+        
         window.backgroundColor = UIColor.clear
         window.frame.size = size
 
-        guard let optionalKeyWindow = keyWindow else { return window }
-        guard let keyWindow = optionalKeyWindow else { return window }
-        
+        guard let keyWindow = keyWindow else { return window }
+                
         switch respond {
         case .allow:
             window.frame.size = size
@@ -135,8 +155,7 @@ extension MCToast {
         if let bg = bgColor {
             mainView.backgroundColor = bg
         } else {
-            mainView.backgroundColor = MCToastConfig.shared.background.color
-            mainView.backgroundColor?.withAlphaComponent(MCToastConfig.shared.background.colorAlpha)
+            mainView.backgroundColor = MCToastConfig.shared.background.color.withAlphaComponent(MCToastConfig.shared.background.colorAlpha)
         }
         
         

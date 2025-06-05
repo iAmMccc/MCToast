@@ -221,7 +221,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 6VJQ6WQJRK;
+						DevelopmentTeam = RA2G5HURUT;
 						LastSwiftMigration = 1130;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -305,10 +305,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MCToast_Example/Pods-MCToast_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/MCToast/MCToast.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MCToast.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -498,7 +500,7 @@
 			baseConfigurationReference = 647FA92F35A221ED99438CE9 /* Pods-MCToast_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6VJQ6WQJRK;
+				DEVELOPMENT_TEAM = RA2G5HURUT;
 				INFOPLIST_FILE = MCToast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -515,7 +517,7 @@
 			baseConfigurationReference = F7C3F7A9A532CCAC941CE446 /* Pods-MCToast_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6VJQ6WQJRK;
+				DEVELOPMENT_TEAM = RA2G5HURUT;
 				INFOPLIST_FILE = MCToast/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

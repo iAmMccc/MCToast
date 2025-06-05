@@ -8,6 +8,7 @@
 
 import UIKit
 import MCToast
+import SnapKit
 
 
 class ViewController: UIViewController {
@@ -108,7 +109,9 @@ extension ViewController {
     
     func initUI() {
         view.addSubview(tableView)
-        tableView.frame = view.frame
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
     }
 }
 
@@ -194,7 +197,7 @@ extension ViewController {
     func showToastOnSection0(with row: Int) {
         switch row {
         case 0:
-            MCToast.mc_text("提示文案", offset: 118)
+            MCToast.mc_text("提示文案", offset: 118, duration: 0)
         case 1:
             MCToast.mc_text("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示", duration: 10)
         case 2:
