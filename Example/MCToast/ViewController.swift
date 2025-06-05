@@ -171,24 +171,28 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let vc = KeyboardTestViewController()
+
+//        let vc = LoadingViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
         
-        switch indexPath.section {
-        case 0:
-            showToastOnSection0(with: indexPath.row)
-        case 1:
-            showToastOnSection1(with: indexPath.row)
-        case 2:
-            showToastOnSection2(with: indexPath.row)
-        case 3:
-            showToastOnSection3(with: indexPath.row)
-        case 4:
-            showToastOnSection4(with: indexPath.row)
-        case 5:
-            
-            showToastOnSection5(with: indexPath.row)
-        default:
-            break
-        }
+//        switch indexPath.section {
+//        case 0:
+//            showToastOnSection0(with: indexPath.row)
+//        case 1:
+//            showToastOnSection1(with: indexPath.row)
+//        case 2:
+//            showToastOnSection2(with: indexPath.row)
+//        case 3:
+//            showToastOnSection3(with: indexPath.row)
+//        case 4:
+//            showToastOnSection4(with: indexPath.row)
+//        case 5:
+//            
+//            showToastOnSection5(with: indexPath.row)
+//        default:
+//            break
+//        }
     }
 }
 
@@ -197,7 +201,7 @@ extension ViewController {
     func showToastOnSection0(with row: Int) {
         switch row {
         case 0:
-            MCToast.mc_text("提示文案", offset: 118, duration: 0)
+            MCToast.mc_text("提示文案", offset: 118)
         case 1:
             MCToast.mc_text("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示", duration: 10)
         case 2:
@@ -249,10 +253,6 @@ extension ViewController {
             MCToast.mc_loading(duration: 2)
         case 1:
             MCToast.mc_loading(text: "")
-            
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-//                MCToast.mc_remove()
-//            }
         case 2:
             MCToast.mc_loading(duration: 2, respond: .forbid)
         case 3:

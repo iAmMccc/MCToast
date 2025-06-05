@@ -158,101 +158,58 @@ extension MCToast {
                                   respond: MCToast.MCToastRespond,
                                   callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
 
-        
-        func createLabel(iconFrame: CGRect) -> UILabel {
+        func createWindow() -> UIWindow? {
+            // 创建主 Toast Window
+            let window = MCToast.createWindow(respond: respond, size: .zero, toastType: .icon)
+
+            // 创建主视图
+            let mainView = MCToast.createMainView()
+            window.addSubview(mainView)
+
+            NSLayoutConstraint.activate([
+                mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
+                mainView.centerYAnchor.constraint(equalTo: window.centerYAnchor),
+                mainView.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.toastWidth)
+            ])
+
+            // 图标
+            let icon = UIImageView(image: iconImage)
+            icon.translatesAutoresizingMaskIntoConstraints = false
+            mainView.addSubview(icon)
+
+            // 文字
             let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
             label.font = MCToastConfig.shared.icon.font
             label.textColor = MCToastConfig.shared.icon.textColor
             label.text = text
             label.numberOfLines = 2
             label.lineBreakMode = .byCharWrapping
-            label.textAlignment = NSTextAlignment.center
-            
-            
-            let labelWidth = MCToastConfig.shared.icon.toastWidth - MCToastConfig.shared.icon.padding.horizontal
-            let labelSize = label.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude))
-            label.frame = CGRect(x: MCToastConfig.shared.icon.padding.left, y: iconFrame.maxY + 12, width: labelWidth, height: labelSize.height)
-            return label
-        }
-        
-        func createIcon() -> UIImageView {
-            let icon = UIImageView(image: iconImage)
-            return icon
-        }
-        
-        
-        func getIconFrame() -> CGRect {
-            let size = MCToastConfig.shared.icon.imageSize
-            let x = (MCToastConfig.shared.icon.toastWidth - size.width) / 2
-            var rect = CGRect.zero
-            rect.size = size
-            rect.origin = CGPoint(x: x, y: MCToastConfig.shared.icon.padding.top)
-            return rect
-        }
-        
-        func getMainViewFrame(mainViewSize: CGSize, windowFrame: CGRect) -> CGRect {
-            
-            /// 始终显示在屏幕中心
-            let x: CGFloat = (windowFrame.width - mainViewSize.width) / 2
-            var y: CGFloat = (windowFrame.height - mainViewSize.height) / 2
-            if respond == .allowNav {
-                guard let vc = UIViewController.current() else {
-                    return CGRect(x: x, y: y, width: mainViewSize.width, height: mainViewSize.height)
-                }
-
-                let rectNav = vc.navigationController?.navigationBar.frame
-                let maxY = rectNav?.maxY ?? 0
-                y -= maxY / 2
-            }
-            return CGRect(x: x, y: y, width: mainViewSize.width, height: mainViewSize.height)
-        }
-        
-        func getToastSize(labelFrame: CGRect) -> CGSize {
-            let width: CGFloat =  MCToastConfig.shared.icon.toastWidth
-            let height: CGFloat = labelFrame.maxY + MCToastConfig.shared.icon.padding.bottom
-            let frame = CGSize(width: width, height: height)
-            return frame
-        }
-        
-
-        
-        
-        func createWindow() -> UIWindow? {
-            
-            let icon = createIcon()
-            let iconFrame = getIconFrame()
-            icon.frame = iconFrame
-            
-            
-            let label = createLabel(iconFrame: iconFrame)
-            
-            
-        
-            let mainSize = getToastSize(labelFrame: label.frame)
-            let window = MCToast.createWindow(respond: respond, size: mainSize, toastType: .icon)
-
-            
-            
-            
-            let mainView = MCToast.createMainView()
-            mainView.frame = getMainViewFrame(mainViewSize: mainSize, windowFrame: window.frame)
-            mainView.addSubview(icon)
+            label.textAlignment = .center
             mainView.addSubview(label)
-            window.addSubview(mainView)
-            
 
+            let padding = MCToastConfig.shared.icon.padding
+            let imageSize = MCToastConfig.shared.icon.imageSize
 
-            
+            NSLayoutConstraint.activate([
+                icon.topAnchor.constraint(equalTo: mainView.topAnchor, constant: padding.top),
+                icon.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+                icon.widthAnchor.constraint(equalToConstant: imageSize.width),
+                icon.heightAnchor.constraint(equalToConstant: imageSize.height),
+
+                label.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 12),
+                label.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: padding.left),
+                label.rightAnchor.constraint(equalTo: mainView.rightAnchor, constant: -padding.right),
+                label.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -padding.bottom)
+            ])
+
             windows.append(window)
-            
             MCToast.autoRemove(window: window, duration: duration, callback: callback)
-
             return window
         }
 
-        if text.isEmpty {
-            return nil
-        }
+        guard !text.isEmpty else { return nil }
+
         var temp: UIWindow?
         DispatchQueue.main.safeSync {
             clearAllToast()
@@ -261,7 +218,4 @@ extension MCToast {
         return temp
     }
 }
-
-
-
 

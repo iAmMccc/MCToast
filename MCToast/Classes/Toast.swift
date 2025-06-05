@@ -9,6 +9,13 @@
 /** 适配横竖屏
  * 将所有的frame修改为layout布局。
  * demo中写横竖屏切换的方法，验证效果。
+ * 支持横竖屏的切换，自动适配横竖屏的配置参数。
+ * 支持x号按钮
+ * 支持页面返回移除。
+ * 支持显示倒计时。
+ * 支持json动画。
+ * loading的颜色支持配置。
+ * 处理键盘事件
  */
 
 
@@ -17,13 +24,6 @@ import Foundation
 import UIKit
 
 internal let sn_topBar: Int = 1001
-
-var kScreenWidth: CGFloat {
-    UIScreen.main.bounds.size.width
-}
-var kScreenHeight: CGFloat {
-    UIScreen.main.bounds.size.height
-}
 
 
 
@@ -67,6 +67,8 @@ extension MCToast {
         case loading
         /// 自定义类型
         case custom
+        /// 状态栏
+        case statusBar
     }
 }
 
@@ -74,13 +76,8 @@ extension MCToast {
 extension MCToast {
     
     
-    /// 创建Window
-    /// - Parameters:
-    ///   - respond: 交互类型
-    ///   - frame: window的frame
     static func createWindow(respond: MCToastRespond, isLandscape: Bool = false, size: CGSize, toastType: ToastType, offset: CGFloat? = nil) -> UIWindow {
-        
-        let window: UIWindow
+        let window: ToastWindow
 
         if #available(iOS 13.0, *) {
             guard let windowScene = UIApplication.shared.connectedScenes
@@ -88,85 +85,38 @@ extension MCToast {
                 .first(where: { $0.activationState == .foregroundActive }) else {
                 fatalError("无法获取当前活跃 Scene")
             }
-            
-            window = UIWindow(windowScene: windowScene)
+
+            window = ToastWindow(windowScene: windowScene)
         } else {
-            window = UIWindow()
+            window = ToastWindow()
         }
+        window.response = respond
         
-        window.backgroundColor = UIColor.clear
-        window.frame.size = size
 
-        guard let keyWindow = keyWindow else { return window }
-                
-        switch respond {
-        case .allow:
-            window.frame.size = size
-            
-            
-            let centerX = keyWindow.frame.maxX / 2
-            let centerY = keyWindow.frame.maxY / 2
-            
-            switch toastType {
-            case .text:
-                var tempOffset: CGFloat = MCToastConfig.shared.text.offset
-                if let offset = offset {
-                    tempOffset = offset
-                }
-                let y = kScreenHeight - tempOffset - size.height / 2
-                window.center = CGPoint(x: centerX, y: y)
-            default:
-                window.center = CGPoint(x: centerX, y: centerY)
-            }
-        case .forbid:
-            // 完全全屏UI展示会异常。具体问题待排查。
-            if isLandscape {
-                window.frame = CGRect.init(x: 0, y: 0, width: max(kScreenHeight, kScreenWidth), height: min(kScreenHeight, kScreenWidth))
-            } else {
-                window.frame.size = CGSize(width: keyWindow.frame.width - 6, height: keyWindow.frame.height)
-                window.center = keyWindow.center
-            }
-            
-        case .allowNav:
-            guard let vc = UIViewController.current() else {
-                return window
-            }
-
-            let rectNav = vc.navigationController?.navigationBar.frame
-            let maxY = rectNav?.maxY ?? 0
-            window.frame = CGRect.init(x: 0, y: maxY, width: kScreenWidth, height: kScreenHeight - maxY)
-        }
-        
-        
-        window.windowLevel = UIWindow.Level.init(9999999)
+        window.backgroundColor = .clear
+        window.rootViewController = UIViewController()
+        window.rootViewController?.view.backgroundColor = .clear
+        window.windowLevel = .statusBar + 1
         window.isHidden = false
-        
+
         return window
     }
+
     
     /// 创建主视图区域
     static func createMainView(bgColor: UIColor? = nil) -> UIView {
-
-        
         let mainView = UIView()
         mainView.layer.cornerRadius = MCToastConfig.shared.icon.cornerRadius
         mainView.layer.masksToBounds = true
-        
-        if let bg = bgColor {
-            mainView.backgroundColor = bg
-        } else {
-            mainView.backgroundColor = MCToastConfig.shared.background.color.withAlphaComponent(MCToastConfig.shared.background.colorAlpha)
-        }
-        
-        
-
+        mainView.backgroundColor = bgColor ?? MCToastConfig.shared.background.color.withAlphaComponent(MCToastConfig.shared.background.colorAlpha)
         mainView.alpha = 0.0
-        UIView.animate(withDuration: 0.2, animations: {
+        mainView.translatesAutoresizingMaskIntoConstraints = false
+
+        UIView.animate(withDuration: 0.2) {
             mainView.alpha = 1
-        })
-                
+        }
+
         return mainView
     }
 }
-
 

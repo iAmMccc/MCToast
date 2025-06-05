@@ -52,82 +52,75 @@ extension MCToast {
 // MARK: - 在状态栏上显示提示框
 extension MCToast {
     
-    
     @discardableResult
     internal static func noticeOnStatusBar(
         _ text: String,
         duration: CGFloat,
         backgroundColor: UIColor?,
         font: UIFont,
-        callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
-            
-            
-            
-            func createWindow() -> UIWindow {
-                clearAllToast()
-                
-                let labelHeight: CGFloat = text.getHeight(font: font, width: kScreenWidth) + 10
-                
-                
-                let topSafeAreaHeight: CGFloat = UIDevice.topSafeAreaHeight
-                let height = topSafeAreaHeight + labelHeight
-                
-                let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
-                
-                let window = UIWindow()
-                window.backgroundColor = UIColor.clear
-                
-                let view = UIView()
-                
-                if let color = backgroundColor {
-                    view.backgroundColor = color
-                } else {
-                    let red: CGFloat = 0x6a/0x100
-                    let green: CGFloat = 0xb4/0x100
-                    let blue: CGFloat = 0x9f/0x100
-                    view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
-                }
-                
-                let label = UILabel()
-                label.frame = CGRect.init(x: 0, y: topSafeAreaHeight, width: frame.width, height: labelHeight)
-                label.textAlignment = NSTextAlignment.center
-                label.font = font
-                label.textColor = UIColor.white
-                label.text = text
-                view.addSubview(label)
-                
-                window.frame = frame
-                view.frame = frame
-                
-                
-                window.windowLevel = UIWindow.Level(9999999)
-                window.isHidden = false
-                window.addSubview(view)
-                windows.append(window)
-                
-                var origPoint = view.frame.origin
-                origPoint.y = -(view.frame.size.height)
-                let destPoint = view.frame.origin
-                view.tag = sn_topBar
-                
-                view.frame = CGRect(origin: origPoint, size: view.frame.size)
-                UIView.animate(withDuration: 0.3, animations: {
-                    view.frame = CGRect(origin: destPoint, size: view.frame.size)
-                }, completion: { b in
-                    MCToast.autoRemove(window: window, duration: duration, callback: callback)
-                })
-                return window
-            }
-            
-            
-            if text.isEmpty {
-                return nil
-            }
-            
-            var temp: UIWindow?
-            DispatchQueue.main.safeSync {
-                temp = createWindow()
-            }
-            return temp
+        callback: MCToast.MCToastCallback? = nil
+    ) -> UIWindow? {
+        
+        guard !text.isEmpty else { return nil }
+
+        func createWindow() -> UIWindow {
+            clearAllToast()
+
+            let window = MCToast.createWindow(respond: .allow, size: .zero, toastType: .custom)
+
+            let containerView = UIView()
+            containerView.translatesAutoresizingMaskIntoConstraints = false
+            containerView.backgroundColor = backgroundColor ?? UIColor(red: 0x6a/255.0, green: 0xb4/255.0, blue: 0x9f/255.0, alpha: 1)
+            containerView.tag = sn_topBar
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.textAlignment = .center
+            label.font = font
+            label.textColor = .white
+            label.text = text
+            label.numberOfLines = 0
+            containerView.addSubview(label)
+
+            window.addSubview(containerView)
+
+            let topSafeArea = UIDevice.topSafeAreaHeight
+            let labelPadding: CGFloat = 5.0
+
+            // 添加约束
+            NSLayoutConstraint.activate([
+                // containerView 约束
+                containerView.leadingAnchor.constraint(equalTo: window.leadingAnchor),
+                containerView.trailingAnchor.constraint(equalTo: window.trailingAnchor),
+                containerView.topAnchor.constraint(equalTo: window.topAnchor),
+                containerView.heightAnchor.constraint(equalToConstant: topSafeArea + 44),
+
+                // label 约束（放在 safeArea 下方）
+                label.topAnchor.constraint(equalTo: containerView.topAnchor, constant: topSafeArea + labelPadding),
+                label.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 12),
+                label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12),
+                label.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -labelPadding)
+            ])
+
+            // 初始 window 大小（给它高度动画）
+//            let estHeight: CGFloat = topSafeArea + 40
+//            window.frame = CGRect(x: 0, y: -estHeight, width: UIScreen.main.bounds.width, height: estHeight)
+
+            windows.append(window)
+
+            // 动画滑入
+            UIView.animate(withDuration: 0.3, animations: {
+                window.frame.origin.y = 0
+            }, completion: { _ in
+                MCToast.autoRemove(window: window, duration: duration, callback: callback)
+            })
+
+            return window
         }
+
+        var result: UIWindow?
+        DispatchQueue.main.safeSync {
+            result = createWindow()
+        }
+        return result
+    }
 }

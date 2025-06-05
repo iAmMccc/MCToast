@@ -1,15 +1,15 @@
 //
-//  LoadingViewController.swift
+//  KeyboardTestViewController.swift
 //  MCToast_Example
 //
-//  Created by Mccc on 2019/11/25.
-//  Copyright © 2019 CocoaPods. All rights reserved.
+//  Created by qixin on 2025/6/5.
+//  Copyright © 2025 CocoaPods. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import MCToast
 
-class LoadingViewController: UIViewController {
+class KeyboardTestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +17,16 @@ class LoadingViewController: UIViewController {
         view.backgroundColor = UIColor.white
                 
 //        MCToast.mc_loading(text: "loading")
+        
+        view.addSubview(textField)
+        textField.becomeFirstResponder()
     }
+    
+    lazy var textField: UITextField = {
+        let tf = UITextField()
+        tf.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        return tf
+    }()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        MCToast.mc_text("加载中", duration: 0, respond: .forbid)
