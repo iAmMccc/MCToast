@@ -40,52 +40,82 @@ class ViewController: UIViewController {
         return tableView
     }()
 
-    lazy var dataArray = [
+    lazy var dataSource: [(title: String, rows: [String])] = [
+        (
+            title: "测试",
+            rows: [
+                "测试 - 1",
+                "测试 - 2",
+                "测试 - 3"
+            ]
+        ),
+        (
+            title: "文本",
+            rows: [
+                "文本 - 短文本",
+                "文本 - 长文本",
+                "文本 - 设置展示时长",
+                "文本 - 展示期间页面禁止响应",
+                "文本 - 展示期间导航栏以下禁止响应",
+                "文本 - 展示期间允许响应",
+                "文本 - 设置偏移量（Y轴展示位置）"
+            ]
+        ),
+        (
+            title: "icon",
+            rows: [
+                "icon - 成功",
+                "icon - 失败",
+                "icon - 警告",
+                "icon - 长文本信息",
+                "icon - 自定义",
+                "icon - 展示期间页面禁止响应",
+                "icon - 展示期间导航栏以下禁止响应",
+                "icon - 展示期间允许响应"
+            ]
+        ),
+        (
+            title: "loading",
+            rows: [
+                "loading - 固定时间自动隐藏",
+                "loading - 手动控制隐藏",
+                "loading - 展示期间页面禁止响应",
+                "loading - 展示期间导航栏以下禁止响应",
+                "loading - 展示期间允许响应"
+            ]
+        ),
+        (
+            title: "自定义",
+            rows: [
+                "自定义 - 自定义视图",
+                "自定义 - 显示在状态栏"
+            ]
+        ),
+        (
+            title: "响应测试",
+            rows: [
+                "响应测试 - 完全响应",
+                "响应测试 - 完全禁止",
+                "响应测试 - 仅导航栏响应"
+            ]
+        ),
+        (
+            title: "组合使用",
+            rows: [
+                "组合使用 - 旋转toast",
+                "组合使用 - 多个状态切换的处理",
+                "组合使用 - 动态改变文字内容"
+            ]
+        ),
+        (
+            title: "其他",
+            rows: [
+                "其他 - 测试键盘遮挡",
+            ]
+        )
         
-        [
-            "文本 - 短文本",
-            "文本 - 长文本",
-            "文本 - 设置展示时长",
-            "文本 - 展示期间页面禁止响应",
-            "文本 - 展示期间导航栏以下禁止响应",
-            "文本 - 展示期间允许响应",
-            "文本 - 设置偏移量（Y轴展示位置）",
-        ],
-        
-        [
-            "icon - 成功",
-            "icon - 失败",
-            "icon - 警告",
-            "icon - 长文本信息",
-            "icon - 自定义",
-            "icon - 展示期间页面禁止响应",
-            "icon - 展示期间导航栏以下禁止响应",
-            "icon - 展示期间允许响应",
-        ],
-        
-        
-        [
-            "loading - 固定时间自动隐藏",
-            "loading - 手动控制隐藏",
-            "loading - 展示期间页面禁止响应",
-            "loading - 展示期间导航栏以下禁止响应",
-            "loading - 展示期间允许响应",
-        ],
-        
-        [
-            "状态栏 - 显示在状态栏",
-        ],
-        
-        [
-            "组合使用 - 旋转toast",
-            "组合使用 - 多个状态切换的处理",
-            "组合使用 - 动态改变文字内容"
-        ],
-        
-        [
-            "自定义"
-        ]
     ]
+
 }
 
 extension ViewController {
@@ -120,12 +150,11 @@ extension ViewController {
 extension ViewController : UITableViewDelegate,UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataArray.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let arr = dataArray[section]
-        return arr.count
+        return dataSource[section].rows.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -133,22 +162,8 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "文本"
-        case 1:
-            return "icon"
-        case 2:
-            return "loading"
-        case 3:
-            return "状态栏"
-        case 4:
-            return "组合使用"
-        case 5:
-            return "自定义使用"
-        default:
-            return ""
-        }
+        return dataSource[section].title
+
     }
     
     
@@ -163,42 +178,40 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource {
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.white
         
-        let arr = dataArray[indexPath.section]
-        cell.textLabel?.text = arr[indexPath.row]
+        cell.textLabel?.text = dataSource[indexPath.section].rows[indexPath.row]
+
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let vc = KeyboardTestViewController()
-
-        let vc = LoadingViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-//        switch indexPath.section {
-//        case 0:
-//            showToastOnSection0(with: indexPath.row)
-//        case 1:
-//            showToastOnSection1(with: indexPath.row)
-//        case 2:
-//            showToastOnSection2(with: indexPath.row)
-//        case 3:
-//            showToastOnSection3(with: indexPath.row)
-//        case 4:
-//            showToastOnSection4(with: indexPath.row)
-//        case 5:
-//            
-//            showToastOnSection5(with: indexPath.row)
-//        default:
-//            break
-//        }
+        switch indexPath.section {
+        case 0:
+            break
+        case 1:
+            showToastOnSection1(with: indexPath.row)
+        case 2:
+            showToastOnSection2(with: indexPath.row)
+        case 3:
+            showToastOnSection3(with: indexPath.row)
+        case 4:
+            showToastOnSection4(with: indexPath.row)
+        case 5:
+            showToastOnSection5(with: indexPath.row)
+        case 6:
+            showToastOnSection6(with: indexPath.row)
+        case 7:
+            showToastOnSection7(with: indexPath.row)
+        default:
+            break
+        }
     }
 }
 
 
 extension ViewController {
-    func showToastOnSection0(with row: Int) {
+    func showToastOnSection1(with row: Int) {
         switch row {
         case 0:
             MCToast.mc_text("提示文案", offset: 118)
@@ -221,7 +234,7 @@ extension ViewController {
 }
 
 extension ViewController {
-    func showToastOnSection1(with row: Int) {
+    func showToastOnSection2(with row: Int) {
         switch row {
         case 0:
             MCToast.mc_success("成功")
@@ -247,7 +260,7 @@ extension ViewController {
 
 
 extension ViewController {
-    func showToastOnSection2(with row: Int) {
+    func showToastOnSection3(with row: Int) {
         switch row {
         case 0:
             MCToast.mc_loading(duration: 2)
@@ -267,9 +280,19 @@ extension ViewController {
 
 
 extension ViewController {
-    func showToastOnSection3(with row: Int) {
+    func showToastOnSection4(with row: Int) {
         switch row {
         case 0:
+            let customView = UIView()
+            customView.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
+            let label = UILabel()
+            label.text = "自定义的内容"
+            label.sizeToFit()
+            label.center = customView.center
+            label.backgroundColor = UIColor.red
+            customView.addSubview(label)
+            MCToast.showCustomView(customView, duration: 2, respond: .allow)
+        case 1:
             self.mc_statusBar("有内容更新啦，赶紧看看吧")
         default:
             break
@@ -278,7 +301,24 @@ extension ViewController {
 }
 
 extension ViewController {
-    func showToastOnSection4(with row: Int) {
+    func showToastOnSection5(with row: Int) {
+        let vc = ResponseTestViewController()
+        switch row {
+        case 0:
+            vc.response = .allow
+        case 1:
+            vc.response = .forbid
+        case 2:
+            vc.response = .allowNav
+        default:
+            break
+        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension ViewController {
+    func showToastOnSection6(with row: Int) {
         switch row {
         case 0:
             if let customWindow = MCToast.mc_success("旋转toast提示方向") {
@@ -352,16 +392,19 @@ extension ViewController {
 }
 
 extension ViewController {
-    func showToastOnSection5(with row: Int) {
-        let customView = UIView()
-        customView.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
-        let label = UILabel()
-        label.text = "自定义的内容"
-        label.sizeToFit()
-        label.center = customView.center
-        label.backgroundColor = UIColor.red
-        customView.addSubview(label)
-        MCToast.showCustomView(customView, duration: 2, respond: .allow)
+    func showToastOnSection7(with row: Int) {
+        let vc = KeyboardTestViewController()
+//        switch row {
+//        case 0:
+//            vc.response = .allow
+//        case 1:
+//            vc.response = .forbid
+//        case 2:
+//            vc.response = .allowNav
+//        default:
+//            break
+//        }
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

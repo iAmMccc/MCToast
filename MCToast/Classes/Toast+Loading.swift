@@ -85,7 +85,6 @@ extension MCToast {
             
             let activity = UIActivityIndicatorView()
             activity.translatesAutoresizingMaskIntoConstraints = false
-            activity.color = .black
             if #available(iOS 13.0, *) {
                 activity.style = .large
             } else {
@@ -96,6 +95,7 @@ extension MCToast {
             
             // 只有纯 icon（不含文字）
             guard let text = text, !text.isEmpty else {
+                activity.color = .black
                 mainView.backgroundColor = UIColor.clear
                 NSLayoutConstraint.activate([
                     activity.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
@@ -107,6 +107,8 @@ extension MCToast {
                 return window
             }
             
+            activity.color = .white
+
             // 含文字的样式
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false

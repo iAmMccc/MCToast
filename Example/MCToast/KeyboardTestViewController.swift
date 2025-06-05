@@ -19,6 +19,10 @@ class KeyboardTestViewController: UIViewController {
 //        MCToast.mc_loading(text: "loading")
         
         view.addSubview(textField)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         textField.becomeFirstResponder()
     }
     
