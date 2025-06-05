@@ -26,11 +26,7 @@ class ViewController: UIViewController {
         initUI()
     }
     
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        MCToast.mc_remove()
-    }
+
     
     // MARK: - Setter & Getter
     lazy var tableView: UITableView = {

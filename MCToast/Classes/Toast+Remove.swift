@@ -17,7 +17,6 @@ extension UIResponder {
     }
 }
 
-
 extension MCToast {
     /// 移除toast
     /// - Parameter callback: 移除成功的回调
@@ -26,14 +25,11 @@ extension MCToast {
     }
 }
 
-
-internal extension Selector {
-    fileprivate static let hideNotice = #selector(MCToast.hideNotice(_:))
-}
+private var hideTasks: [UIWindow: DispatchWorkItem] = [:]
 
 extension MCToast {
     
-    /// 隐藏
+    /// 隐藏窗口
     private static func hideWindow(_ window: UIWindow) {
         guard let toastView = window.subviews.first else { return }
 
@@ -45,48 +41,51 @@ extension MCToast {
         }, completion: { _ in
             toastView.removeFromSuperview()
             window.isHidden = true
-
             if let index = windows.firstIndex(of: window) {
                 windows.remove(at: index)
             }
+            hideTasks[window]?.cancel()
+            hideTasks.removeValue(forKey: window)
         })
     }
 
+    /// 手动隐藏通知
     @objc static func hideNotice(_ sender: AnyObject) {
         if let window = sender as? UIWindow {
             hideWindow(window)
         }
     }
     
-    
-    /// 清空
+    /// 清空所有 Toast
     static func clearAllToast(callback: MCToastCallback? = nil) {
         DispatchQueue.main.safeSync {
-            NSObject.cancelPreviousPerformRequests(withTarget: self)
+            // 取消所有延迟任务
+            for (_, task) in hideTasks {
+                task.cancel()
+            }
+            hideTasks.removeAll()
 
             for window in windows {
-                window?.subviews.forEach { $0.removeFromSuperview() }
-                window?.isHidden = true
+                window.subviews.forEach { $0.removeFromSuperview() }
+                window.isHidden = true
             }
             windows.removeAll()
         }
         callback?()
     }
-}
 
-
-extension MCToast {
-    
-    /// 自动隐藏
+    /// 自动移除 toast
     static func autoRemove(window: UIWindow, duration: CGFloat, callback: MCToastCallback?) {
-        let autoClear : Bool = duration > 0 ? true : false
-        if autoClear {
-            self.perform(.hideNotice, with: window, afterDelay: TimeInterval(duration))
-             
-            let time = DispatchTime.now() + .milliseconds(Int(duration * 1000))
-            DispatchQueue.main.asyncAfter(deadline: time) {
+        guard duration > 0 else { return }
+
+        let task = DispatchWorkItem {
+            if windows.contains(where: { $0 == window }) {
+                hideWindow(window)
                 callback?()
             }
         }
+
+        hideTasks[window] = task
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: task)
     }
 }
