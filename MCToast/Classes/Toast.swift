@@ -69,9 +69,10 @@ public class MCToast: NSObject {
 
 
 extension MCToast {
-    public typealias MCToastCallback = () -> Void
+    // toast消失的回调
+    public typealias DismissHandler = () -> Void
     
-    public enum MCToastRespond {
+    public enum RespondPolicy {
         /// Toast展示期间不允许事件交互
         case forbid
         /// Toast展示期间允许事件交互
@@ -81,25 +82,25 @@ extension MCToast {
     }
     
     
-    public enum ToastType {
-        /// 文本类型
-        case text
-        /// icon类型
-        case icon
-        /// loading类型
-        case loading
-        /// 自定义类型
-        case custom
-        /// 状态栏
-        case statusBar
-    }
+//    public enum Style {
+//        /// 文本类型
+//        case text
+//        /// icon类型
+//        case icon
+//        /// loading类型
+//        case loading
+//        /// 自定义类型
+//        case custom
+//        /// 状态栏
+//        case statusBar
+//    }
 }
 
 
 extension MCToast {
     
     
-    func createWindow(respond: MCToastRespond, mainView: ToastContentView? = nil) -> UIWindow {
+    func createWindow(respond: RespondPolicy, mainView: ToastContentView? = nil) -> UIWindow {
         let window: ToastWindow
 
         if #available(iOS 13.0, *) {

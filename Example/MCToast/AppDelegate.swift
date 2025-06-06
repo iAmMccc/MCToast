@@ -40,7 +40,7 @@ extension AppDelegate {
         
         
 //        // 1. 配置Toast弹出过程中的交互类型（MCToastRespond：禁止交互，导航栏下禁止交互，允许交互）
-//        MCToastConfig.shared.respond = MCToast.MCToastRespond.allow
+//        MCToastConfig.shared.respond = RespondPolicy.allow
 //        
 //        
 //        // 2. 配置Toast核心区域（黑色区域）

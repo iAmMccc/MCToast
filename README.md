@@ -33,7 +33,7 @@ MCToast已经提供了一套默认值，如果与您的要求不相符，您完�
 extension AppDelegate {
     func configToast() {
         // 1. 配置Toast弹出过程中的交互类型（MCToastRespond：禁止交互，导航栏下禁止交互，允许交互）
-        MCToastConfig.shared.respond = MCToast.MCToastRespond.respond
+        MCToastConfig.shared.respond = RespondPolicy.respond
         
   
         // 2. 配置Toast核心区域（黑色区域）
@@ -94,8 +94,8 @@ extension MCToast {
     public static func mc_text(_ text: String,
                                offset: CGFloat? = nil,
                                duration: CGFloat = MCToastConfig.shared.duration,
-                               respond: MCToast.MCToastRespond = MCToastConfig.shared.respond,
-                               callback: MCToast.MCToastCallback? = nil) {
+                               respond: RespondPolicy = MCToastConfig.shared.respond,
+                               callback: DismissHandler? = nil) {
         
         DispatchQueue.main.async {
             MCToast.showText(text, offset: offset, duration: duration, respond: respond, callback: callback)

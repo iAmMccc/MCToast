@@ -13,7 +13,7 @@ class ToastWindow: UIWindow {
     
     var mainView: ToastContentView?
     
-    var response: MCToast.MCToastRespond = .allow
+    var response: MCToast.RespondPolicy = .allow
     private var navBarFrame: CGRect = .zero
     
     // 判断是否可以响应点击

@@ -19,8 +19,8 @@ extension UIResponder {
     public func mc_text(_ text: String,
                         offset: CGFloat = MCToastConfig.shared.text.offset,
                         duration: CGFloat = MCToastConfig.shared.duration,
-                        respond: MCToast.MCToastRespond = MCToastConfig.shared.respond,
-                        callback: MCToast.MCToastCallback? = nil) -> UIWindow?  {
+                        respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
+                        callback: MCToast.DismissHandler? = nil) -> UIWindow?  {
         return MCToast.mc_text(text, offset: offset, duration: duration, respond: respond, callback: callback)
     }
 }
@@ -40,8 +40,8 @@ extension MCToast {
     public static func mc_text(_ text: String,
                                offset: CGFloat = MCToastConfig.shared.text.offset,
                                duration: CGFloat = MCToastConfig.shared.duration,
-                               respond: MCToast.MCToastRespond = MCToastConfig.shared.respond,
-                               callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+                               respond: RespondPolicy = MCToastConfig.shared.respond,
+                               callback: DismissHandler? = nil) -> UIWindow? {
         return MCToast.shared.showText(text, offset: offset, duration: duration, respond: respond, callback: callback)
         
     }
@@ -56,8 +56,8 @@ extension MCToast {
     internal func showText(_ text: String,
                                   offset: CGFloat = MCToastConfig.shared.text.offset,
                                   duration: CGFloat,
-                                  respond: MCToast.MCToastRespond,
-                                  callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+                                  respond: RespondPolicy,
+                                  callback: DismissHandler? = nil) -> UIWindow? {
         
         func createLabel() -> UILabel {
             let label = UILabel()

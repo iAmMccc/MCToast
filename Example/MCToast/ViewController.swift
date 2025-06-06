@@ -122,7 +122,7 @@ extension ViewController {
         //        MCToastConfig.shared.icon.successImage = UIImage.init(named: "code")
         
 //        MCToastConfig.shared.text.offset = (UIScreen.main.bounds.size.height / 2 - 120 - 150)
-//        MCToastConfig.shared.respond = MCToast.MCToastRespond.noRespond
+//        MCToastConfig.shared.respond = RespondPolicy.noRespond
     }
 }
 

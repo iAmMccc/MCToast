@@ -31,8 +31,8 @@ extension UIResponder {
     @discardableResult
     public func mc_loading(text: String = "正在加载中",
                            duration: CGFloat = 0,
-                           respond: MCToast.MCToastRespond = MCToastConfig.shared.respond,
-                           callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+                           respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
+                           callback: MCToast.DismissHandler? = nil) -> UIWindow? {
         if text.isEmpty {
             return MCToast.shared.loading(duration: duration, respond: respond)
         } else {
@@ -53,8 +53,8 @@ extension MCToast {
     @discardableResult
     public static func mc_loading(text: String = "正在加载中",
                                   duration: CGFloat = 0,
-                                  respond: MCToast.MCToastRespond = MCToastConfig.shared.respond,
-                                  callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+                                  respond: RespondPolicy = MCToastConfig.shared.respond,
+                                  callback: DismissHandler? = nil) -> UIWindow? {
         
         if text.isEmpty {
             return MCToast.shared.loading(duration: duration, respond: respond)
@@ -68,8 +68,8 @@ extension MCToast {
     @discardableResult
     fileprivate func loading(text: String? = nil,
                                     duration: CGFloat,
-                                    respond: MCToast.MCToastRespond,
-                                    callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+                                    respond: RespondPolicy,
+                                    callback: DismissHandler? = nil) -> UIWindow? {
         
         func getWindow() -> UIWindow {
             let mainView = createMainView()

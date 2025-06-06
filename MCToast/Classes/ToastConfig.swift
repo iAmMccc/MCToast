@@ -16,7 +16,7 @@ public struct MCToastConfig {
     public static let shared = MCToastConfig()
     
     /// 设置交互区域 默认导航栏下禁止交互
-    public var respond = MCToast.MCToastRespond.allow
+    public var respond = MCToast.RespondPolicy.allow
     
     /// 背景的设置
     public var background = Background()

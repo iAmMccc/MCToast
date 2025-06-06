@@ -11,7 +11,7 @@ import MCToast
 
 class ResponseTestViewController: UIViewController {
 
-    var response: MCToast.MCToastRespond = .allow
+    var response: MCToast.RespondPolicy = .allow
     
     override func viewDidLoad() {
         super.viewDidLoad()

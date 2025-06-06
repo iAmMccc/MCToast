@@ -17,8 +17,8 @@ extension MCToast {
     public static func showCustomView(_ customView: UIView,
                                       duration: CGFloat,
                                       bgColor: UIColor? = nil,
-                                      respond: MCToast.MCToastRespond,
-                               callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+                                      respond: RespondPolicy,
+                               callback: DismissHandler? = nil) -> UIWindow? {
         shared.showCustomView(customView, duration: duration, bgColor: bgColor, respond: respond, callback: callback)
     }
     
@@ -27,8 +27,8 @@ extension MCToast {
     func showCustomView(_ customView: UIView,
                                       duration: CGFloat,
                                       bgColor: UIColor? = nil,
-                                      respond: MCToast.MCToastRespond,
-                                      callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+                                      respond: RespondPolicy,
+                                      callback: DismissHandler? = nil) -> UIWindow? {
         
         func getWindow() -> UIWindow? {
             // 创建承载视图

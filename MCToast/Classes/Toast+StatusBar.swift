@@ -21,7 +21,7 @@ extension UIResponder {
                               duration: CGFloat = MCToastConfig.shared.duration,
                               font: UIFont = MCToastConfig.shared.text.font,
                               backgroundColor: UIColor? = nil,
-                              callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+                              callback: MCToast.DismissHandler? = nil) -> UIWindow? {
         return MCToast.mc_statusBar(text, duration: duration, font: font, backgroundColor: backgroundColor, callback: callback)
     }
 }
@@ -42,7 +42,7 @@ extension MCToast {
         duration: CGFloat = MCToastConfig.shared.duration,
         font: UIFont = MCToastConfig.shared.text.font,
         backgroundColor: UIColor? = nil,
-        callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+        callback: DismissHandler? = nil) -> UIWindow? {
             return MCToast.shared.noticeOnStatusBar(text, duration: duration, backgroundColor: backgroundColor, font: font, callback: callback)
         }
 }
@@ -58,7 +58,7 @@ extension MCToast {
         duration: CGFloat,
         backgroundColor: UIColor?,
         font: UIFont,
-        callback: MCToast.MCToastCallback? = nil
+        callback: DismissHandler? = nil
     ) -> UIWindow? {
         
         guard !text.isEmpty else { return nil }

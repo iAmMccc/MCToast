@@ -12,7 +12,7 @@ extension UIResponder {
     
     /// 移除toast
     /// - Parameter callback: 移除成功的回调
-    public func mc_remove(callback: MCToast.MCToastCallback? = nil) {
+    public func mc_remove(callback: MCToast.DismissHandler? = nil) {
         MCToast.shared.clearAllToast(callback: callback)
     }
 }
@@ -20,7 +20,7 @@ extension UIResponder {
 extension MCToast {
     /// 移除toast
     /// - Parameter callback: 移除成功的回调
-    public static func mc_remove(callback: MCToast.MCToastCallback? = nil) {
+    public static func mc_remove(callback: DismissHandler? = nil) {
         MCToast.shared.clearAllToast(callback: callback)
     }
 }
@@ -53,7 +53,7 @@ extension MCToast {
     }
     
     /// 清空所有 Toast
-    func clearAllToast(callback: MCToastCallback? = nil) {
+    func clearAllToast(callback: DismissHandler? = nil) {
         DispatchQueue.main.safeSync {
             self.toastWindow?.subviews.forEach { $0.removeFromSuperview() }
             self.toastWindow?.isHidden = true
@@ -63,7 +63,7 @@ extension MCToast {
     }
 
     /// 自动移除 toast
-    func autoRemove(window: UIWindow, duration: CGFloat, callback: MCToastCallback?) {
+    func autoRemove(window: UIWindow, duration: CGFloat, callback: DismissHandler?) {
         guard duration > 0 else { return }
 
         let task = DispatchWorkItem {
