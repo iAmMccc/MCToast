@@ -75,7 +75,7 @@ extension MCToastConfig {
         public var minWidth: CGFloat = 88
         
         /// 横竖屏配置
-        public var landscapeTextOffset: CGFloat = 10
+        public var landscapeTextOffset: CGFloat = 60
         public var portraitTextOffset: CGFloat = 118
         
         /// toast底部距离屏幕底部距离
