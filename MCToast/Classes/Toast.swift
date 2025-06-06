@@ -17,7 +17,8 @@
  * 【不支持】支持页面返回移除。
  * 支持显示倒计时。
  * 支持json动画。
- * 是否要移除windows，只需要一个window，window中持有mainView，mainView中持有底部约束。这样就好处理横竖屏切换，好处理键盘事件。
+ * 是否要移除windows，只需要一个window，window中持有contentView，contentView中持有底部约束。这样就好处理横竖屏切换，好处理键盘事件
+ * 尝试优化，横竖屏切换+键盘弹出的时候，的效果。 不好处理。
  */
 
 
@@ -109,28 +110,28 @@ extension MCToast {
         }
         
         // 创建承载视图
-        let mainView = createMainView()
-        let window = ToastWindow(windowScene: windowScene, mainView: mainView, response: respond)
+        let contentView = createcontentView()
+        let window = ToastWindow(windowScene: windowScene, contentView: contentView, response: respond)
         self.toastWindow = window
         
-//        mainView.setupConstraints(style: style)
+//        contentView.setupConstraints(style: style)
         
         return window
     }
 
     
     /// 创建主视图区域
-    func createMainView() -> ToastContentView {
-        let mainView = ToastContentView()
-        mainView.layer.cornerRadius = MCToastConfig.shared.icon.cornerRadius
-        mainView.layer.masksToBounds = true
-        mainView.backgroundColor = MCToastConfig.shared.background.resolvedColor
-        mainView.alpha = 0.0
+    func createcontentView() -> ToastContentView {
+        let contentView = ToastContentView()
+        contentView.layer.cornerRadius = MCToastConfig.shared.icon.cornerRadius
+        contentView.layer.masksToBounds = true
+        contentView.backgroundColor = MCToastConfig.shared.background.resolvedColor
+        contentView.alpha = 0.0
 
         UIView.animate(withDuration: 0.2) {
-            mainView.alpha = 1
+            contentView.alpha = 1
         }
-        return mainView
+        return contentView
     }
     
     
@@ -141,14 +142,14 @@ extension MCToast {
         // 重新读取offset计算属性，更新约束
         UIView.animate(withDuration: 0.3) {
             // 让window重新布局
-            self.toastWindow?.mainView.bottomConstraint?.constant = -MCToastConfig.shared.text.offset
+            self.toastWindow?.contentView.bottomConstraint?.constant = -MCToastConfig.shared.text.offset
             self.toastWindow?.layoutIfNeeded()
         }
     }
     
     @objc private func onKeyboardWillChangeFrame(height: CGFloat, duration: CGFloat) {
         guard let window = toastWindow,
-              let constraint = self.toastWindow?.mainView.bottomConstraint else {
+              let constraint = self.toastWindow?.contentView.bottomConstraint else {
             return
         }
 

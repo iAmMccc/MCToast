@@ -31,7 +31,7 @@ class ToastContentView: UIView {
 //        
 //        switch style {
 //        case .text:
-////            // 让mainView大小刚好包裹label内容
+////            // 让contentView大小刚好包裹label内容
 ////            // 先给个宽最大限制，防止太宽
 ////            let maxWidth = MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal
 ////            

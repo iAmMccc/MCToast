@@ -80,7 +80,7 @@ extension MCToast {
             label.numberOfLines = 0
             containerView.addSubview(label)
 
-            window.mainView = containerView
+            window.contentView = containerView
 
             let topSafeArea = UIDevice.topSafeAreaHeight
             let labelPadding: CGFloat = 5.0

@@ -82,18 +82,18 @@ extension MCToast {
                 activity.style = .whiteLarge
             }
             activity.startAnimating()
-            window.mainView.addSubview(activity)
+            window.contentView.addSubview(activity)
             
             // 只有纯 icon（不含文字）
             guard let text = text, !text.isEmpty else {
                 activity.color = .black
-                window.mainView.backgroundColor = UIColor.clear
+                window.contentView.backgroundColor = UIColor.clear
                 NSLayoutConstraint.activate([
-                    activity.centerXAnchor.constraint(equalTo: window.mainView.centerXAnchor),
-                    activity.centerYAnchor.constraint(equalTo: window.mainView.centerYAnchor),
+                    activity.centerXAnchor.constraint(equalTo: window.contentView.centerXAnchor),
+                    activity.centerYAnchor.constraint(equalTo: window.contentView.centerYAnchor),
                     activity.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.imageSize.width),
                     activity.heightAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.imageSize.height),
-                    window.mainView.heightAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.imageSize.height + MCToastConfig.shared.icon.padding.vertical)
+                    window.contentView.heightAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.imageSize.height + MCToastConfig.shared.icon.padding.vertical)
                 ])
                 return window
             }
@@ -109,18 +109,18 @@ extension MCToast {
             label.numberOfLines = 2
             label.textAlignment = .center
             label.lineBreakMode = .byCharWrapping
-            window.mainView.addSubview(label)
+            window.contentView.addSubview(label)
             
             NSLayoutConstraint.activate([
-                activity.topAnchor.constraint(equalTo: window.mainView.topAnchor, constant: MCToastConfig.shared.icon.padding.top),
-                activity.centerXAnchor.constraint(equalTo: window.mainView.centerXAnchor),
+                activity.topAnchor.constraint(equalTo: window.contentView.topAnchor, constant: MCToastConfig.shared.icon.padding.top),
+                activity.centerXAnchor.constraint(equalTo: window.contentView.centerXAnchor),
                 activity.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.imageSize.width),
                 activity.heightAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.imageSize.height),
                 
                 label.topAnchor.constraint(equalTo: activity.bottomAnchor, constant: 12),
-                label.leadingAnchor.constraint(equalTo: window.mainView.leadingAnchor, constant: MCToastConfig.shared.icon.padding.left),
-                label.trailingAnchor.constraint(equalTo: window.mainView.trailingAnchor, constant: -MCToastConfig.shared.icon.padding.right),
-                label.bottomAnchor.constraint(equalTo: window.mainView.bottomAnchor, constant: -MCToastConfig.shared.icon.padding.bottom)
+                label.leadingAnchor.constraint(equalTo: window.contentView.leadingAnchor, constant: MCToastConfig.shared.icon.padding.left),
+                label.trailingAnchor.constraint(equalTo: window.contentView.trailingAnchor, constant: -MCToastConfig.shared.icon.padding.right),
+                label.bottomAnchor.constraint(equalTo: window.contentView.bottomAnchor, constant: -MCToastConfig.shared.icon.padding.bottom)
             ])
             autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
             return window

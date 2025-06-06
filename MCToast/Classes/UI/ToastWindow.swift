@@ -10,19 +10,19 @@ import Foundation
 
 class ToastWindow: UIWindow {
     
-    var mainView: ToastContentView
+    var contentView: ToastContentView
     
     var response: MCToast.RespondPolicy
 
 
-    // 自定义构造器，增加 mainView 参数
-    init(windowScene: UIWindowScene, mainView: ToastContentView, response: MCToast.RespondPolicy) {
+    // 自定义构造器，增加 contentView 参数
+    init(windowScene: UIWindowScene, contentView: ToastContentView, response: MCToast.RespondPolicy) {
         self.response = response
-        self.mainView = mainView
+        self.contentView = contentView
         
         super.init(windowScene: windowScene)
         
-        addSubview(mainView)
+        addSubview(contentView)
         
         isHidden = false
         windowLevel = .statusBar + 1
