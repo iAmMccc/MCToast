@@ -38,6 +38,10 @@ extension MCToastConfig {
         /// toast 的背景颜色
         public var color: UIColor = UIColor.black.withAlphaComponent(0.9)
         public var colorAlpha: CGFloat = 0.8
+        
+        var resolvedColor: UIColor {
+            color.withAlphaComponent(colorAlpha)
+        }
     }
     
     public struct Icon {

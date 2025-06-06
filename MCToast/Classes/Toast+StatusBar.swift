@@ -68,8 +68,7 @@ extension MCToast {
 
             let window = createWindow(respond: .allow)
 
-            let containerView = UIView()
-            containerView.translatesAutoresizingMaskIntoConstraints = false
+            let containerView = ToastContentView()
             containerView.backgroundColor = backgroundColor ?? UIColor(red: 0x6a/255.0, green: 0xb4/255.0, blue: 0x9f/255.0, alpha: 1)
             containerView.tag = sn_topBar
             let label = UILabel()

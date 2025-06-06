@@ -76,7 +76,6 @@ extension MCToast {
             
             /// 2. 生成mainView
             let mainView = createMainView()
-            mainView.translatesAutoresizingMaskIntoConstraints = false
             
             /// 2. 生成window
             let window = createWindow(respond: respond, mainView: mainView)
@@ -95,7 +94,7 @@ extension MCToast {
                 let maxWidth = MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal
                 
                 NSLayoutConstraint.activate([
-                    mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
+                    mainView.centerXAnchor.constraint(equalTo: mainView.superview!.centerXAnchor),
                     // 限制最大宽度
                     mainView.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth)
                 ])

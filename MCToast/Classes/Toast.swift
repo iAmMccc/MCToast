@@ -11,7 +11,7 @@
  * 【done】将所有的frame修改为layout布局。
  * 【done】demo中写横竖屏切换的方法，验证效果。
  * 【done】应该要把MCToast 设计成一个单例。
- * 处理键盘事件
+ * 【done】处理键盘事件
  * 【done】支持横竖屏的切换，自动适配横竖屏的配置参数。
  * 支持x号按钮
  * 【不支持】支持页面返回移除。
@@ -44,10 +44,10 @@ public class MCToast: NSObject {
     }
     
     
-    static let shared = MCToast()
+    internal static let shared = MCToast()
 
     /// 管理所有的windows
-    var toastWindow: ToastWindow?
+    internal var toastWindow: ToastWindow?
     
     internal static var keyWindow: UIWindow? {
         if #available(iOS 13.0, *) {
@@ -82,18 +82,18 @@ extension MCToast {
     }
     
     
-//    public enum Style {
-//        /// 文本类型
-//        case text
-//        /// icon类型
-//        case icon
-//        /// loading类型
-//        case loading
-//        /// 自定义类型
-//        case custom
-//        /// 状态栏
-//        case statusBar
-//    }
+    public enum Style {
+        /// 文本类型
+        case text
+        /// icon类型
+        case icon
+        /// loading类型
+        case loading
+        /// 自定义类型
+        case custom
+        /// 状态栏
+        case statusBar
+    }
 }
 
 
@@ -137,13 +137,14 @@ extension MCToast {
         let mainView = ToastContentView()
         mainView.layer.cornerRadius = MCToastConfig.shared.icon.cornerRadius
         mainView.layer.masksToBounds = true
-        mainView.backgroundColor = bgColor ?? MCToastConfig.shared.background.color.withAlphaComponent(MCToastConfig.shared.background.colorAlpha)
+        mainView.backgroundColor = bgColor ?? MCToastConfig.shared.background.resolvedColor
         mainView.alpha = 0.0
-        mainView.translatesAutoresizingMaskIntoConstraints = false
 
         UIView.animate(withDuration: 0.2) {
             mainView.alpha = 1
         }
+        
+        
 
         return mainView
     }
@@ -163,14 +164,11 @@ extension MCToast {
             return
         }
 
-
         let targetOffset = max(height+MCToastConfig.shared.text.avoidKeyboardOffsetY, MCToastConfig.shared.text.offset)
 
         constraint.constant = -targetOffset
         let curve = UIView.AnimationCurve.easeInOut.rawValue
 
-        
-        
         UIView.animate(withDuration: duration,
                        delay: 0,
                        options: UIView.AnimationOptions(rawValue: UInt(curve << 16)),

@@ -33,14 +33,12 @@ extension MCToast {
         func getWindow() -> UIWindow? {
             // 创建承载视图
             let mainView = createMainView(bgColor: bgColor)
-            mainView.translatesAutoresizingMaskIntoConstraints = false
             // 创建窗口
             let window = createWindow(respond: respond, mainView: mainView)
 
            
             
             // 把 customView 加到 mainView 上
-            customView.translatesAutoresizingMaskIntoConstraints = false
             mainView.addSubview(customView)
             
             window.addSubview(mainView)
