@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-  
+        MCToast.initToast()
+
         // 设置通配类型
 //        configToast()
         
@@ -34,6 +35,7 @@ extension AppDelegate {
          * MCToast已经提供了一套默认值，如果与您的要求不相符，您完全可以根据以下方法通配它。
          * 如果某一个toast需要单独设置，可以在调用MCToast的类方法里面单独设置参数值。
          */
+        
         
         
         // 1. 配置Toast弹出过程中的交互类型（MCToastRespond：禁止交互，导航栏下禁止交互，允许交互）

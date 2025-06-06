@@ -10,13 +10,14 @@
  * 【done】【Bug】为啥在viewdidload中加载，会自动隐藏？
  * 【done】将所有的frame修改为layout布局。
  * 【done】demo中写横竖屏切换的方法，验证效果。
+ * 应该要把MCToast 设计成一个单例。
  * 处理键盘事件
- * 支持横竖屏的切换，自动适配横竖屏的配置参数。
+ * 【done】支持横竖屏的切换，自动适配横竖屏的配置参数。
  * 支持x号按钮
- * 支持页面返回移除。
+ * 【不支持】支持页面返回移除。
  * 支持显示倒计时。
  * 支持json动画。
- * loading的颜色支持配置。
+ * 是否要移除windows，只需要一个window，window中持有mainView，mainView中持有底部约束。这样就好处理横竖屏切换，好处理键盘事件。
  */
 
 
@@ -29,9 +30,12 @@ internal let sn_topBar: Int = 1001
 
 
 public class MCToast: NSObject {
+    private static var isInitialized = false
+
+    static let shared = MCToast()
     
     // 记录底部约束，横竖屏切换时更新
-    static var mainViewBottomConstraint: NSLayoutConstraint?
+    var mainViewBottomConstraint: NSLayoutConstraint?
 
     /// 管理所有的windows
     static var windows: [UIWindow] = []
@@ -51,6 +55,15 @@ public class MCToast: NSObject {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    public static func initToast() {
+        guard !isInitialized else { return }
+        isInitialized = true
+        NotificationCenter.default.addObserver(shared, selector: #selector(onOrientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
+        BTKeyboardManager.shared.keyboardHeightChanged = { keyboardHeight, duration in
+            shared.onKeyboardWillChangeFrame(height: keyboardHeight, duration: duration)
+        }
     }
 }
 
@@ -88,8 +101,9 @@ extension MCToast {
     
     static func createWindow(respond: MCToastRespond) -> UIWindow {
         let window: ToastWindow
-        NotificationCenter.default.addObserver(self, selector: #selector(onOrientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
 
+
+        
         if #available(iOS 13.0, *) {
             guard let windowScene = UIApplication.shared.connectedScenes
                 .compactMap({ $0 as? UIWindowScene })
@@ -132,16 +146,37 @@ extension MCToast {
         return mainView
     }
     
-    @objc private static func onOrientationChanged() {
+    @objc private func onOrientationChanged() {
         // 重新读取offset计算属性，更新约束
         UIView.animate(withDuration: 0.3) {
             // 让window重新布局
-            mainViewBottomConstraint?.constant = -MCToastConfig.shared.text.offset
+            self.mainViewBottomConstraint?.constant = -MCToastConfig.shared.text.offset
             MCToast.windows.first?.layoutIfNeeded()
 
         }
     }
     
+    @objc private func onKeyboardWillChangeFrame(height: CGFloat, duration: CGFloat) {
+        guard let window = MCToast.windows.first,
+              let constraint = mainViewBottomConstraint else {
+            return
+        }
+
+
+        let targetOffset = max(height, MCToastConfig.shared.text.offset)
+
+        constraint.constant = -targetOffset
+        let curve = UIView.AnimationCurve.easeInOut.rawValue
+
+        
+        
+        UIView.animate(withDuration: duration,
+                       delay: 0,
+                       options: UIView.AnimationOptions(rawValue: UInt(curve << 16)),
+                       animations: {
+                           window.layoutIfNeeded()
+                       },
+                       completion: nil)
+    }
 
 }
-

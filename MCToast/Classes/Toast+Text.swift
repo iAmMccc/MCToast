@@ -42,7 +42,7 @@ extension MCToast {
                                duration: CGFloat = MCToastConfig.shared.duration,
                                respond: MCToast.MCToastRespond = MCToastConfig.shared.respond,
                                callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
-        return MCToast.showText(text, offset: offset, duration: duration, respond: respond, callback: callback)
+        return MCToast.shared.showText(text, offset: offset, duration: duration, respond: respond, callback: callback)
         
     }
     
@@ -53,7 +53,7 @@ extension MCToast {
 extension MCToast {
     
     @discardableResult
-    internal static func showText(_ text: String,
+    internal func showText(_ text: String,
                                   offset: CGFloat = MCToastConfig.shared.text.offset,
                                   duration: CGFloat,
                                   respond: MCToast.MCToastRespond,
@@ -100,8 +100,19 @@ extension MCToast {
                     mainView.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth)
                 ])
                 
-                mainViewBottomConstraint = mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -offset)
+                if BTKeyboardManager.shared.currentVisibleKeyboardHeight > 0 {
+                    let bottomOffset = -BTKeyboardManager.shared.currentVisibleKeyboardHeight - 10
+                    mainViewBottomConstraint = mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: bottomOffset)
+                } else {
+                    let bottomOffset = -offset
+                    mainViewBottomConstraint = mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: bottomOffset)
+                }
+                
+
                 mainViewBottomConstraint?.isActive = true
+                
+//                mainViewBottomConstraint = mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -offset)
+//                mainViewBottomConstraint?.isActive = true
                 
             case .allowNav, .forbid:
                 NSLayoutConstraint.activate([
@@ -120,7 +131,7 @@ extension MCToast {
                 mainLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -MCToastConfig.shared.text.padding.bottom)
             ])
             
-            windows.append(window)
+            MCToast.windows.append(window)
             
             MCToast.autoRemove(window: window, duration: duration, callback: callback)
             
@@ -131,7 +142,7 @@ extension MCToast {
         
         var temp: UIWindow?
         DispatchQueue.main.safeSync {
-            clearAllToast()
+            MCToast.clearAllToast()
             temp = createWindow()
         }
         return temp

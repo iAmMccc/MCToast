@@ -32,6 +32,7 @@ extension MCToast {
     /// 隐藏窗口
     private static func hideWindow(_ window: UIWindow) {
         guard let toastView = window.subviews.first else { return }
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 
         UIView.animate(withDuration: 0.2, animations: {
             if toastView.tag == sn_topBar {
