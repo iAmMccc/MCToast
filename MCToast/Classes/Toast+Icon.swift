@@ -134,25 +134,19 @@ extension MCToast {
 
         func getWindow() -> UIWindow? {
             
-            // 创建主视图
-            let mainView = createMainView()
-            
             // 创建主 Toast Window
-            let window = createWindow(respond: respond, mainView: mainView)
-
-
-            window.addSubview(mainView)
+            let window = createWindow(respond: respond, style: .icon)
 
             NSLayoutConstraint.activate([
-                mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
-                mainView.centerYAnchor.constraint(equalTo: window.centerYAnchor),
-                mainView.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.toastWidth)
+                window.mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
+                window.mainView.centerYAnchor.constraint(equalTo: window.centerYAnchor),
+                window.mainView.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.toastWidth)
             ])
 
             // 图标
             let icon = UIImageView(image: iconImage)
             icon.translatesAutoresizingMaskIntoConstraints = false
-            mainView.addSubview(icon)
+            window.mainView.addSubview(icon)
 
             // 文字
             let label = UILabel()
@@ -163,21 +157,21 @@ extension MCToast {
             label.numberOfLines = 2
             label.lineBreakMode = .byCharWrapping
             label.textAlignment = .center
-            mainView.addSubview(label)
+            window.mainView.addSubview(label)
 
             let padding = MCToastConfig.shared.icon.padding
             let imageSize = MCToastConfig.shared.icon.imageSize
 
             NSLayoutConstraint.activate([
-                icon.topAnchor.constraint(equalTo: mainView.topAnchor, constant: padding.top),
-                icon.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+                icon.topAnchor.constraint(equalTo: window.mainView.topAnchor, constant: padding.top),
+                icon.centerXAnchor.constraint(equalTo: window.mainView.centerXAnchor),
                 icon.widthAnchor.constraint(equalToConstant: imageSize.width),
                 icon.heightAnchor.constraint(equalToConstant: imageSize.height),
 
                 label.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 12),
-                label.leftAnchor.constraint(equalTo: mainView.leftAnchor, constant: padding.left),
-                label.rightAnchor.constraint(equalTo: mainView.rightAnchor, constant: -padding.right),
-                label.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -padding.bottom)
+                label.leftAnchor.constraint(equalTo: window.mainView.leftAnchor, constant: padding.left),
+                label.rightAnchor.constraint(equalTo: window.mainView.rightAnchor, constant: -padding.right),
+                label.bottomAnchor.constraint(equalTo: window.mainView.bottomAnchor, constant: -padding.bottom)
             ])
 
             autoRemove(window: window, duration: duration, callback: callback)

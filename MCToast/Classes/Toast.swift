@@ -100,67 +100,55 @@ extension MCToast {
 extension MCToast {
     
     
-    func createWindow(respond: RespondPolicy, mainView: ToastContentView? = nil) -> UIWindow {
-        let window: ToastWindow
-
-        if #available(iOS 13.0, *) {
-            guard let windowScene = UIApplication.shared.connectedScenes
-                .compactMap({ $0 as? UIWindowScene })
-                .first(where: { $0.activationState == .foregroundActive }) else {
-                fatalError("无法获取当前活跃 Scene")
-            }
-
-            window = ToastWindow(windowScene: windowScene)
-        } else {
-            window = ToastWindow()
+    func createWindow(respond: RespondPolicy, style: Style) -> ToastWindow {
+        
+        guard let windowScene = UIApplication.shared.connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .first(where: { $0.activationState == .foregroundActive }) else {
+            fatalError("无法获取当前活跃 Scene")
         }
-        window.response = respond
-        window.mainView = mainView
         
-
-        window.backgroundColor = .clear
-        
-        // 如果不设置，将无法使用现代 UIKit 的很多功能（比如自动旋转支持、键盘避让、响应链传递等）
-        window.rootViewController = UIViewController()
-        window.rootViewController?.view.backgroundColor = .clear
-        window.windowLevel = .statusBar + 1
-        window.isHidden = false
-        
+        // 创建承载视图
+        let mainView = createMainView()
+        let window = ToastWindow(windowScene: windowScene, mainView: mainView, response: respond)
         self.toastWindow = window
-
+        
+//        mainView.setupConstraints(style: style)
+        
         return window
     }
 
     
     /// 创建主视图区域
-    func createMainView(bgColor: UIColor? = nil) -> ToastContentView {
+    func createMainView() -> ToastContentView {
         let mainView = ToastContentView()
         mainView.layer.cornerRadius = MCToastConfig.shared.icon.cornerRadius
         mainView.layer.masksToBounds = true
-        mainView.backgroundColor = bgColor ?? MCToastConfig.shared.background.resolvedColor
+        mainView.backgroundColor = MCToastConfig.shared.background.resolvedColor
         mainView.alpha = 0.0
 
         UIView.animate(withDuration: 0.2) {
             mainView.alpha = 1
         }
-        
-        
-
         return mainView
     }
     
+    
+}
+
+extension MCToast {
     @objc private func onOrientationChanged() {
         // 重新读取offset计算属性，更新约束
         UIView.animate(withDuration: 0.3) {
             // 让window重新布局
-            self.toastWindow?.mainView?.bottomConstraint?.constant = -MCToastConfig.shared.text.offset
+            self.toastWindow?.mainView.bottomConstraint?.constant = -MCToastConfig.shared.text.offset
             self.toastWindow?.layoutIfNeeded()
         }
     }
     
     @objc private func onKeyboardWillChangeFrame(height: CGFloat, duration: CGFloat) {
         guard let window = toastWindow,
-              let constraint = self.toastWindow?.mainView?.bottomConstraint else {
+              let constraint = self.toastWindow?.mainView.bottomConstraint else {
             return
         }
 

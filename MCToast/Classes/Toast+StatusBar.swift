@@ -66,7 +66,7 @@ extension MCToast {
         func getWindow() -> UIWindow {
             clearAllToast()
 
-            let window = createWindow(respond: .allow)
+            let window = createWindow(respond: .allow, style: .statusBar)
 
             let containerView = ToastContentView()
             containerView.backgroundColor = backgroundColor ?? UIColor(red: 0x6a/255.0, green: 0xb4/255.0, blue: 0x9f/255.0, alpha: 1)
@@ -80,7 +80,7 @@ extension MCToast {
             label.numberOfLines = 0
             containerView.addSubview(label)
 
-            window.addSubview(containerView)
+            window.mainView = containerView
 
             let topSafeArea = UIDevice.topSafeAreaHeight
             let labelPadding: CGFloat = 5.0

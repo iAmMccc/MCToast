@@ -31,35 +31,33 @@ extension MCToast {
                                       callback: DismissHandler? = nil) -> UIWindow? {
         
         func getWindow() -> UIWindow? {
-            // 创建承载视图
-            let mainView = createMainView(bgColor: bgColor)
-            // 创建窗口
-            let window = createWindow(respond: respond, mainView: mainView)
 
+            // 创建窗口
+            let window = createWindow(respond: respond, style: .custom)
+            if let color = bgColor {
+                window.mainView.backgroundColor = color
+            }
            
-            
             // 把 customView 加到 mainView 上
-            mainView.addSubview(customView)
-            
-            window.addSubview(mainView)
+            window.mainView.addSubview(customView)
             
             // 设置 customView 尺寸约束（固定尺寸）
             NSLayoutConstraint.activate([
                 customView.widthAnchor.constraint(equalToConstant: customView.frame.width),
                 customView.heightAnchor.constraint(equalToConstant: customView.frame.height),
-                customView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
-                customView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor)
+                customView.centerXAnchor.constraint(equalTo: window.mainView.centerXAnchor),
+                customView.centerYAnchor.constraint(equalTo: window.mainView.centerYAnchor)
             ])
             
             // mainView 尺寸等于 customView
             NSLayoutConstraint.activate([
-                mainView.widthAnchor.constraint(equalToConstant: customView.frame.width),
-                mainView.heightAnchor.constraint(equalToConstant: customView.frame.height)
+                window.mainView.widthAnchor.constraint(equalToConstant: customView.frame.width),
+                window.mainView.heightAnchor.constraint(equalToConstant: customView.frame.height)
             ])
             
             // mainView 居中约束
-            let centerX = mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor)
-            let centerY = mainView.centerYAnchor.constraint(equalTo: window.centerYAnchor)
+            let centerX = window.mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor)
+            let centerY = window.mainView.centerYAnchor.constraint(equalTo: window.centerYAnchor)
             
             NSLayoutConstraint.activate([centerX, centerY])
             

@@ -74,17 +74,12 @@ extension MCToast {
             /// 1. 创建label
             let mainLabel = createLabel()
             
-            /// 2. 生成mainView
-            let mainView = createMainView()
             
             /// 2. 生成window
-            let window = createWindow(respond: respond, mainView: mainView)
-            
-            /// 4. 添加mainView到window
-            window.addSubview(mainView)
-            
-            /// 5. 添加label到mainView
-            mainView.addSubview(mainLabel)
+            let window = createWindow(respond: respond, style: .text)
+
+            /// 3. 添加label到mainView
+            window.mainView.addSubview(mainLabel)
             
             /// 6. mainView 约束
             switch respond {
@@ -94,38 +89,38 @@ extension MCToast {
                 let maxWidth = MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal
                 
                 NSLayoutConstraint.activate([
-                    mainView.centerXAnchor.constraint(equalTo: mainView.superview!.centerXAnchor),
+                    window.mainView.centerXAnchor.constraint(equalTo: window.mainView.superview!.centerXAnchor),
                     // 限制最大宽度
-                    mainView.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth)
+                    window.mainView.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth)
                 ])
                 
                 var bottomConstraint: NSLayoutConstraint
                 if KeyboardManager.shared.currentVisibleKeyboardHeight > 0 {
-                    let bottomOffset = -KeyboardManager.shared.currentVisibleKeyboardHeight - 10
-                    bottomConstraint = mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: bottomOffset)
+                    let bottomOffset = -KeyboardManager.shared.currentVisibleKeyboardHeight - MCToastConfig.shared.text.avoidKeyboardOffsetY
+                    bottomConstraint = window.mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: bottomOffset)
                 } else {
                     let bottomOffset = -offset
-                    bottomConstraint = mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: bottomOffset)
+                    bottomConstraint = window.mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: bottomOffset)
                 }
                 bottomConstraint.isActive = true
-                self.toastWindow?.mainView?.bottomConstraint = bottomConstraint
+                self.toastWindow?.mainView.bottomConstraint = bottomConstraint
 
                 
             case .allowNav, .forbid:
                 NSLayoutConstraint.activate([
-                    mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
-                    mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -offset),
+                    window.mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
+                    window.mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -offset),
                     // 这里可以不限制宽度，或者根据实际需求限制
-                    mainView.widthAnchor.constraint(lessThanOrEqualToConstant: MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal)
+                    window.mainView.widthAnchor.constraint(lessThanOrEqualToConstant: MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal)
                 ])
             }
             
             /// 7. label 约束 - 填满mainView，留padding间距
             NSLayoutConstraint.activate([
-                mainLabel.topAnchor.constraint(equalTo: mainView.topAnchor, constant: MCToastConfig.shared.text.padding.top),
-                mainLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: MCToastConfig.shared.text.padding.left),
-                mainLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -MCToastConfig.shared.text.padding.right),
-                mainLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -MCToastConfig.shared.text.padding.bottom)
+                mainLabel.topAnchor.constraint(equalTo: window.mainView.topAnchor, constant: MCToastConfig.shared.text.padding.top),
+                mainLabel.leadingAnchor.constraint(equalTo: window.mainView.leadingAnchor, constant: MCToastConfig.shared.text.padding.left),
+                mainLabel.trailingAnchor.constraint(equalTo: window.mainView.trailingAnchor, constant: -MCToastConfig.shared.text.padding.right),
+                mainLabel.bottomAnchor.constraint(equalTo: window.mainView.bottomAnchor, constant: -MCToastConfig.shared.text.padding.bottom)
             ])
             
             
