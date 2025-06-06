@@ -18,26 +18,26 @@ extension MCToast {
                                       duration: CGFloat,
                                       bgColor: UIColor? = nil,
                                       respond: RespondPolicy,
-                               callback: DismissHandler? = nil) -> UIWindow? {
-        shared.showCustomView(customView, duration: duration, bgColor: bgColor, respond: respond, callback: callback)
+                                      dismissHandler: DismissHandler? = nil) -> UIWindow? {
+        shared.showCustomView(customView, duration: duration, bgColor: bgColor, respond: respond, dismissHandler: dismissHandler)
     }
     
     
     @discardableResult
     func showCustomView(_ customView: UIView,
-                                      duration: CGFloat,
-                                      bgColor: UIColor? = nil,
-                                      respond: RespondPolicy,
-                                      callback: DismissHandler? = nil) -> UIWindow? {
+                        duration: CGFloat,
+                        bgColor: UIColor? = nil,
+                        respond: RespondPolicy,
+                        dismissHandler: DismissHandler? = nil) -> UIWindow? {
         
         func getWindow() -> UIWindow? {
-
+            
             // 创建窗口
             let window = createWindow(respond: respond, style: .custom)
             if let color = bgColor {
                 window.mainView.backgroundColor = color
             }
-           
+            
             // 把 customView 加到 mainView 上
             window.mainView.addSubview(customView)
             
@@ -65,7 +65,7 @@ extension MCToast {
             window.layoutIfNeeded()
             
             
-            autoRemove(window: window, duration: duration, callback: callback)
+            autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
             
             return window
         }

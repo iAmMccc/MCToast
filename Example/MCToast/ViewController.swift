@@ -339,8 +339,8 @@ extension ViewController {
                 UIView.commitAnimations()
             }
         case 1:
-            MCToast.mc_text("开始上传", callback: {
-                MCToast.mc_loading(text: "上传中...", duration: 5, callback: {
+            MCToast.mc_text("开始上传", dismissHandler: {
+                MCToast.mc_loading(text: "上传中...", duration: 5, dismissHandler: {
                     MCToast.mc_success("上传完成")
                 })
             })

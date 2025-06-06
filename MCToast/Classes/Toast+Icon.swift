@@ -19,8 +19,8 @@ extension UIResponder {
     public func mc_success(_ text:String,
                            duration: CGFloat = MCToastConfig.shared.duration,
                            respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
-                           callback: MCToast.DismissHandler? = nil) -> UIWindow? {
-        return MCToast.mc_success(text, duration: duration, respond: respond, callback: callback)
+                           dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
+        return MCToast.mc_success(text, duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
     
     
@@ -34,8 +34,8 @@ extension UIResponder {
     public func mc_failure(_ text: String,
                            duration:CGFloat = MCToastConfig.shared.duration,
                            respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
-                           callback: MCToast.DismissHandler? = nil) -> UIWindow? {
-        return MCToast.mc_failure(text, duration: duration, respond: respond, callback: callback)
+                           dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
+        return MCToast.mc_failure(text, duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
     
     
@@ -49,8 +49,8 @@ extension UIResponder {
     public func mc_warning(_ text: String,
                            duration:CGFloat = MCToastConfig.shared.duration,
                            respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
-                           callback: MCToast.DismissHandler? = nil) -> UIWindow? {
-        return MCToast.mc_warning(text, duration: duration, respond: respond, callback: callback)
+                           dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
+        return MCToast.mc_warning(text, duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
 }
 
@@ -68,9 +68,9 @@ extension MCToast {
     public static func mc_success(_ text:String,
                                   duration: CGFloat = MCToastConfig.shared.duration,
                                   respond: RespondPolicy = MCToastConfig.shared.respond,
-                                  callback: DismissHandler? = nil) -> UIWindow? {
+                                  dismissHandler: DismissHandler? = nil) -> UIWindow? {
         
-        return MCToast.showStatus(text: text, iconImage: IconType.success.getImage(), duration: duration, respond: respond, callback: callback)
+        return MCToast.showStatus(text: text, iconImage: IconType.success.getImage(), duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
     
     
@@ -84,8 +84,8 @@ extension MCToast {
     public static func mc_failure(_ text: String,
                                   duration:CGFloat = MCToastConfig.shared.duration,
                                   respond: RespondPolicy = MCToastConfig.shared.respond,
-                                  callback: DismissHandler? = nil) -> UIWindow?  {
-        return MCToast.showStatus(text: text, iconImage: IconType.failure.getImage(), duration: duration, respond: respond, callback: callback)
+                                  dismissHandler: DismissHandler? = nil) -> UIWindow?  {
+        return MCToast.showStatus(text: text, iconImage: IconType.failure.getImage(), duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
     
     
@@ -99,8 +99,8 @@ extension MCToast {
     public static func mc_warning(_ text: String,
                                   duration: CGFloat = MCToastConfig.shared.duration,
                                   respond: RespondPolicy = MCToastConfig.shared.respond,
-                                  callback: DismissHandler? = nil) -> UIWindow? {
-        return MCToast.showStatus(text: text, iconImage: IconType.warning.getImage(), duration: duration, respond: respond,callback: callback)
+                                  dismissHandler: DismissHandler? = nil) -> UIWindow? {
+        return MCToast.showStatus(text: text, iconImage: IconType.warning.getImage(), duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
     
     
@@ -110,8 +110,8 @@ extension MCToast {
                     iconImage: UIImage?,
                     duration: CGFloat,
                     respond: RespondPolicy,
-                                  callback: DismissHandler? = nil) -> UIWindow? {
-        shared.showStatus(text: text, iconImage: iconImage, duration: duration, respond: respond, callback: callback)
+                                  dismissHandler: DismissHandler? = nil) -> UIWindow? {
+        shared.showStatus(text: text, iconImage: iconImage, duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
 }
 
@@ -130,7 +130,7 @@ extension MCToast {
                     iconImage: UIImage?,
                     duration: CGFloat,
                     respond: RespondPolicy,
-                    callback: DismissHandler? = nil) -> UIWindow? {
+                    dismissHandler: DismissHandler? = nil) -> UIWindow? {
 
         func getWindow() -> UIWindow? {
             
@@ -174,7 +174,7 @@ extension MCToast {
                 label.bottomAnchor.constraint(equalTo: window.mainView.bottomAnchor, constant: -padding.bottom)
             ])
 
-            autoRemove(window: window, duration: duration, callback: callback)
+            autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
             return window
         }
 

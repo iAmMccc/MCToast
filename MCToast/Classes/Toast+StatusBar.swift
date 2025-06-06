@@ -21,8 +21,8 @@ extension UIResponder {
                               duration: CGFloat = MCToastConfig.shared.duration,
                               font: UIFont = MCToastConfig.shared.text.font,
                               backgroundColor: UIColor? = nil,
-                              callback: MCToast.DismissHandler? = nil) -> UIWindow? {
-        return MCToast.mc_statusBar(text, duration: duration, font: font, backgroundColor: backgroundColor, callback: callback)
+                              dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
+        return MCToast.mc_statusBar(text, duration: duration, font: font, backgroundColor: backgroundColor, dismissHandler: dismissHandler)
     }
 }
 
@@ -42,8 +42,8 @@ extension MCToast {
         duration: CGFloat = MCToastConfig.shared.duration,
         font: UIFont = MCToastConfig.shared.text.font,
         backgroundColor: UIColor? = nil,
-        callback: DismissHandler? = nil) -> UIWindow? {
-            return MCToast.shared.noticeOnStatusBar(text, duration: duration, backgroundColor: backgroundColor, font: font, callback: callback)
+        dismissHandler: DismissHandler? = nil) -> UIWindow? {
+            return MCToast.shared.noticeOnStatusBar(text, duration: duration, backgroundColor: backgroundColor, font: font, dismissHandler: dismissHandler)
         }
 }
 
@@ -58,7 +58,7 @@ extension MCToast {
         duration: CGFloat,
         backgroundColor: UIColor?,
         font: UIFont,
-        callback: DismissHandler? = nil
+        dismissHandler: DismissHandler? = nil
     ) -> UIWindow? {
         
         guard !text.isEmpty else { return nil }
@@ -105,7 +105,7 @@ extension MCToast {
             UIView.animate(withDuration: 0.3, animations: {
                 window.frame.origin.y = 0
             }, completion: { _ in
-                self.autoRemove(window: window, duration: duration, callback: callback)
+                self.autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
             })
 
             return window

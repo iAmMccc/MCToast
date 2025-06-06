@@ -20,8 +20,8 @@ extension UIResponder {
                         offset: CGFloat = MCToastConfig.shared.text.offset,
                         duration: CGFloat = MCToastConfig.shared.duration,
                         respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
-                        callback: MCToast.DismissHandler? = nil) -> UIWindow?  {
-        return MCToast.mc_text(text, offset: offset, duration: duration, respond: respond, callback: callback)
+                        dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow?  {
+        return MCToast.mc_text(text, offset: offset, duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
 }
 
@@ -41,8 +41,8 @@ extension MCToast {
                                offset: CGFloat = MCToastConfig.shared.text.offset,
                                duration: CGFloat = MCToastConfig.shared.duration,
                                respond: RespondPolicy = MCToastConfig.shared.respond,
-                               callback: DismissHandler? = nil) -> UIWindow? {
-        return MCToast.shared.showText(text, offset: offset, duration: duration, respond: respond, callback: callback)
+                               dismissHandler: DismissHandler? = nil) -> UIWindow? {
+        return MCToast.shared.showText(text, offset: offset, duration: duration, respond: respond, dismissHandler: dismissHandler)
         
     }
     
@@ -57,7 +57,7 @@ extension MCToast {
                                   offset: CGFloat = MCToastConfig.shared.text.offset,
                                   duration: CGFloat,
                                   respond: RespondPolicy,
-                                  callback: DismissHandler? = nil) -> UIWindow? {
+                           dismissHandler: DismissHandler? = nil) -> UIWindow? {
         
         func createLabel() -> UILabel {
             let label = UILabel()
@@ -124,7 +124,7 @@ extension MCToast {
             ])
             
             
-            autoRemove(window: window, duration: duration, callback: callback)
+            autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
             
             return window
         }

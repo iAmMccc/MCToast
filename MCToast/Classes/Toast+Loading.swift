@@ -32,11 +32,11 @@ extension UIResponder {
     public func mc_loading(text: String = "正在加载中",
                            duration: CGFloat = 0,
                            respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
-                           callback: MCToast.DismissHandler? = nil) -> UIWindow? {
+                           dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
         if text.isEmpty {
-            return MCToast.shared.loading(duration: duration, respond: respond)
+            return MCToast.shared.loading(duration: duration, respond: respond, dismissHandler: dismissHandler)
         } else {
-            return MCToast.shared.loading(text: text, duration: duration, respond: respond, callback: callback)
+            return MCToast.shared.loading(text: text, duration: duration, respond: respond, dismissHandler: dismissHandler)
         }
     }
 }
@@ -54,12 +54,12 @@ extension MCToast {
     public static func mc_loading(text: String = "正在加载中",
                                   duration: CGFloat = 0,
                                   respond: RespondPolicy = MCToastConfig.shared.respond,
-                                  callback: DismissHandler? = nil) -> UIWindow? {
+                                  dismissHandler: DismissHandler? = nil) -> UIWindow? {
         
         if text.isEmpty {
-            return MCToast.shared.loading(duration: duration, respond: respond)
+            return MCToast.shared.loading(duration: duration, respond: respond, dismissHandler: dismissHandler)
         } else {
-            return MCToast.shared.loading(text: text, duration: duration, respond: respond, callback: callback)
+            return MCToast.shared.loading(text: text, duration: duration, respond: respond, dismissHandler: dismissHandler)
         }
     }
 }
@@ -69,7 +69,7 @@ extension MCToast {
     fileprivate func loading(text: String? = nil,
                                     duration: CGFloat,
                                     respond: RespondPolicy,
-                                    callback: DismissHandler? = nil) -> UIWindow? {
+                             dismissHandler: DismissHandler? = nil) -> UIWindow? {
         
         func getWindow() -> UIWindow {
             let window = createWindow(respond: respond, style: .loading)
@@ -122,7 +122,7 @@ extension MCToast {
                 label.trailingAnchor.constraint(equalTo: window.mainView.trailingAnchor, constant: -MCToastConfig.shared.icon.padding.right),
                 label.bottomAnchor.constraint(equalTo: window.mainView.bottomAnchor, constant: -MCToastConfig.shared.icon.padding.bottom)
             ])
-            autoRemove(window: window, duration: duration, callback: callback)
+            autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
             return window
         }
         var tempWindow: UIWindow?
