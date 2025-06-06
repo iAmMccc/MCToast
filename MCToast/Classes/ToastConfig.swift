@@ -12,7 +12,7 @@ import UIKit
 
 
 
-public class MCToastConfig: NSObject {
+public struct MCToastConfig {
     public static let shared = MCToastConfig()
     
     /// 设置交互区域 默认导航栏下禁止交互
@@ -77,7 +77,7 @@ extension MCToastConfig {
         /// 横竖屏配置
         public var landscapeTextOffset: CGFloat = 60
         public var portraitTextOffset: CGFloat = 118
-        
+        public var avoidKeyboardOffsetY: CGFloat = 40
         /// toast底部距离屏幕底部距离
         public var offset: CGFloat {
             let isLandscape = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isLandscape ?? false

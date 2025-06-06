@@ -34,9 +34,9 @@ extension UIResponder {
                            respond: MCToast.MCToastRespond = MCToastConfig.shared.respond,
                            callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
         if text.isEmpty {
-            return MCToast.loading(duration: duration, respond: respond)
+            return MCToast.shared.loading(duration: duration, respond: respond)
         } else {
-            return MCToast.loading(text: text, duration: duration, respond: respond, callback: callback)
+            return MCToast.shared.loading(text: text, duration: duration, respond: respond, callback: callback)
         }
     }
 }
@@ -57,23 +57,23 @@ extension MCToast {
                                   callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
         
         if text.isEmpty {
-            return MCToast.loading(duration: duration, respond: respond)
+            return MCToast.shared.loading(duration: duration, respond: respond)
         } else {
-            return MCToast.loading(text: text, duration: duration, respond: respond, callback: callback)
+            return MCToast.shared.loading(text: text, duration: duration, respond: respond, callback: callback)
         }
     }
 }
 
 extension MCToast {
     @discardableResult
-    fileprivate static func loading(text: String? = nil,
+    fileprivate func loading(text: String? = nil,
                                     duration: CGFloat,
                                     respond: MCToast.MCToastRespond,
                                     callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
         
-        func createWindow() -> UIWindow? {
-            let window = MCToast.createWindow(respond: respond)
-            let mainView = MCToast.createMainView()
+        func getWindow() -> UIWindow {
+            let mainView = createMainView()
+            let window = createWindow(respond: respond, mainView: mainView)
             window.addSubview(mainView)
             
             // 主视图居中 + 宽度约束
@@ -131,18 +131,13 @@ extension MCToast {
                 label.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -MCToastConfig.shared.icon.padding.right),
                 label.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -MCToastConfig.shared.icon.padding.bottom)
             ])
-            
+            autoRemove(window: window, duration: duration, callback: callback)
             return window
         }
-        
         var tempWindow: UIWindow?
         DispatchQueue.main.safeSync {
             clearAllToast()
-            tempWindow = createWindow()
-            if let w = tempWindow {
-                windows.append(w)
-                MCToast.autoRemove(window: w, duration: duration, callback: callback)
-            }
+            tempWindow = getWindow()
         }
         return tempWindow
     }

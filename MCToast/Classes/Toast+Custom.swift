@@ -18,15 +18,26 @@ extension MCToast {
                                       duration: CGFloat,
                                       bgColor: UIColor? = nil,
                                       respond: MCToast.MCToastRespond,
+                               callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+        shared.showCustomView(customView, duration: duration, bgColor: bgColor, respond: respond, callback: callback)
+    }
+    
+    
+    @discardableResult
+    func showCustomView(_ customView: UIView,
+                                      duration: CGFloat,
+                                      bgColor: UIColor? = nil,
+                                      respond: MCToast.MCToastRespond,
                                       callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
         
-        func createWindow() -> UIWindow? {
-            // 创建窗口
-            let window = MCToast.createWindow(respond: respond)
-
+        func getWindow() -> UIWindow? {
             // 创建承载视图
-            let mainView = MCToast.createMainView(bgColor: bgColor)
+            let mainView = createMainView(bgColor: bgColor)
             mainView.translatesAutoresizingMaskIntoConstraints = false
+            // 创建窗口
+            let window = createWindow(respond: respond, mainView: mainView)
+
+           
             
             // 把 customView 加到 mainView 上
             customView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,8 +68,8 @@ extension MCToast {
             // 保证 window 会布局约束
             window.layoutIfNeeded()
             
-            windows.append(window)
-            MCToast.autoRemove(window: window, duration: duration, callback: callback)
+            
+            autoRemove(window: window, duration: duration, callback: callback)
             
             return window
         }
@@ -71,7 +82,7 @@ extension MCToast {
         var tempWindow: UIWindow?
         DispatchQueue.main.safeSync {
             clearAllToast()
-            tempWindow = createWindow()
+            tempWindow = getWindow()
         }
         return tempWindow
     }

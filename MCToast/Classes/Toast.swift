@@ -10,7 +10,7 @@
  * 【done】【Bug】为啥在viewdidload中加载，会自动隐藏？
  * 【done】将所有的frame修改为layout布局。
  * 【done】demo中写横竖屏切换的方法，验证效果。
- * 应该要把MCToast 设计成一个单例。
+ * 【done】应该要把MCToast 设计成一个单例。
  * 处理键盘事件
  * 【done】支持横竖屏的切换，自动适配横竖屏的配置参数。
  * 支持x号按钮
@@ -30,15 +30,24 @@ internal let sn_topBar: Int = 1001
 
 
 public class MCToast: NSObject {
-    private static var isInitialized = false
-
-    static let shared = MCToast()
     
-    // 记录底部约束，横竖屏切换时更新
-    var mainViewBottomConstraint: NSLayoutConstraint?
+    /// 开启键盘适配（注册键盘通知等）
+    public static func enableKeyboardTracking() {
+        KeyboardManager.shared.keyboardHeightChanged = { keyboardHeight, duration in
+            shared.onKeyboardWillChangeFrame(height: keyboardHeight, duration: duration)
+        }
+    }
+
+    /// 开启横竖屏适配（注册方向变化通知等）
+    public static func enableOrientationTracking() {
+        NotificationCenter.default.addObserver(shared, selector: #selector(onOrientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    
+    
+    static let shared = MCToast()
 
     /// 管理所有的windows
-    static var windows: [UIWindow] = []
+    var toastWindow: ToastWindow?
     
     internal static var keyWindow: UIWindow? {
         if #available(iOS 13.0, *) {
@@ -55,15 +64,6 @@ public class MCToast: NSObject {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    public static func initToast() {
-        guard !isInitialized else { return }
-        isInitialized = true
-        NotificationCenter.default.addObserver(shared, selector: #selector(onOrientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
-        BTKeyboardManager.shared.keyboardHeightChanged = { keyboardHeight, duration in
-            shared.onKeyboardWillChangeFrame(height: keyboardHeight, duration: duration)
-        }
     }
 }
 
@@ -99,11 +99,9 @@ extension MCToast {
 extension MCToast {
     
     
-    static func createWindow(respond: MCToastRespond) -> UIWindow {
+    func createWindow(respond: MCToastRespond, mainView: ToastContentView? = nil) -> UIWindow {
         let window: ToastWindow
 
-
-        
         if #available(iOS 13.0, *) {
             guard let windowScene = UIApplication.shared.connectedScenes
                 .compactMap({ $0 as? UIWindowScene })
@@ -116,6 +114,7 @@ extension MCToast {
             window = ToastWindow()
         }
         window.response = respond
+        window.mainView = mainView
         
 
         window.backgroundColor = .clear
@@ -125,14 +124,16 @@ extension MCToast {
         window.rootViewController?.view.backgroundColor = .clear
         window.windowLevel = .statusBar + 1
         window.isHidden = false
+        
+        self.toastWindow = window
 
         return window
     }
 
     
     /// 创建主视图区域
-    static func createMainView(bgColor: UIColor? = nil) -> UIView {
-        let mainView = UIView()
+    func createMainView(bgColor: UIColor? = nil) -> ToastContentView {
+        let mainView = ToastContentView()
         mainView.layer.cornerRadius = MCToastConfig.shared.icon.cornerRadius
         mainView.layer.masksToBounds = true
         mainView.backgroundColor = bgColor ?? MCToastConfig.shared.background.color.withAlphaComponent(MCToastConfig.shared.background.colorAlpha)
@@ -150,20 +151,19 @@ extension MCToast {
         // 重新读取offset计算属性，更新约束
         UIView.animate(withDuration: 0.3) {
             // 让window重新布局
-            self.mainViewBottomConstraint?.constant = -MCToastConfig.shared.text.offset
-            MCToast.windows.first?.layoutIfNeeded()
-
+            self.toastWindow?.mainView?.bottomConstraint?.constant = -MCToastConfig.shared.text.offset
+            self.toastWindow?.layoutIfNeeded()
         }
     }
     
     @objc private func onKeyboardWillChangeFrame(height: CGFloat, duration: CGFloat) {
-        guard let window = MCToast.windows.first,
-              let constraint = mainViewBottomConstraint else {
+        guard let window = toastWindow,
+              let constraint = self.toastWindow?.mainView?.bottomConstraint else {
             return
         }
 
 
-        let targetOffset = max(height, MCToastConfig.shared.text.offset)
+        let targetOffset = max(height+MCToastConfig.shared.text.avoidKeyboardOffsetY, MCToastConfig.shared.text.offset)
 
         constraint.constant = -targetOffset
         let curve = UIView.AnimationCurve.easeInOut.rawValue

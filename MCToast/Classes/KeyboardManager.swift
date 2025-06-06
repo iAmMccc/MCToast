@@ -6,9 +6,9 @@
 //
 
 import Foundation
-public class BTKeyboardManager {
+public class KeyboardManager {
     
-    public static let shared = BTKeyboardManager()
+    public static let shared = KeyboardManager()
     
     public private(set) var keyboardState: KeyboardState = .unknown
     
@@ -92,7 +92,7 @@ public class BTKeyboardManager {
         // 如果 endFrame.minY > beginFrame.minY，说明键盘正在往下移（隐藏）；反之是弹出。
         let isHiding = beginFrame.minY < endFrame.minY
         
-        let keyboardHeight = isHiding ? 0 : endFrame.height + 10
+        let keyboardHeight = isHiding ? 0 : endFrame.height
         let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.25
 
         keyboardHeightChanged?(keyboardHeight, duration)
@@ -110,7 +110,7 @@ public class BTKeyboardManager {
     }
 }
 
-extension BTKeyboardManager {
+extension KeyboardManager {
     public enum KeyboardState {
         case unknown
         case willShow

@@ -9,8 +9,12 @@ import Foundation
 
 
 class ToastWindow: UIWindow {
+    
+    
+    var mainView: ToastContentView?
+    
     var response: MCToast.MCToastRespond = .allow
-    var navBarFrame: CGRect = .zero
+    private var navBarFrame: CGRect = .zero
     
     // 判断是否可以响应点击
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {

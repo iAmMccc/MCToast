@@ -43,7 +43,7 @@ extension MCToast {
         font: UIFont = MCToastConfig.shared.text.font,
         backgroundColor: UIColor? = nil,
         callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
-            return MCToast.noticeOnStatusBar(text, duration: duration, backgroundColor: backgroundColor, font: font, callback: callback)
+            return MCToast.shared.noticeOnStatusBar(text, duration: duration, backgroundColor: backgroundColor, font: font, callback: callback)
         }
 }
 
@@ -53,7 +53,7 @@ extension MCToast {
 extension MCToast {
     
     @discardableResult
-    internal static func noticeOnStatusBar(
+    internal func noticeOnStatusBar(
         _ text: String,
         duration: CGFloat,
         backgroundColor: UIColor?,
@@ -63,10 +63,10 @@ extension MCToast {
         
         guard !text.isEmpty else { return nil }
 
-        func createWindow() -> UIWindow {
+        func getWindow() -> UIWindow {
             clearAllToast()
 
-            let window = MCToast.createWindow(respond: .allow)
+            let window = createWindow(respond: .allow)
 
             let containerView = UIView()
             containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,13 +101,12 @@ extension MCToast {
                 label.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -labelPadding)
             ])
             
-            windows.append(window)
 
             // 动画滑入
             UIView.animate(withDuration: 0.3, animations: {
                 window.frame.origin.y = 0
             }, completion: { _ in
-                MCToast.autoRemove(window: window, duration: duration, callback: callback)
+                self.autoRemove(window: window, duration: duration, callback: callback)
             })
 
             return window
@@ -115,7 +114,7 @@ extension MCToast {
 
         var result: UIWindow?
         DispatchQueue.main.safeSync {
-            result = createWindow()
+            result = getWindow()
         }
         return result
     }

@@ -102,6 +102,17 @@ extension MCToast {
                                   callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
         return MCToast.showStatus(text: text, iconImage: IconType.warning.getImage(), duration: duration, respond: respond,callback: callback)
     }
+    
+    
+    
+    @discardableResult
+    public static func showStatus(text: String,
+                    iconImage: UIImage?,
+                    duration: CGFloat,
+                    respond: MCToast.MCToastRespond,
+                                  callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+        shared.showStatus(text: text, iconImage: iconImage, duration: duration, respond: respond, callback: callback)
+    }
 }
 
 
@@ -115,18 +126,21 @@ extension MCToast {
     }
     
     @discardableResult
-    public static func showStatus(text: String,
-                                  iconImage: UIImage?,
-                                  duration: CGFloat,
-                                  respond: MCToast.MCToastRespond,
-                                  callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
+    func showStatus(text: String,
+                    iconImage: UIImage?,
+                    duration: CGFloat,
+                    respond: MCToast.MCToastRespond,
+                    callback: MCToast.MCToastCallback? = nil) -> UIWindow? {
 
-        func createWindow() -> UIWindow? {
-            // 创建主 Toast Window
-            let window = MCToast.createWindow(respond: respond)
-
+        func getWindow() -> UIWindow? {
+            
             // 创建主视图
-            let mainView = MCToast.createMainView()
+            let mainView = createMainView()
+            
+            // 创建主 Toast Window
+            let window = createWindow(respond: respond, mainView: mainView)
+
+
             window.addSubview(mainView)
 
             NSLayoutConstraint.activate([
@@ -166,8 +180,7 @@ extension MCToast {
                 label.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -padding.bottom)
             ])
 
-            windows.append(window)
-            MCToast.autoRemove(window: window, duration: duration, callback: callback)
+            autoRemove(window: window, duration: duration, callback: callback)
             return window
         }
 
@@ -176,7 +189,7 @@ extension MCToast {
         var temp: UIWindow?
         DispatchQueue.main.safeSync {
             clearAllToast()
-            temp = createWindow()
+            temp = getWindow()
         }
         return temp
     }
