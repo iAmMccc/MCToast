@@ -57,7 +57,7 @@ extension AppDelegate {
         // 4. 配置文字
         MCToastConfig.shared.text.font = UIFont.systemFont(ofSize: 15)
         MCToastConfig.shared.text.textColor = UIColor.white
-        MCToastConfig.shared.text.offset = (UIScreen.main.bounds.size.height / 2 - 120 - 150)
+//        MCToastConfig.shared.text.landscapeTextOffset = (UIScreen.main.bounds.size.height / 2 - 120 - 150)
         
         
         // 5. 配置间距

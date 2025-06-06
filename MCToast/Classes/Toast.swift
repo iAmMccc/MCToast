@@ -30,8 +30,11 @@ internal let sn_topBar: Int = 1001
 
 public class MCToast: NSObject {
     
+    // 记录底部约束，横竖屏切换时更新
+    static var mainViewBottomConstraint: NSLayoutConstraint?
+
     /// 管理所有的windows
-    public static var windows: [UIWindow] = []
+    static var windows: [UIWindow] = []
     
     internal static var keyWindow: UIWindow? {
         if #available(iOS 13.0, *) {
@@ -45,6 +48,10 @@ public class MCToast: NSObject {
     }
     
     private override init() { }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 
@@ -81,6 +88,7 @@ extension MCToast {
     
     static func createWindow(respond: MCToastRespond) -> UIWindow {
         let window: ToastWindow
+        NotificationCenter.default.addObserver(self, selector: #selector(onOrientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
 
         if #available(iOS 13.0, *) {
             guard let windowScene = UIApplication.shared.connectedScenes
@@ -123,5 +131,17 @@ extension MCToast {
 
         return mainView
     }
+    
+    @objc private static func onOrientationChanged() {
+        // 重新读取offset计算属性，更新约束
+        UIView.animate(withDuration: 0.3) {
+            // 让window重新布局
+            mainViewBottomConstraint?.constant = -MCToastConfig.shared.text.offset
+            MCToast.windows.first?.layoutIfNeeded()
+
+        }
+    }
+    
+
 }
 

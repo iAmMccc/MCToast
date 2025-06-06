@@ -74,7 +74,18 @@ extension MCToastConfig {
         /// 文字的最小宽度 （最小宽度 + 内边距 = toast的宽度）
         public var minWidth: CGFloat = 88
         
+        /// 横竖屏配置
+        public var landscapeTextOffset: CGFloat = 10
+        public var portraitTextOffset: CGFloat = 118
+        
         /// toast底部距离屏幕底部距离
-        public var offset: CGFloat = 118
+        public var offset: CGFloat {
+            let isLandscape = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isLandscape ?? false
+            if isLandscape {
+                return landscapeTextOffset
+            } else {
+                return portraitTextOffset
+            }
+        }
     }
 }

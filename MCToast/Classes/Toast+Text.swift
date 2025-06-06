@@ -96,11 +96,12 @@ extension MCToast {
                 
                 NSLayoutConstraint.activate([
                     mainView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
-                    // 竖直方向放到底部，距离屏幕底部offset
-                    mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -offset),
                     // 限制最大宽度
                     mainView.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth)
                 ])
+                
+                mainViewBottomConstraint = mainView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -offset)
+                mainViewBottomConstraint?.isActive = true
                 
             case .allowNav, .forbid:
                 NSLayoutConstraint.activate([

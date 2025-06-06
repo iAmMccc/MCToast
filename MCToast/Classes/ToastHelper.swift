@@ -30,22 +30,12 @@ extension UIDevice {
         // 既然是安全区域，非全面屏获取的虽然是0，但是毕竟有20高度的状态栏。也要空出来才可以不影响UI展示。
         let defalutArea: (CGFloat, CGFloat) = (20, 0)
         
-        if #available(iOS 13.0, *) {
-            let scene = UIApplication.shared.connectedScenes.first
-            guard let windowScene = scene as? UIWindowScene else { return defalutArea }
-            guard let window = windowScene.windows.first else { return defalutArea }
-            let inset = window.safeAreaInsets
-            
-            return (inset.top, inset.bottom)
-            
-        } else if #available(iOS 11.0, *) {
-            guard let window = UIApplication.shared.windows.first else { return defalutArea }
-            let inset = window.safeAreaInsets
-            return (inset.top, inset.bottom)
-            
-        } else {
-            return defalutArea
-        }
+        let scene = UIApplication.shared.connectedScenes.first
+        guard let windowScene = scene as? UIWindowScene else { return defalutArea }
+        guard let window = windowScene.windows.first else { return defalutArea }
+        let inset = window.safeAreaInsets
+        
+        return (inset.top, inset.bottom)
     }
 }
 extension UIEdgeInsets {

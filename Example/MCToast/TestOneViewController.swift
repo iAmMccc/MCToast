@@ -17,18 +17,8 @@ class TestOneViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
         
-        DispatchQueue.main.async {
-            let toastWindow = MCToast.mc_text("加载中", duration: 10)
-            
-            print("windows = \(MCToast.windows)")
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                print("windows = \(MCToast.windows)")
-                print("window.isHidden = \(toastWindow?.isHidden)")
-                print("toastView superview = \(toastWindow?.superview)")
-            }
-        }
-        
+        MCToast.mc_text("加载中", duration: 10)
+
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //            MCToast.mc_text("加载中", duration: 10)
 //        }
