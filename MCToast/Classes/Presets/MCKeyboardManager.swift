@@ -6,22 +6,22 @@
 //
 
 import Foundation
-public class KeyboardManager {
+class KeyboardManager {
     
-    public static let shared = KeyboardManager()
+    static let shared = KeyboardManager()
     
-    public private(set) var keyboardState: KeyboardState = .unknown
+    private(set) var keyboardState: KeyboardState = .unknown
     
-    public typealias KeyboardHeightChanged = (_ height: CGFloat, _ duration: CGFloat) -> Void
+    typealias KeyboardHeightChanged = (_ height: CGFloat, _ duration: CGFloat) -> Void
 
     
-    public var keyboardHeightChanged: KeyboardHeightChanged?
+    var keyboardHeightChanged: KeyboardHeightChanged?
     
     /// 上一次记录到的键盘有效高度（弹出时刷新)
-    public private(set) var lastKnownKeyboardHeight: CGFloat?
+    private(set) var lastKnownKeyboardHeight: CGFloat?
     
     /// 当前键盘真实高度（动态获取，若键盘未展示则为 0）
-    public var currentVisibleKeyboardHeight: CGFloat {
+    var currentVisibleKeyboardHeight: CGFloat {
 
         if keyboardState.isVisible {
             return lastKnownKeyboardHeight ?? savedKeyboardHeight()
@@ -104,14 +104,14 @@ public class KeyboardManager {
     
     
     /// 需要在键盘弹出前调用，执行init方法，提前监听通知。
-    public func savedKeyboardHeight() -> CGFloat {
+    func savedKeyboardHeight() -> CGFloat {
         let defaultHeight = UserDefaults.standard.double(forKey: "toast.keyboard.height")
         return max(defaultHeight, 216)
     }
 }
 
 extension KeyboardManager {
-    public enum KeyboardState {
+    enum KeyboardState {
         case unknown
         case willShow
         case didShow

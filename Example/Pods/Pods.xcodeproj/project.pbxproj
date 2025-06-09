@@ -7,43 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08E97256B2ABEF3A68C282218F63A1BA /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A8F6517D34A41649B9C4EBC5EA31 /* ToastHelper.swift */; };
 		0903BA01A7ACC6701132EE49BD8406D9 /* Pods-MCToast_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F99FFF2A44131F774786C70B1798FA42 /* Pods-MCToast_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09C274EE17504386E1EB3D4871F7C713 /* MCToast+Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D8E4CF630DB8AEC54D4C7135E80BA5 /* MCToast+Public.swift */; };
 		0A5C290276F7453D9471E25BEA655842 /* ConstraintLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7151AA3EBE404CF0EE0F95E6E4D54301 /* ConstraintLayoutGuide.swift */; };
 		0AD7A0DA8FF5880E3D8599062129AB12 /* ConstraintMakerEditable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0ACFFCC108574621D81B37BF15FE69 /* ConstraintMakerEditable.swift */; };
 		0D665B6767B345D8C70D7E029A2A48D8 /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEAD86B1B333E5C3BB2F6BBB774040C /* ConstraintViewDSL.swift */; };
 		0DA9A9D2F8960818017E26DA480FA143 /* ConstraintLayoutGuideDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE860CC123108C310F139114E0B2E6B /* ConstraintLayoutGuideDSL.swift */; };
-		0DB89A462CD7BC0AD010F047CA9BC812 /* Toast+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FB5D2F57E34F87E4DF768BEF0B4B8B /* Toast+Remove.swift */; };
-		1124F94FDD23B420C44A71AF062FD1AE /* ToastConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D449580BBE58B1B7553014112B66F4 /* ToastConfig.swift */; };
 		13CC0CFB1C56F23BBC872801F983C1A3 /* ConstraintLayoutSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF511486018B445B9C0B5E032FDFEC /* ConstraintLayoutSupport.swift */; };
 		15F68E09ADCDB843B938C490059485BD /* ConstraintMakerRelatable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FEFD662A8681CE6BEA3E6130106B66 /* ConstraintMakerRelatable+Extensions.swift */; };
-		1AC542ACC80990FE56947DB877C4B88F /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF86F86C5F6D4348D4A9A5AE011876DE /* Toast.swift */; };
 		1E7E37C51375285EA22294CD2ADB3159 /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07559631FE7F3C9A44AEFE2792C6950E /* Debugging.swift */; };
-		2100F9F7CAACF8CFAE721CB39F635F09 /* Toast+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7E6775DB2B67E0189CCE5EFF1A1570 /* Toast+Icon.swift */; };
-		26C68E5DD05A9D2AA4067697A7F6EA49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		3298267F58DD4F8C7941EB5178F044B8 /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574ED9A436F39D972CCB10201F680C6A /* ToastWindow.swift */; };
+		2965F35C97582280D79901E1F0D656B7 /* MCToastConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8057761DA7263DF3607526FE1675F9A /* MCToastConfig.swift */; };
+		2E14374244C91593FB5587536FB59BE6 /* MCToast+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092B697BCFC85051299638676FA1C70A /* MCToast+Remove.swift */; };
 		3C1B9526B42CF0E64C0F2094F981AF09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		3DAFEDCDC5094007E329D71FE84FF704 /* SnapKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A81458FFE100E677B8192E5A85EC4D35 /* SnapKit-dummy.m */; };
-		411491B6C79CCABDFCA9A91B6F75BFB7 /* Toast+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197679D3C7CB774D9FEBC64D756BC515 /* Toast+StatusBar.swift */; };
 		429174EA9449C1862A051B11BD1E18D4 /* Pods-MCToast_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEE85C1945F9AB9FD786222073D8E50 /* Pods-MCToast_Tests-dummy.m */; };
-		4ADC01975B5E8F950BBC47BAB13D3E3D /* ToastContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EFA86D960FADF57E4A27FBBF68DBF /* ToastContentView.swift */; };
 		4B83A22AB7A4D71CFFDD510533E2CC7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		50E3482CB009B72E51359C0A75C6EB5B /* MCToastBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC40ED2C68C0AD78AC830CC9B85543 /* MCToastBuilder.swift */; };
 		50E4E24710A4C5A77BE6594A10DFE773 /* ConstraintMultiplierTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5EC23085708C56164D766EB38852D /* ConstraintMultiplierTarget.swift */; };
 		5190350625B6828B49F8FF69BC853212 /* Pods-MCToast_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E9A2F70592C1AD0A7A1892C7C78BFC0 /* Pods-MCToast_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56CD198002D3D45274F6719725B983CF /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E774B32E781F6B920DF58C6A82D3DD58 /* ConstraintOffsetTarget.swift */; };
-		62AEB860FBEA4EB7BB9E3624D99B1512 /* Toast+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC855D4CF9A354D67B4A76F7E90D9EB /* Toast+Text.swift */; };
+		61FCF1E1E1010399C61A1AE5CB7706C3 /* MCToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75F8EB1A932C2A16D6E35E0422F2E00 /* MCToast.swift */; };
 		6431218578A566C5EBF5FD166F164059 /* ConstraintMakerExtendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD05EFF6B30C486BAC64396881FA468 /* ConstraintMakerExtendable.swift */; };
-		688603D2E09828A5D05E1728D63AD5FF /* Toast+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A766092F1ADC1D472A706C74884AF34F /* Toast+Custom.swift */; };
-		69D18D737059487705359D075F807031 /* Toast+Public.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8F7DB67C66F9013FECE12F5A13DA31 /* Toast+Public.swift */; };
+		67CDC9E327E3CF7DBF75C1197AA85A72 /* MCToast+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E6E378861510F9EE2320149F67B6C /* MCToast+Text.swift */; };
+		69AC85852BD17DF76F43ED551188397D /* MCToast+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CC330AEF5432CAD4FFC7EC8C8CB055 /* MCToast+Icon.swift */; };
+		6AD01A75FC02052B2CD0D3D4E2643D40 /* MCKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F18DDFB6354DAD1A9FFC0C87CBFF52 /* MCKeyboardManager.swift */; };
 		6D389E4D5F97798BE1AEEB8C317852D7 /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A2D29E7DCF71E39255CA4CFD9DC2DC6E /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6D95BE465B78F7BC8EADDE50B34F20BD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 27979ADBBB66BDAF99688F5CC5731408 /* PrivacyInfo.xcprivacy */; };
 		6E2884B29CD49EE91C48C725105F295A /* LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A24BC2FBA605AE31A7DD00C77A1AFC /* LayoutConstraint.swift */; };
-		6F684E93D9B21BACE58D29726453B1C5 /* ToastBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413E633BF1B499973E0F7B8D0E229B6B /* ToastBuilder.swift */; };
 		7052944C657F270E47777446D0E10E1C /* ConstraintInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0ACA4B6048BB2B76545899932AC73D /* ConstraintInsetTarget.swift */; };
 		73F8AC99A58E5837924C056E89543B97 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29359F9733D1045A34DE64FC936D3266 /* Typealiases.swift */; };
 		77D782DE125D322922466676E2FFA289 /* ConstraintPriorityTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE63822BEC8D04268A6B667741C17C19 /* ConstraintPriorityTarget.swift */; };
-		7D018DFC0609D4F2F8348399D780CE56 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA8C00F9F525DA60C441F4F19FC9EA1 /* KeyboardManager.swift */; };
-		8227652F5A1B0CD12BA09A2643AE398B /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8EC35A82AF33D05BAAF43CABAF7466 /* DispatchQueue+Extension.swift */; };
+		7EC20C2BD89922655C6A0E7FA8554EE2 /* MCToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D519523F1E4F991F8F086BDE0EA7F95 /* MCToastHelper.swift */; };
+		8008A8D168175D601EB7C0F153B6C06D /* MCToast+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CA4D749DD3B432A77BBD97D876E75E /* MCToast+StatusBar.swift */; };
 		8640829049AE9907FE93825E5510C33D /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA2578D79E7761A2FA38941388BB2D /* ConstraintMaker.swift */; };
 		87996D11DC92EE19EAF9305DAEA4ACF2 /* ConstraintMakerPrioritizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7A18FA6A441F4891049EB19068AB0E /* ConstraintMakerPrioritizable.swift */; };
 		8868BA37E3CE7C58D26123806D543F3F /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84828FF166FB07F13A97638DFC5C233 /* ConstraintView.swift */; };
@@ -52,63 +46,67 @@
 		906EF891E58A035281766993F82373E3 /* ConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B94BC18A56788D484421001BD348C7 /* ConstraintItem.swift */; };
 		938CFF5F6DE6E7E8CE94373E51F3E07A /* ConstraintLayoutGuide+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E15D26AF894D0C156E313C56823356 /* ConstraintLayoutGuide+Extensions.swift */; };
 		950B809760A8CE4375DCE1016FB9859F /* ConstraintMakerRelatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2C8D1AB2F537B31A5FEE4C906A8B5 /* ConstraintMakerRelatable.swift */; };
-		954FA457F3A1F64BC73EDF8C0E18797A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612C266C0DE82CF4FC505EA842FBA42A /* Images.xcassets */; };
 		9779D52AD8CDA703D6EEE1C6D38E019F /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E253F490710097A8A176C3141E5C7A6 /* ConstraintAttributes.swift */; };
+		984D17385449FF6C7C7628674F15F227 /* MCToast.h in Headers */ = {isa = PBXBuildFile; fileRef = E9544AE45EAEC192F93D133BEC66270C /* MCToast.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A41E7C619A51CB86BD72847EF149263 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		A0371DF7D93D9B86BD50474D4B9294FD /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D357C396EF80AF02117C256B9F52DC15 /* ConstraintInsets.swift */; };
 		A051999781E1280746F7743BDEEA6C49 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A977608F42FD0EA87CB4A76AEAF838 /* ConstraintDescription.swift */; };
-		A1AD333EBA55075466A563F9390C5F53 /* BundleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B7A4E59A305F9747D1F2F6CF28A367 /* BundleImage.swift */; };
 		A35877DE0C3D6B4CF2A10E666EF5F490 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C0A2BEB91F4B17FBCDFCFC98A2A1A0 /* LayoutConstraintItem.swift */; };
-		AE5FEF5D0B6047447655CE210C3B809B /* MCToast-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F784D899B6F1D42A2CC4B64011118EC7 /* MCToast-dummy.m */; };
+		B09BD7AF17DF7E95FB8C01D3A793721B /* MCToast-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 151C831BF010DA9F5D769141E6473189 /* MCToast-dummy.m */; };
 		B133BB9C9B03481C7F1D221F35A617F2 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38207E5196EEDEA0FB62FD2F1E7DBF /* Constraint.swift */; };
 		B3F75D115D5150C258F5E68404751010 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D373F3519BB20A8A602F5D3DB1B612 /* ConstraintConstantTarget.swift */; };
 		B4F9C9EC1B3F1689AE56BB719AE5439C /* ConstraintDirectionalInsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47B6B726229837C8FFEEB4334412B2 /* ConstraintDirectionalInsetTarget.swift */; };
+		B8EE396DF77D8BF12E104802CBDEAD08 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 27979ADBBB66BDAF99688F5CC5731408 /* PrivacyInfo.xcprivacy */; };
 		BE355F69F84788D334FDAC7D1CD9B8C4 /* ConstraintDirectionalInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A598465C16CDE7D54CB37FAAE8EEDB /* ConstraintDirectionalInsets.swift */; };
 		BF567AEFDD52DC43AC75122734D571E2 /* ConstraintMakerFinalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCFAAE062D36FE3EEC07D4C25471282 /* ConstraintMakerFinalizable.swift */; };
 		C04DBE6AE13FC5CFD01D363A351EF76A /* ConstraintView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319019DC58A68C736F6001CC6E6B691A /* ConstraintView+Extensions.swift */; };
+		C1A9055D0389E1B36F8242A7AFADA76C /* MCToast+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191830212E4201273A55EC8DD282ACD7 /* MCToast+Loading.swift */; };
 		C7E343559158D03F717C616F79FAA006 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		CAE1F1C30E51927B053DD374ED2B0E92 /* MCToast.h in Headers */ = {isa = PBXBuildFile; fileRef = 902847C6B451CD3EE0A1E53C07BD9B90 /* MCToast.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CBE50EA52F728D2F32E399CB0FD1C89C /* MCToast-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 147B73AE5FC06556C30046653AB67E78 /* MCToast-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D091D9EA20CEB92609BF1E622E8CA348 /* SnapKit_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B9DCB5EC0B1CDADD221717CADDF62359 /* SnapKit_Privacy.bundle */; };
+		C7E401B3BB7BDC0740ED3E98991F63FA /* MCToast-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F47914E2A018B84672738EF5B6ED2A2 /* MCToast-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9ED20661EAB2EE0A0CDF456C7875791 /* MCToast+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C1174FCB6784F260B8377D409588D0 /* MCToast+Custom.swift */; };
+		D091D9EA20CEB92609BF1E622E8CA348 /* SnapKit-SnapKit_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = B9DCB5EC0B1CDADD221717CADDF62359 /* SnapKit-SnapKit_Privacy */; };
+		D693992A38DBC71402A9563BA9B1B8DA /* MCToastContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D49C7EBB4A7AB342195E2FBDB41ECF /* MCToastContentView.swift */; };
 		D92AEF78B87F929D88D5C876ABBAD79A /* ConstraintLayoutSupportDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFF88BE961B69DA6A3F297E6A5895AF /* ConstraintLayoutSupportDSL.swift */; };
-		DF2819B8FA788B6A863EC70488EFCC3B /* Toast+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B011CD502D427B33229E1A95F18DE57 /* Toast+Loading.swift */; };
 		E94B31DCAF75D93405D3BAE188604EB2 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1976F627EA9706470FA5B5DB72F7B74D /* ConstraintConfig.swift */; };
+		EF6034208CB769E2C5585F041B574008 /* MCToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01017CD4FD75E2F6529115CA59C27CC2 /* MCToastWindow.swift */; };
 		EFC90283F9AB43BB6FF377812BD3673F /* ConstraintPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF2626FD4813CB2F42DD9DF34915C2C /* ConstraintPriority.swift */; };
 		F366D04DEA0EBBCA9CA4F1F4E29695E8 /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F818A3A4208AE38575EECDB7ED252C0 /* ConstraintDSL.swift */; };
+		F7C392F89E4DBB7B90728C214987424C /* MCToast-ToastBundle in Resources */ = {isa = PBXBuildFile; fileRef = A4EAFD44BFB480DFCAAB1E345D874B63 /* MCToast-ToastBundle */; };
 		F94703ED86C58DDBE5A2503D148CD040 /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92009AE551F69C62EB53474824532343 /* ConstraintRelation.swift */; };
-		FDA1016924BE8EBACC1377195D81BDC0 /* ToastBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A4EAFD44BFB480DFCAAB1E345D874B63 /* ToastBundle.bundle */; };
+		FC8386EFC29BAB1E73312B3BCF77FF9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42C125962B1C1CF44C3690AD4D09603B /* Images.xcassets */; };
 		FFD7E1B8FA0F3960BE24DA2D20647332 /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24071568138D1626C9257C7CF24D1E5 /* ConstraintRelatableTarget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		134488D8468EE7D7C0D281F43DAE09DF /* PBXContainerItemProxy */ = {
+		2518D5F781885DE748CBBE81E63E1A4B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8A8DB685241263AFDF5E6B20FE67B93A;
 			remoteInfo = "SnapKit-SnapKit_Privacy";
 		};
-		74A61DC438DD28E79CBE0E3BA297AA5C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 19622742EBA51E823D6DAE3F8CDBFAD4;
-			remoteInfo = SnapKit;
-		};
-		870AEA04EBD4773B4E3384A026E03CFB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 70D2D0E60812A188468D054686A04FAB;
-			remoteInfo = "MCToast-ToastBundle";
-		};
-		B47F0DEA86DA2721797918CDF43B0BE3 /* PBXContainerItemProxy */ = {
+		858ABAE49AE1424C7058DC4293A9F9AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 66D9134153A7BD0037C2DFB3EE231352;
 			remoteInfo = MCToast;
 		};
-		BAE95D435FDED7B8A614BC9B6960A65D /* PBXContainerItemProxy */ = {
+		86171202A9F93D5A9B76A98BAE329EB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19622742EBA51E823D6DAE3F8CDBFAD4;
+			remoteInfo = SnapKit;
+		};
+		AD303CE2D5CC6C2CE1AA2D9A81B3D31B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70D2D0E60812A188468D054686A04FAB;
+			remoteInfo = "MCToast-ToastBundle";
+		};
+		D314D73F88B0F6BAE202DA8385A562C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -118,105 +116,103 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		056EFA86D960FADF57E4A27FBBF68DBF /* ToastContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ToastContentView.swift; sourceTree = "<group>"; };
+		01017CD4FD75E2F6529115CA59C27CC2 /* MCToastWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCToastWindow.swift; sourceTree = "<group>"; };
 		06348DBF3C031177C0FC6E77431161DA /* Pods-MCToast_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCToast_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		07559631FE7F3C9A44AEFE2792C6950E /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Sources/Debugging.swift; sourceTree = "<group>"; };
-		0BC855D4CF9A354D67B4A76F7E90D9EB /* Toast+Text.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Toast+Text.swift"; sourceTree = "<group>"; };
-		0CCE5E716A0744B29BEFF0477A76DDF2 /* MCToast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MCToast.release.xcconfig; sourceTree = "<group>"; };
+		092B697BCFC85051299638676FA1C70A /* MCToast+Remove.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MCToast+Remove.swift"; sourceTree = "<group>"; };
 		0E253F490710097A8A176C3141E5C7A6 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Sources/ConstraintAttributes.swift; sourceTree = "<group>"; };
 		0E9A2F70592C1AD0A7A1892C7C78BFC0 /* Pods-MCToast_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MCToast_Example-umbrella.h"; sourceTree = "<group>"; };
+		0F30D5832F35F3BA21D781C381A2DC0A /* MCToast.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MCToast.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		0FF717D6CCB2373C4FFC55F46F3EC6D7 /* Pods-MCToast_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCToast_Example-Info.plist"; sourceTree = "<group>"; };
 		12541F8DC0D01CD949AD3A8B8848863C /* Pods-MCToast_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCToast_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		147B73AE5FC06556C30046653AB67E78 /* MCToast-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MCToast-umbrella.h"; sourceTree = "<group>"; };
-		197679D3C7CB774D9FEBC64D756BC515 /* Toast+StatusBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Toast+StatusBar.swift"; sourceTree = "<group>"; };
+		14BDE5D79CDD3B767F95BA0675473680 /* MCToast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MCToast.debug.xcconfig; sourceTree = "<group>"; };
+		151C831BF010DA9F5D769141E6473189 /* MCToast-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MCToast-dummy.m"; sourceTree = "<group>"; };
+		191830212E4201273A55EC8DD282ACD7 /* MCToast+Loading.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MCToast+Loading.swift"; sourceTree = "<group>"; };
 		1976F627EA9706470FA5B5DB72F7B74D /* ConstraintConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConfig.swift; path = Sources/ConstraintConfig.swift; sourceTree = "<group>"; };
 		1A47B6B726229837C8FFEEB4334412B2 /* ConstraintDirectionalInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsetTarget.swift; path = Sources/ConstraintDirectionalInsetTarget.swift; sourceTree = "<group>"; };
 		1A7A18FA6A441F4891049EB19068AB0E /* ConstraintMakerPrioritizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPrioritizable.swift; path = Sources/ConstraintMakerPrioritizable.swift; sourceTree = "<group>"; };
 		1BFF88BE961B69DA6A3F297E6A5895AF /* ConstraintLayoutSupportDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupportDSL.swift; path = Sources/ConstraintLayoutSupportDSL.swift; sourceTree = "<group>"; };
-		1ED92E5A533BE38AAB4646AE42D5F081 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1D519523F1E4F991F8F086BDE0EA7F95 /* MCToastHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCToastHelper.swift; sourceTree = "<group>"; };
 		1FEAD86B1B333E5C3BB2F6BBB774040C /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Sources/ConstraintViewDSL.swift; sourceTree = "<group>"; };
-		2585EED5AE9CF5E5BF029ACE0B1C5D46 /* ResourceBundle-ToastBundle-MCToast-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ToastBundle-MCToast-Info.plist"; sourceTree = "<group>"; };
 		265A3AA1AE4657D5562BC4E2D4069432 /* Pods-MCToast_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCToast_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2707EB2C993577821BA5FF777AAA21D2 /* Pods-MCToast_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCToast_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		27979ADBBB66BDAF99688F5CC5731408 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Sources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		27979ADBBB66BDAF99688F5CC5731408 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Sources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		29359F9733D1045A34DE64FC936D3266 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Sources/Typealiases.swift; sourceTree = "<group>"; };
-		2AA8C00F9F525DA60C441F4F19FC9EA1 /* KeyboardManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		2E0ACFFCC108574621D81B37BF15FE69 /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Sources/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
-		2E4A40AC62318700E17BD9544B7D0EF0 /* MCToast.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MCToast.modulemap; sourceTree = "<group>"; };
+		2F47914E2A018B84672738EF5B6ED2A2 /* MCToast-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MCToast-umbrella.h"; sourceTree = "<group>"; };
 		2F818A3A4208AE38575EECDB7ED252C0 /* ConstraintDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDSL.swift; path = Sources/ConstraintDSL.swift; sourceTree = "<group>"; };
-		30EE2A3561AC1E87B7E8C5BE30D99578 /* Pods_MCToast_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCToast_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30EE2A3561AC1E87B7E8C5BE30D99578 /* Pods-MCToast_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MCToast_Tests"; path = Pods_MCToast_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		319019DC58A68C736F6001CC6E6B691A /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Sources/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		33C38136EBEFF92E7A5D900CDFC3EA1E /* Pods-MCToast_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCToast_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		37E3F6B178869FB7D3C26622B8493A1C /* MCToast-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MCToast-Info.plist"; sourceTree = "<group>"; };
+		3955E6B600E2BCD74245713EB20AEEF5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		3CCFAAE062D36FE3EEC07D4C25471282 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Sources/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		3CF2626FD4813CB2F42DD9DF34915C2C /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Sources/ConstraintPriority.swift; sourceTree = "<group>"; };
 		3DD05EFF6B30C486BAC64396881FA468 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Sources/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
-		413E633BF1B499973E0F7B8D0E229B6B /* ToastBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ToastBuilder.swift; sourceTree = "<group>"; };
 		41958FAECECF8D89FCF3E771997F3006 /* Pods-MCToast_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MCToast_Example.modulemap"; sourceTree = "<group>"; };
+		42C125962B1C1CF44C3690AD4D09603B /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MCToast/Assets/Images.xcassets; sourceTree = "<group>"; };
 		4868C87FB168379AD5E904D10BD4631B /* Pods-MCToast_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCToast_Example.release.xcconfig"; sourceTree = "<group>"; };
-		574ED9A436F39D972CCB10201F680C6A /* ToastWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ToastWindow.swift; sourceTree = "<group>"; };
+		4BCA1024705213330C37E077A2FECA23 /* MCToast.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MCToast.modulemap; sourceTree = "<group>"; };
+		596D95A92B9E7BC633F8B84F47CC02AE /* MCToast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MCToast.release.xcconfig; sourceTree = "<group>"; };
 		59A598465C16CDE7D54CB37FAAE8EEDB /* ConstraintDirectionalInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsets.swift; path = Sources/ConstraintDirectionalInsets.swift; sourceTree = "<group>"; };
 		5BCF511486018B445B9C0B5E032FDFEC /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Sources/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
-		612C266C0DE82CF4FC505EA842FBA42A /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MCToast/Assets/Images.xcassets; sourceTree = "<group>"; };
 		61A977608F42FD0EA87CB4A76AEAF838 /* ConstraintDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDescription.swift; path = Sources/ConstraintDescription.swift; sourceTree = "<group>"; };
 		64B94BC18A56788D484421001BD348C7 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Sources/ConstraintItem.swift; sourceTree = "<group>"; };
 		64C4EE0776D813F8963268A978FDAAD7 /* ResourceBundle-SnapKit_Privacy-SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-SnapKit_Privacy-SnapKit-Info.plist"; sourceTree = "<group>"; };
+		70F18DDFB6354DAD1A9FFC0C87CBFF52 /* MCKeyboardManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCKeyboardManager.swift; sourceTree = "<group>"; };
 		7151AA3EBE404CF0EE0F95E6E4D54301 /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Sources/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
+		72D8E4CF630DB8AEC54D4C7135E80BA5 /* MCToast+Public.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MCToast+Public.swift"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		742872EB0EA91C729E2E8B14FB0504E8 /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
 		76CA2578D79E7761A2FA38941388BB2D /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Sources/ConstraintMaker.swift; sourceTree = "<group>"; };
 		792E6DB2B3DEBECB1068DADE13F07CC5 /* Pods-MCToast_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MCToast_Tests.modulemap"; sourceTree = "<group>"; };
 		7C38207E5196EEDEA0FB62FD2F1E7DBF /* Constraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constraint.swift; path = Sources/Constraint.swift; sourceTree = "<group>"; };
-		7E8EC35A82AF33D05BAAF43CABAF7466 /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
-		800F5809CBD4F0919FD1D41D1E47C74E /* MCToast.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MCToast.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		825AB4712E9199C7E3D534D47F877FE9 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Sources/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		84FED10FCB9C2439CAB45DC534A8B288 /* Pods-MCToast_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MCToast_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		86D49C7EBB4A7AB342195E2FBDB41ECF /* MCToastContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCToastContentView.swift; sourceTree = "<group>"; };
 		86FEFD662A8681CE6BEA3E6130106B66 /* ConstraintMakerRelatable+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintMakerRelatable+Extensions.swift"; path = "Sources/ConstraintMakerRelatable+Extensions.swift"; sourceTree = "<group>"; };
-		902847C6B451CD3EE0A1E53C07BD9B90 /* MCToast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCToast.h; path = MCToast/Classes/MCToast.h; sourceTree = "<group>"; };
 		92009AE551F69C62EB53474824532343 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Sources/ConstraintRelation.swift; sourceTree = "<group>"; };
 		94C0A2BEB91F4B17FBCDFCFC98A2A1A0 /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Sources/LayoutConstraintItem.swift; sourceTree = "<group>"; };
-		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		979486118B3E90C08386079D57962701 /* SnapKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		998D11675EAB8E0413806791AA987B40 /* Pods-MCToast_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCToast_Tests-Info.plist"; sourceTree = "<group>"; };
-		99DEB07B07E66A179087938F274BB200 /* Pods_MCToast_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCToast_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B011CD502D427B33229E1A95F18DE57 /* Toast+Loading.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Toast+Loading.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		99DEB07B07E66A179087938F274BB200 /* Pods-MCToast_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MCToast_Example"; path = Pods_MCToast_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9FE5EC23085708C56164D766EB38852D /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Sources/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
 		A0507FC067124DC573594984370987FD /* SnapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.debug.xcconfig; sourceTree = "<group>"; };
-		A1B5DA3B094E685056E4F5138817BB0F /* MCToast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCToast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B5DA3B094E685056E4F5138817BB0F /* MCToast */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MCToast; path = MCToast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D29E7DCF71E39255CA4CFD9DC2DC6E /* SnapKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-umbrella.h"; sourceTree = "<group>"; };
-		A4EAFD44BFB480DFCAAB1E345D874B63 /* ToastBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToastBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		A766092F1ADC1D472A706C74884AF34F /* Toast+Custom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Toast+Custom.swift"; sourceTree = "<group>"; };
+		A4EAFD44BFB480DFCAAB1E345D874B63 /* MCToast-ToastBundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "MCToast-ToastBundle"; path = ToastBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		A81458FFE100E677B8192E5A85EC4D35 /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
 		A84828FF166FB07F13A97638DFC5C233 /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Sources/ConstraintView.swift; sourceTree = "<group>"; };
-		A8944CB696C063BC18A8288E5C86889E /* MCToast-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MCToast-prefix.pch"; sourceTree = "<group>"; };
-		A9D449580BBE58B1B7553014112B66F4 /* ToastConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ToastConfig.swift; sourceTree = "<group>"; };
+		AC9E6E378861510F9EE2320149F67B6C /* MCToast+Text.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MCToast+Text.swift"; sourceTree = "<group>"; };
 		AE0ACA4B6048BB2B76545899932AC73D /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Sources/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
+		AEEDF136DF824709C552EB2A0F99EF7F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		B2CC330AEF5432CAD4FFC7EC8C8CB055 /* MCToast+Icon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MCToast+Icon.swift"; sourceTree = "<group>"; };
 		B5160BB353D53B94AFEEF18F70920800 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
-		B9DCB5EC0B1CDADD221717CADDF62359 /* SnapKit_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapKit_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9DCB5EC0B1CDADD221717CADDF62359 /* SnapKit-SnapKit_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "SnapKit-SnapKit_Privacy"; path = SnapKit_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCE860CC123108C310F139114E0B2E6B /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Sources/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
-		BE6D62E503E0008882DDBCD66B55DF5C /* MCToast-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MCToast-Info.plist"; sourceTree = "<group>"; };
-		BF86F86C5F6D4348D4A9A5AE011876DE /* Toast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		BEEC40ED2C68C0AD78AC830CC9B85543 /* MCToastBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCToastBuilder.swift; sourceTree = "<group>"; };
 		C24071568138D1626C9257C7CF24D1E5 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Sources/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
 		C5BFB797D26FB637C21D6F0F3387917E /* Pods-MCToast_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MCToast_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C673045488D6AD36CF7E715820E958E8 /* MCToast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MCToast.debug.xcconfig; sourceTree = "<group>"; };
-		CEC4A8F6517D34A41649B9C4EBC5EA31 /* ToastHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
+		C75F8EB1A932C2A16D6E35E0422F2E00 /* MCToast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCToast.swift; sourceTree = "<group>"; };
 		D357C396EF80AF02117C256B9F52DC15 /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Sources/ConstraintInsets.swift; sourceTree = "<group>"; };
 		D5D373F3519BB20A8A602F5D3DB1B612 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Sources/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
+		D7A3DC2E2F80D2028BC02270284F19A7 /* MCToast-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MCToast-prefix.pch"; sourceTree = "<group>"; };
+		D8057761DA7263DF3607526FE1675F9A /* MCToastConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MCToastConfig.swift; sourceTree = "<group>"; };
 		D9A24BC2FBA605AE31A7DD00C77A1AFC /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Sources/LayoutConstraint.swift; sourceTree = "<group>"; };
 		DAEE85C1945F9AB9FD786222073D8E50 /* Pods-MCToast_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MCToast_Tests-dummy.m"; sourceTree = "<group>"; };
-		DB7E6775DB2B67E0189CCE5EFF1A1570 /* Toast+Icon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Toast+Icon.swift"; sourceTree = "<group>"; };
-		DB8F7DB67C66F9013FECE12F5A13DA31 /* Toast+Public.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Toast+Public.swift"; sourceTree = "<group>"; };
 		DE63822BEC8D04268A6B667741C17C19 /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Sources/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
+		E5C1174FCB6784F260B8377D409588D0 /* MCToast+Custom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MCToast+Custom.swift"; sourceTree = "<group>"; };
 		E617A6F40E8D5EA0D6A5379E4F83B53E /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
 		E6B2C8D1AB2F537B31A5FEE4C906A8B5 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Sources/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
 		E774B32E781F6B920DF58C6A82D3DD58 /* ConstraintOffsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintOffsetTarget.swift; path = Sources/ConstraintOffsetTarget.swift; sourceTree = "<group>"; };
-		E7B7A4E59A305F9747D1F2F6CF28A367 /* BundleImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BundleImage.swift; sourceTree = "<group>"; };
-		E8FB5D2F57E34F87E4DF768BEF0B4B8B /* Toast+Remove.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Toast+Remove.swift"; sourceTree = "<group>"; };
+		E9544AE45EAEC192F93D133BEC66270C /* MCToast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MCToast.h; path = MCToast/Classes/MCToast.h; sourceTree = "<group>"; };
 		EA99E82BE357018E6A27B1F45E03F647 /* Pods-MCToast_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MCToast_Example-dummy.m"; sourceTree = "<group>"; };
 		ED33CCCA7A7AD3D2FC51F33BA49A695A /* SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SnapKit-Info.plist"; sourceTree = "<group>"; };
-		F784D899B6F1D42A2CC4B64011118EC7 /* MCToast-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MCToast-dummy.m"; sourceTree = "<group>"; };
+		F2352505EA8D3B537A8EC51AAEEFDCF1 /* ResourceBundle-ToastBundle-MCToast-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ToastBundle-MCToast-Info.plist"; sourceTree = "<group>"; };
 		F8E15D26AF894D0C156E313C56823356 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Sources/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
 		F99FFF2A44131F774786C70B1798FA42 /* Pods-MCToast_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MCToast_Tests-umbrella.h"; sourceTree = "<group>"; };
-		FAE26CA0198AF2060027E00845358737 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		F9CA4D749DD3B432A77BBD97D876E75E /* MCToast+StatusBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "MCToast+StatusBar.swift"; sourceTree = "<group>"; };
 		FFF673AA4C7EF2C99E4B0BDBCA735614 /* Pods-MCToast_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MCToast_Example-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -229,20 +225,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		68B04A5ED8D77AE62E1DE0C7176E0E2D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E780BD7BC2CA3C88C48EF623A1DEAE4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		6F796DCACF7FECDF5C5CEF6AFE7BC0FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -251,19 +233,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70C13F634600D7C4BB93A1006B8C7B29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7845B766E29EA40B868BE1F9E0EF45F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A41E7C619A51CB86BD72847EF149263 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AF4C8B7B9AE1D26A045A816152CD0CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE40F3E8F59B32223F7FB635D25AD9E1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3C1B9526B42CF0E64C0F2094F981AF09 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D2E0751314017FABA1D47AF6174B5C8C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				26C68E5DD05A9D2AA4067697A7F6EA49 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,16 +283,6 @@
 			path = "Target Support Files/Pods-MCToast_Example";
 			sourceTree = "<group>";
 		};
-		16363C00820275AC72AF721054DCAE37 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				FAE26CA0198AF2060027E00845358737 /* LICENSE */,
-				800F5809CBD4F0919FD1D41D1E47C74E /* MCToast.podspec */,
-				1ED92E5A533BE38AAB4646AE42D5F081 /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		1E2156A6C1AA25FA248474223C0165C6 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,13 +292,12 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		2040268303E89AB156BF972C6A5FCFD5 /* Core */ = {
+		2B42381E7607A175210264FEAF1680E3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				BF86F86C5F6D4348D4A9A5AE011876DE /* Toast.swift */,
-				DB8F7DB67C66F9013FECE12F5A13DA31 /* Toast+Public.swift */,
-				413E633BF1B499973E0F7B8D0E229B6B /* ToastBuilder.swift */,
-				A9D449580BBE58B1B7553014112B66F4 /* ToastConfig.swift */,
+				72D8E4CF630DB8AEC54D4C7135E80BA5 /* MCToast+Public.swift */,
+				BEEC40ED2C68C0AD78AC830CC9B85543 /* MCToastBuilder.swift */,
+				D8057761DA7263DF3607526FE1675F9A /* MCToastConfig.swift */,
 			);
 			name = Core;
 			path = MCToast/Classes/Core;
@@ -334,28 +319,41 @@
 			path = "Target Support Files/Pods-MCToast_Tests";
 			sourceTree = "<group>";
 		};
-		3DD87B5A3D38044933165B6A686463B6 /* Presets */ = {
+		34730E4DA9A43E743A463AB4C2B67A7F /* MCToast */ = {
 			isa = PBXGroup;
 			children = (
-				A766092F1ADC1D472A706C74884AF34F /* Toast+Custom.swift */,
-				DB7E6775DB2B67E0189CCE5EFF1A1570 /* Toast+Icon.swift */,
-				9B011CD502D427B33229E1A95F18DE57 /* Toast+Loading.swift */,
-				E8FB5D2F57E34F87E4DF768BEF0B4B8B /* Toast+Remove.swift */,
-				197679D3C7CB774D9FEBC64D756BC515 /* Toast+StatusBar.swift */,
-				0BC855D4CF9A354D67B4A76F7E90D9EB /* Toast+Text.swift */,
-				CEC4A8F6517D34A41649B9C4EBC5EA31 /* ToastHelper.swift */,
-				E7B7A4E59A305F9747D1F2F6CF28A367 /* BundleImage.swift */,
-				7E8EC35A82AF33D05BAAF43CABAF7466 /* DispatchQueue+Extension.swift */,
-				2AA8C00F9F525DA60C441F4F19FC9EA1 /* KeyboardManager.swift */,
+				42C125962B1C1CF44C3690AD4D09603B /* Images.xcassets */,
+				E9544AE45EAEC192F93D133BEC66270C /* MCToast.h */,
+				2B42381E7607A175210264FEAF1680E3 /* Core */,
+				AF40FA0588746A9F150BB83EBE1F6985 /* Pod */,
+				AA4AE36313BBDB0FA2DE007BEA5EE495 /* Presets */,
+				383847977B502EE1AF8ECFC8D57DAF01 /* Support Files */,
+				A7BBC8F0A5A049DA8C389EBA282161BF /* Views */,
 			);
-			name = Presets;
-			path = MCToast/Classes/Presets;
+			name = MCToast;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		383847977B502EE1AF8ECFC8D57DAF01 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4BCA1024705213330C37E077A2FECA23 /* MCToast.modulemap */,
+				151C831BF010DA9F5D769141E6473189 /* MCToast-dummy.m */,
+				37E3F6B178869FB7D3C26622B8493A1C /* MCToast-Info.plist */,
+				D7A3DC2E2F80D2028BC02270284F19A7 /* MCToast-prefix.pch */,
+				2F47914E2A018B84672738EF5B6ED2A2 /* MCToast-umbrella.h */,
+				14BDE5D79CDD3B767F95BA0675473680 /* MCToast.debug.xcconfig */,
+				596D95A92B9E7BC633F8B84F47CC02AE /* MCToast.release.xcconfig */,
+				F2352505EA8D3B537A8EC51AAEEFDCF1 /* ResourceBundle-ToastBundle-MCToast-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/MCToast";
 			sourceTree = "<group>";
 		};
 		4FA56085FD99935080B26EBDF231626B /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BE767BBBC5ECDD6198B7DA8D0E1BA5E1 /* MCToast */,
+				34730E4DA9A43E743A463AB4C2B67A7F /* MCToast */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -368,27 +366,54 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		874593DAB30214ED2D9B18D1ACD87892 /* Views */ = {
+		8DCC3E8B460B221DBFB0CAF29B1BD71D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				056EFA86D960FADF57E4A27FBBF68DBF /* ToastContentView.swift */,
-				574ED9A436F39D972CCB10201F680C6A /* ToastWindow.swift */,
+				A1B5DA3B094E685056E4F5138817BB0F /* MCToast */,
+				A4EAFD44BFB480DFCAAB1E345D874B63 /* MCToast-ToastBundle */,
+				99DEB07B07E66A179087938F274BB200 /* Pods-MCToast_Example */,
+				30EE2A3561AC1E87B7E8C5BE30D99578 /* Pods-MCToast_Tests */,
+				979486118B3E90C08386079D57962701 /* SnapKit */,
+				B9DCB5EC0B1CDADD221717CADDF62359 /* SnapKit-SnapKit_Privacy */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7BBC8F0A5A049DA8C389EBA282161BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				86D49C7EBB4A7AB342195E2FBDB41ECF /* MCToastContentView.swift */,
+				01017CD4FD75E2F6529115CA59C27CC2 /* MCToastWindow.swift */,
 			);
 			name = Views;
 			path = MCToast/Classes/Views;
 			sourceTree = "<group>";
 		};
-		8DCC3E8B460B221DBFB0CAF29B1BD71D /* Products */ = {
+		AA4AE36313BBDB0FA2DE007BEA5EE495 /* Presets */ = {
 			isa = PBXGroup;
 			children = (
-				A1B5DA3B094E685056E4F5138817BB0F /* MCToast.framework */,
-				A4EAFD44BFB480DFCAAB1E345D874B63 /* ToastBundle.bundle */,
-				99DEB07B07E66A179087938F274BB200 /* Pods_MCToast_Example.framework */,
-				30EE2A3561AC1E87B7E8C5BE30D99578 /* Pods_MCToast_Tests.framework */,
-				979486118B3E90C08386079D57962701 /* SnapKit.framework */,
-				B9DCB5EC0B1CDADD221717CADDF62359 /* SnapKit_Privacy.bundle */,
+				70F18DDFB6354DAD1A9FFC0C87CBFF52 /* MCKeyboardManager.swift */,
+				C75F8EB1A932C2A16D6E35E0422F2E00 /* MCToast.swift */,
+				E5C1174FCB6784F260B8377D409588D0 /* MCToast+Custom.swift */,
+				B2CC330AEF5432CAD4FFC7EC8C8CB055 /* MCToast+Icon.swift */,
+				191830212E4201273A55EC8DD282ACD7 /* MCToast+Loading.swift */,
+				092B697BCFC85051299638676FA1C70A /* MCToast+Remove.swift */,
+				F9CA4D749DD3B432A77BBD97D876E75E /* MCToast+StatusBar.swift */,
+				AC9E6E378861510F9EE2320149F67B6C /* MCToast+Text.swift */,
+				1D519523F1E4F991F8F086BDE0EA7F95 /* MCToastHelper.swift */,
 			);
-			name = Products;
+			name = Presets;
+			path = MCToast/Classes/Presets;
+			sourceTree = "<group>";
+		};
+		AF40FA0588746A9F150BB83EBE1F6985 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				3955E6B600E2BCD74245713EB20AEEF5 /* LICENSE */,
+				0F30D5832F35F3BA21D781C381A2DC0A /* MCToast.podspec */,
+				AEEDF136DF824709C552EB2A0F99EF7F /* README.md */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		B10265F198A6F0FD9D0A73E469678726 /* Support Files */ = {
@@ -405,37 +430,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SnapKit";
-			sourceTree = "<group>";
-		};
-		BE767BBBC5ECDD6198B7DA8D0E1BA5E1 /* MCToast */ = {
-			isa = PBXGroup;
-			children = (
-				612C266C0DE82CF4FC505EA842FBA42A /* Images.xcassets */,
-				902847C6B451CD3EE0A1E53C07BD9B90 /* MCToast.h */,
-				2040268303E89AB156BF972C6A5FCFD5 /* Core */,
-				16363C00820275AC72AF721054DCAE37 /* Pod */,
-				3DD87B5A3D38044933165B6A686463B6 /* Presets */,
-				C54AA1411339DA88D5447DFCFB40A9B4 /* Support Files */,
-				874593DAB30214ED2D9B18D1ACD87892 /* Views */,
-			);
-			name = MCToast;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		C54AA1411339DA88D5447DFCFB40A9B4 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2E4A40AC62318700E17BD9544B7D0EF0 /* MCToast.modulemap */,
-				F784D899B6F1D42A2CC4B64011118EC7 /* MCToast-dummy.m */,
-				BE6D62E503E0008882DDBCD66B55DF5C /* MCToast-Info.plist */,
-				A8944CB696C063BC18A8288E5C86889E /* MCToast-prefix.pch */,
-				147B73AE5FC06556C30046653AB67E78 /* MCToast-umbrella.h */,
-				C673045488D6AD36CF7E715820E958E8 /* MCToast.debug.xcconfig */,
-				0CCE5E716A0744B29BEFF0477A76DDF2 /* MCToast.release.xcconfig */,
-				2585EED5AE9CF5E5BF029ACE0B1C5D46 /* ResourceBundle-ToastBundle-MCToast-Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/MCToast";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -509,6 +503,7 @@
 				DFDEAD75D8D695E4C0DA1FE179C1E0C1 /* Resources */,
 				B10265F198A6F0FD9D0A73E469678726 /* Support Files */,
 			);
+			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -523,12 +518,12 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		332AA5A76566D774EF9B6F88E9C63011 /* Headers */ = {
+		4202463A1CBDC26530190203BFD1A0BD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAE1F1C30E51927B053DD374ED2B0E92 /* MCToast.h in Headers */,
-				CBE50EA52F728D2F32E399CB0FD1C89C /* MCToast-umbrella.h in Headers */,
+				984D17385449FF6C7C7628674F15F227 /* MCToast.h in Headers */,
+				C7E401B3BB7BDC0740ED3E98991F63FA /* MCToast-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,11 +566,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				917F66F9A15188EC4BC704BF45B170A8 /* PBXTargetDependency */,
+				7A04A337BFB1D151AC82D0E1BAD45C01 /* PBXTargetDependency */,
 			);
 			name = SnapKit;
 			productName = SnapKit;
-			productReference = 979486118B3E90C08386079D57962701 /* SnapKit.framework */;
+			productReference = 979486118B3E90C08386079D57962701 /* SnapKit */;
 			productType = "com.apple.product-type.framework";
 		};
 		4BD42F3F86B8E3D31FEBFD852EA3E8D2 /* Pods-MCToast_Example */ = {
@@ -590,40 +585,40 @@
 			buildRules = (
 			);
 			dependencies = (
-				56BDAC1352B5781D1248395A1CAFA98F /* PBXTargetDependency */,
-				4B67E84A3DC75FD86FD7817301F13108 /* PBXTargetDependency */,
+				B38E30D75FED2DEAF65300C67930991B /* PBXTargetDependency */,
+				1B8133C4F07D8AA376DEFBA4F819B3F2 /* PBXTargetDependency */,
 			);
 			name = "Pods-MCToast_Example";
 			productName = Pods_MCToast_Example;
-			productReference = 99DEB07B07E66A179087938F274BB200 /* Pods_MCToast_Example.framework */;
+			productReference = 99DEB07B07E66A179087938F274BB200 /* Pods-MCToast_Example */;
 			productType = "com.apple.product-type.framework";
 		};
 		66D9134153A7BD0037C2DFB3EE231352 /* MCToast */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1A904D8B21086B81964D843DF4B831C3 /* Build configuration list for PBXNativeTarget "MCToast" */;
+			buildConfigurationList = 6CB47258854C66B68170475E85ADDAA5 /* Build configuration list for PBXNativeTarget "MCToast" */;
 			buildPhases = (
-				332AA5A76566D774EF9B6F88E9C63011 /* Headers */,
-				C66253E168D28D4F0F4F99273916F4FB /* Sources */,
-				D2E0751314017FABA1D47AF6174B5C8C /* Frameworks */,
-				41392F03E2013DFAA9A241D22D5A08C4 /* Resources */,
+				4202463A1CBDC26530190203BFD1A0BD /* Headers */,
+				A7834DB8F71C0CB63A93376DDC674F95 /* Sources */,
+				7845B766E29EA40B868BE1F9E0EF45F2 /* Frameworks */,
+				9AFA6F2093F5AC799B33FE16C235AC59 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A1A10B3997A495B25FAEBFFEAD574A0A /* PBXTargetDependency */,
+				E13A46507F7ED5FF521D2A158E84F7F3 /* PBXTargetDependency */,
 			);
 			name = MCToast;
 			productName = MCToast;
-			productReference = A1B5DA3B094E685056E4F5138817BB0F /* MCToast.framework */;
+			productReference = A1B5DA3B094E685056E4F5138817BB0F /* MCToast */;
 			productType = "com.apple.product-type.framework";
 		};
 		70D2D0E60812A188468D054686A04FAB /* MCToast-ToastBundle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 86C06A7EA6E2BF8D5C32B9B16604A6E2 /* Build configuration list for PBXNativeTarget "MCToast-ToastBundle" */;
+			buildConfigurationList = FFC8B593ABE288077EB9D92CBF82B528 /* Build configuration list for PBXNativeTarget "MCToast-ToastBundle" */;
 			buildPhases = (
-				0C2A57C8910E4032E9E353A22C43CF97 /* Sources */,
-				6E780BD7BC2CA3C88C48EF623A1DEAE4 /* Frameworks */,
-				A63D0DD596DF75532449694FC19DB2AD /* Resources */,
+				14FBCB3A76DF9E717495AD96798927D3 /* Sources */,
+				70C13F634600D7C4BB93A1006B8C7B29 /* Frameworks */,
+				EBEEB7E38AEFCFE11E15235F139782C7 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -631,16 +626,16 @@
 			);
 			name = "MCToast-ToastBundle";
 			productName = ToastBundle;
-			productReference = A4EAFD44BFB480DFCAAB1E345D874B63 /* ToastBundle.bundle */;
+			productReference = A4EAFD44BFB480DFCAAB1E345D874B63 /* MCToast-ToastBundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8A8DB685241263AFDF5E6B20FE67B93A /* SnapKit-SnapKit_Privacy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 30E518CD94C6F464EBA79DECB42BDD16 /* Build configuration list for PBXNativeTarget "SnapKit-SnapKit_Privacy" */;
+			buildConfigurationList = 6965D7BAC1176699E962EB0943E5F7F2 /* Build configuration list for PBXNativeTarget "SnapKit-SnapKit_Privacy" */;
 			buildPhases = (
-				9756BB30831497AD947B7BB003C3E15A /* Sources */,
-				68B04A5ED8D77AE62E1DE0C7176E0E2D /* Frameworks */,
-				C7F81A324BC615C32D6A822F5724C5CC /* Resources */,
+				3DB966768DAD66406C9DBA79A260BBFC /* Sources */,
+				8AF4C8B7B9AE1D26A045A816152CD0CA /* Frameworks */,
+				57CEA48E1E02AC6D1EEF9BFE5E8757EC /* Resources */,
 			);
 			buildRules = (
 			);
@@ -648,7 +643,7 @@
 			);
 			name = "SnapKit-SnapKit_Privacy";
 			productName = SnapKit_Privacy;
-			productReference = B9DCB5EC0B1CDADD221717CADDF62359 /* SnapKit_Privacy.bundle */;
+			productReference = B9DCB5EC0B1CDADD221717CADDF62359 /* SnapKit-SnapKit_Privacy */;
 			productType = "com.apple.product-type.bundle";
 		};
 		B45DE6A26D8378D01909F331A223D995 /* Pods-MCToast_Tests */ = {
@@ -663,11 +658,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				17C484EB57323463E9081CE987E3C0F0 /* PBXTargetDependency */,
+				A25C72D0AF17B893A26716FB02BB4B02 /* PBXTargetDependency */,
 			);
 			name = "Pods-MCToast_Tests";
 			productName = Pods_MCToast_Tests;
-			productReference = 30EE2A3561AC1E87B7E8C5BE30D99578 /* Pods_MCToast_Tests.framework */;
+			productReference = 30EE2A3561AC1E87B7E8C5BE30D99578 /* Pods-MCToast_Tests */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -703,18 +698,18 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		41392F03E2013DFAA9A241D22D5A08C4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FDA1016924BE8EBACC1377195D81BDC0 /* ToastBundle.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		524120CDA9D088061F5BC3B8126942D1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57CEA48E1E02AC6D1EEF9BFE5E8757EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8EE396DF77D8BF12E104802CBDEAD08 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,41 +724,48 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D091D9EA20CEB92609BF1E622E8CA348 /* SnapKit_Privacy.bundle in Resources */,
+				D091D9EA20CEB92609BF1E622E8CA348 /* SnapKit-SnapKit_Privacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A63D0DD596DF75532449694FC19DB2AD /* Resources */ = {
+		9AFA6F2093F5AC799B33FE16C235AC59 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				954FA457F3A1F64BC73EDF8C0E18797A /* Images.xcassets in Resources */,
+				F7C392F89E4DBB7B90728C214987424C /* MCToast-ToastBundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C7F81A324BC615C32D6A822F5724C5CC /* Resources */ = {
+		EBEEB7E38AEFCFE11E15235F139782C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D95BE465B78F7BC8EADDE50B34F20BD /* PrivacyInfo.xcprivacy in Resources */,
+				FC8386EFC29BAB1E73312B3BCF77FF9C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0C2A57C8910E4032E9E353A22C43CF97 /* Sources */ = {
+		0DA653E454EF030877F9600BC5D0864E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				429174EA9449C1862A051B11BD1E18D4 /* Pods-MCToast_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14FBCB3A76DF9E717495AD96798927D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0DA653E454EF030877F9600BC5D0864E /* Sources */ = {
+		3DB966768DAD66406C9DBA79A260BBFC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				429174EA9449C1862A051B11BD1E18D4 /* Pods-MCToast_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,10 +777,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9756BB30831497AD947B7BB003C3E15A /* Sources */ = {
+		A7834DB8F71C0CB63A93376DDC674F95 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD01A75FC02052B2CD0D3D4E2643D40 /* MCKeyboardManager.swift in Sources */,
+				61FCF1E1E1010399C61A1AE5CB7706C3 /* MCToast.swift in Sources */,
+				C9ED20661EAB2EE0A0CDF456C7875791 /* MCToast+Custom.swift in Sources */,
+				69AC85852BD17DF76F43ED551188397D /* MCToast+Icon.swift in Sources */,
+				C1A9055D0389E1B36F8242A7AFADA76C /* MCToast+Loading.swift in Sources */,
+				09C274EE17504386E1EB3D4871F7C713 /* MCToast+Public.swift in Sources */,
+				2E14374244C91593FB5587536FB59BE6 /* MCToast+Remove.swift in Sources */,
+				8008A8D168175D601EB7C0F153B6C06D /* MCToast+StatusBar.swift in Sources */,
+				67CDC9E327E3CF7DBF75C1197AA85A72 /* MCToast+Text.swift in Sources */,
+				B09BD7AF17DF7E95FB8C01D3A793721B /* MCToast-dummy.m in Sources */,
+				50E3482CB009B72E51359C0A75C6EB5B /* MCToastBuilder.swift in Sources */,
+				2965F35C97582280D79901E1F0D656B7 /* MCToastConfig.swift in Sources */,
+				D693992A38DBC71402A9563BA9B1B8DA /* MCToastContentView.swift in Sources */,
+				7EC20C2BD89922655C6A0E7FA8554EE2 /* MCToastHelper.swift in Sources */,
+				EF6034208CB769E2C5585F041B574008 /* MCToastWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,100 +844,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C66253E168D28D4F0F4F99273916F4FB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A1AD333EBA55075466A563F9390C5F53 /* BundleImage.swift in Sources */,
-				8227652F5A1B0CD12BA09A2643AE398B /* DispatchQueue+Extension.swift in Sources */,
-				7D018DFC0609D4F2F8348399D780CE56 /* KeyboardManager.swift in Sources */,
-				AE5FEF5D0B6047447655CE210C3B809B /* MCToast-dummy.m in Sources */,
-				1AC542ACC80990FE56947DB877C4B88F /* Toast.swift in Sources */,
-				688603D2E09828A5D05E1728D63AD5FF /* Toast+Custom.swift in Sources */,
-				2100F9F7CAACF8CFAE721CB39F635F09 /* Toast+Icon.swift in Sources */,
-				DF2819B8FA788B6A863EC70488EFCC3B /* Toast+Loading.swift in Sources */,
-				69D18D737059487705359D075F807031 /* Toast+Public.swift in Sources */,
-				0DB89A462CD7BC0AD010F047CA9BC812 /* Toast+Remove.swift in Sources */,
-				411491B6C79CCABDFCA9A91B6F75BFB7 /* Toast+StatusBar.swift in Sources */,
-				62AEB860FBEA4EB7BB9E3624D99B1512 /* Toast+Text.swift in Sources */,
-				6F684E93D9B21BACE58D29726453B1C5 /* ToastBuilder.swift in Sources */,
-				1124F94FDD23B420C44A71AF062FD1AE /* ToastConfig.swift in Sources */,
-				4ADC01975B5E8F950BBC47BAB13D3E3D /* ToastContentView.swift in Sources */,
-				08E97256B2ABEF3A68C282218F63A1BA /* ToastHelper.swift in Sources */,
-				3298267F58DD4F8C7941EB5178F044B8 /* ToastWindow.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		17C484EB57323463E9081CE987E3C0F0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-MCToast_Example";
-			target = 4BD42F3F86B8E3D31FEBFD852EA3E8D2 /* Pods-MCToast_Example */;
-			targetProxy = BAE95D435FDED7B8A614BC9B6960A65D /* PBXContainerItemProxy */;
-		};
-		4B67E84A3DC75FD86FD7817301F13108 /* PBXTargetDependency */ = {
+		1B8133C4F07D8AA376DEFBA4F819B3F2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SnapKit;
 			target = 19622742EBA51E823D6DAE3F8CDBFAD4 /* SnapKit */;
-			targetProxy = 74A61DC438DD28E79CBE0E3BA297AA5C /* PBXContainerItemProxy */;
+			targetProxy = 86171202A9F93D5A9B76A98BAE329EB7 /* PBXContainerItemProxy */;
 		};
-		56BDAC1352B5781D1248395A1CAFA98F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MCToast;
-			target = 66D9134153A7BD0037C2DFB3EE231352 /* MCToast */;
-			targetProxy = B47F0DEA86DA2721797918CDF43B0BE3 /* PBXContainerItemProxy */;
-		};
-		917F66F9A15188EC4BC704BF45B170A8 /* PBXTargetDependency */ = {
+		7A04A337BFB1D151AC82D0E1BAD45C01 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SnapKit-SnapKit_Privacy";
 			target = 8A8DB685241263AFDF5E6B20FE67B93A /* SnapKit-SnapKit_Privacy */;
-			targetProxy = 134488D8468EE7D7C0D281F43DAE09DF /* PBXContainerItemProxy */;
+			targetProxy = 2518D5F781885DE748CBBE81E63E1A4B /* PBXContainerItemProxy */;
 		};
-		A1A10B3997A495B25FAEBFFEAD574A0A /* PBXTargetDependency */ = {
+		A25C72D0AF17B893A26716FB02BB4B02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-MCToast_Example";
+			target = 4BD42F3F86B8E3D31FEBFD852EA3E8D2 /* Pods-MCToast_Example */;
+			targetProxy = D314D73F88B0F6BAE202DA8385A562C5 /* PBXContainerItemProxy */;
+		};
+		B38E30D75FED2DEAF65300C67930991B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MCToast;
+			target = 66D9134153A7BD0037C2DFB3EE231352 /* MCToast */;
+			targetProxy = 858ABAE49AE1424C7058DC4293A9F9AA /* PBXContainerItemProxy */;
+		};
+		E13A46507F7ED5FF521D2A158E84F7F3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "MCToast-ToastBundle";
 			target = 70D2D0E60812A188468D054686A04FAB /* MCToast-ToastBundle */;
-			targetProxy = 870AEA04EBD4773B4E3384A026E03CFB /* PBXContainerItemProxy */;
+			targetProxy = AD303CE2D5CC6C2CE1AA2D9A81B3D31B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1B015C1601B541F396F6EB9DBB77599A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CCE5E716A0744B29BEFF0477A76DDF2 /* MCToast.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MCToast";
-				IBSC_MODULE = MCToast;
-				INFOPLIST_FILE = "Target Support Files/MCToast/ResourceBundle-ToastBundle-MCToast-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_NAME = ToastBundle;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		29095D0E1C13B28F33F3BDED5588F4A9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0507FC067124DC573594984370987FD /* SnapKit.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SnapKit";
-				IBSC_MODULE = SnapKit;
-				INFOPLIST_FILE = "Target Support Files/SnapKit/ResourceBundle-SnapKit_Privacy-SnapKit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_NAME = SnapKit_Privacy;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		2FE2787669D0E92C1715ABF62855EB81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 742872EB0EA91C729E2E8B14FB0504E8 /* SnapKit.release.xcconfig */;
@@ -953,55 +912,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		331D235D6F3D44D5967F817A3F220C70 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C673045488D6AD36CF7E715820E958E8 /* MCToast.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MCToast";
-				IBSC_MODULE = MCToast;
-				INFOPLIST_FILE = "Target Support Files/MCToast/ResourceBundle-ToastBundle-MCToast-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_NAME = ToastBundle;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		3B4AE25F9F354F1AC54C4BB2B09D5A41 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C673045488D6AD36CF7E715820E958E8 /* MCToast.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MCToast/MCToast-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MCToast/MCToast-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MCToast/MCToast.modulemap";
-				PRODUCT_MODULE_NAME = MCToast;
-				PRODUCT_NAME = MCToast;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		5193F50954399804F3F516443E70C649 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1037,49 +947,16 @@
 			};
 			name = Debug;
 		};
-		5A63534E1D20C547EF85FBC0EEA50CF4 /* Release */ = {
+		67C8650ABE31D02D6ADB1124254B1235 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CCE5E716A0744B29BEFF0477A76DDF2 /* MCToast.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MCToast/MCToast-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MCToast/MCToast-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MCToast/MCToast.modulemap";
-				PRODUCT_MODULE_NAME = MCToast;
-				PRODUCT_NAME = MCToast;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		63975091DE45C673753E8BD348AFAE52 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 742872EB0EA91C729E2E8B14FB0504E8 /* SnapKit.release.xcconfig */;
+			baseConfigurationReference = 596D95A92B9E7BC633F8B84F47CC02AE /* MCToast.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SnapKit";
-				IBSC_MODULE = SnapKit;
-				INFOPLIST_FILE = "Target Support Files/SnapKit/ResourceBundle-SnapKit_Privacy-SnapKit-Info.plist";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MCToast";
+				IBSC_MODULE = MCToast;
+				INFOPLIST_FILE = "Target Support Files/MCToast/ResourceBundle-ToastBundle-MCToast-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				PRODUCT_NAME = SnapKit_Privacy;
+				PRODUCT_NAME = ToastBundle;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1121,6 +998,38 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		83DC258CAF8DB2CB32475E4655455C68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14BDE5D79CDD3B767F95BA0675473680 /* MCToast.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MCToast/MCToast-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MCToast/MCToast-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MCToast/MCToast.modulemap";
+				PRODUCT_MODULE_NAME = MCToast;
+				PRODUCT_NAME = MCToast;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1243,11 +1152,29 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
+		};
+		A275C420057360A52AD65A095C7D2EBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0507FC067124DC573594984370987FD /* SnapKit.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SnapKit";
+				IBSC_MODULE = SnapKit;
+				INFOPLIST_FILE = "Target Support Files/SnapKit/ResourceBundle-SnapKit_Privacy-SnapKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = SnapKit_Privacy;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
 		};
 		B39BBF3A097A7DBA281DF6A0E16C7353 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1281,6 +1208,56 @@
 			};
 			name = Debug;
 		};
+		BBEF212E2CBAF12133796C6773A87EF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14BDE5D79CDD3B767F95BA0675473680 /* MCToast.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MCToast";
+				IBSC_MODULE = MCToast;
+				INFOPLIST_FILE = "Target Support Files/MCToast/ResourceBundle-ToastBundle-MCToast-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = ToastBundle;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		BC25D75D25833E03B57EE3653DF16DD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 596D95A92B9E7BC633F8B84F47CC02AE /* MCToast.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MCToast/MCToast-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MCToast/MCToast-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MCToast/MCToast.modulemap";
+				PRODUCT_MODULE_NAME = MCToast;
+				PRODUCT_NAME = MCToast;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		D56B153E65BE46CD842AA10F8800E2C7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4868C87FB168379AD5E904D10BD4631B /* Pods-MCToast_Example.release.xcconfig */;
@@ -1313,6 +1290,23 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F0F580AC5AFDCE1E2830F66267B2CC6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 742872EB0EA91C729E2E8B14FB0504E8 /* SnapKit.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SnapKit";
+				IBSC_MODULE = SnapKit;
+				INFOPLIST_FILE = "Target Support Files/SnapKit/ResourceBundle-SnapKit_Privacy-SnapKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = SnapKit_Privacy;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -1353,24 +1347,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A904D8B21086B81964D843DF4B831C3 /* Build configuration list for PBXNativeTarget "MCToast" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3B4AE25F9F354F1AC54C4BB2B09D5A41 /* Debug */,
-				5A63534E1D20C547EF85FBC0EEA50CF4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		30E518CD94C6F464EBA79DECB42BDD16 /* Build configuration list for PBXNativeTarget "SnapKit-SnapKit_Privacy" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				29095D0E1C13B28F33F3BDED5588F4A9 /* Debug */,
-				63975091DE45C673753E8BD348AFAE52 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1398,11 +1374,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		86C06A7EA6E2BF8D5C32B9B16604A6E2 /* Build configuration list for PBXNativeTarget "MCToast-ToastBundle" */ = {
+		6965D7BAC1176699E962EB0943E5F7F2 /* Build configuration list for PBXNativeTarget "SnapKit-SnapKit_Privacy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				331D235D6F3D44D5967F817A3F220C70 /* Debug */,
-				1B015C1601B541F396F6EB9DBB77599A /* Release */,
+				A275C420057360A52AD65A095C7D2EBF /* Debug */,
+				F0F580AC5AFDCE1E2830F66267B2CC6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6CB47258854C66B68170475E85ADDAA5 /* Build configuration list for PBXNativeTarget "MCToast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83DC258CAF8DB2CB32475E4655455C68 /* Debug */,
+				BC25D75D25833E03B57EE3653DF16DD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1412,6 +1397,15 @@
 			buildConfigurations = (
 				5193F50954399804F3F516443E70C649 /* Debug */,
 				6A7DF99DA1853AD31AD393459B18848F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFC8B593ABE288077EB9D92CBF82B528 /* Build configuration list for PBXNativeTarget "MCToast-ToastBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBEF212E2CBAF12133796C6773A87EF4 /* Debug */,
+				67C8650ABE31D02D6ADB1124254B1235 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
