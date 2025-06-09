@@ -21,6 +21,9 @@ class TestOneViewController: UIViewController {
         MCToast.plainText("加载成功")
             .duration(2)
             .respond(.allow)
+            .showHandler {
+                print("开始显示了")
+            }
             .dismissHandler {
                 print("Toast 隐藏了")
             }

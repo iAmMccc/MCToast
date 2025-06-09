@@ -45,15 +45,23 @@ extension MCToast {
         dismissHandler?()
     }
 
-    /// 自动移除 toast
-    func autoRemove(window: UIWindow, duration: CGFloat, dismissHandler: DismissHandler?) {
+    /// 自动管理 Toast 生命周期（显示、隐藏和回调）
+    func manageLifecycle(
+        window: UIWindow,
+        duration: CGFloat,
+        showHandler: ShowHandler?,
+        dismissHandler: DismissHandler?
+    ) {
+        // 先调用显示回调
+        showHandler?()
+
+        // 如果 duration <= 0，代表不自动隐藏，直接返回
         guard duration > 0 else { return }
 
         let task = DispatchWorkItem {
             self.hideWindow(window)
             dismissHandler?()
         }
-
         DispatchQueue.main.asyncAfter(deadline: .now() + duration, execute: task)
     }
 }

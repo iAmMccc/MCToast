@@ -18,6 +18,7 @@ extension MCToast {
         view: UIView,
         duration: CGFloat,
         respond: MCToast.RespondPolicy,
+        showHander: ShowHandler? = nil,
         dismissHandler: DismissHandler? = nil
     ) -> UIWindow? {
         
@@ -35,7 +36,7 @@ extension MCToast {
             UIView.animate(withDuration: 0.3, animations: {
                 window.frame.origin.y = 0
             }, completion: { _ in
-                self.autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
+                self.manageLifecycle(window: window, duration: duration, showHandler: showHander, dismissHandler: dismissHandler)
             })
             
             return window

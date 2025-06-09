@@ -15,6 +15,7 @@ extension MCToast {
         _ customView: UIView,
         duration: CGFloat,
         respond: RespondPolicy,
+        showHander: ShowHandler? = nil,
         dismissHandler: DismissHandler? = nil
     ) -> UIWindow? {
         
@@ -39,9 +40,8 @@ extension MCToast {
             // 保证 window 会布局约束
             window.layoutIfNeeded()
             
-            
-            autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
-            
+            manageLifecycle(window: window, duration: duration, showHandler: showHander, dismissHandler: dismissHandler)
+
             return window
         }
         

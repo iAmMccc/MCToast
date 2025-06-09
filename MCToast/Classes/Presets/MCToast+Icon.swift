@@ -20,6 +20,7 @@ extension MCToast {
         iconImage: UIImage?,
         duration: CGFloat,
         respond: RespondPolicy,
+        showHander: ShowHandler? = nil,
         dismissHandler: DismissHandler? = nil
     ) -> UIWindow? {
         
@@ -60,7 +61,7 @@ extension MCToast {
                 label.bottomAnchor.constraint(equalTo: window.contentView.bottomAnchor, constant: -padding.bottom),
             ])
             
-            autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
+            manageLifecycle(window: window, duration: duration, showHandler: showHander, dismissHandler: dismissHandler)
             return window
         }
         

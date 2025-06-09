@@ -12,30 +12,44 @@ import UIKit
 
 extension MCToastBuilder {
     // MARK: - 链式方法
+
+    /// 设置 Toast 显示的时长，单位为秒。
+    /// - Parameter value: 显示时长，默认为 MCToastConfig 中的默认值。
+    /// - Returns: 返回当前 MCToastBuilder 实例，支持链式调用。
     @discardableResult
     public func duration(_ value: CGFloat) -> Self {
         self.duration = value
         return self
     }
 
+    /// 设置 Toast 的响应策略，控制用户交互时是否允许点击穿透等。
+    /// - Parameter policy: 响应策略，见 MCToast.RespondPolicy 枚举定义。
+    /// - Returns: 返回当前 MCToastBuilder 实例，支持链式调用。
     @discardableResult
     public func respond(_ policy: MCToast.RespondPolicy) -> Self {
         self.respond = policy
         return self
     }
 
+    /// 设置 Toast 显示时的回调，显示时会触发该闭包。
+    /// - Parameter handler: 显示时调用的闭包，无参数无返回值。
+    /// - Returns: 返回当前 MCToastBuilder 实例，支持链式调用。
     @discardableResult
-    public func onShow(_ handler: @escaping () -> Void) -> Self {
+    public func showHandler(_ handler: @escaping () -> Void) -> Self {
         self.onShowHandler = handler
         return self
     }
 
+    /// 设置 Toast 被移除时的回调，移除完成后会触发该闭包。
+    /// - Parameter handler: 移除时调用的闭包，参数为移除原因，具体见 MCToast.DismissHandler 类型定义。
+    /// - Returns: 返回当前 MCToastBuilder 实例，支持链式调用。
     @discardableResult
     public func dismissHandler(_ handler: @escaping MCToast.DismissHandler) -> Self {
         self.dismissHandler = handler
         return self
     }
 }
+
 
 
 
@@ -47,7 +61,7 @@ public final class MCToastBuilder {
 
     var duration: CGFloat = MCToastConfig.shared.duration
     var respond: MCToast.RespondPolicy = MCToastConfig.shared.respond
-    var onShowHandler: (() -> Void)?
+    var onShowHandler: MCToast.ShowHandler?
     var dismissHandler: MCToast.DismissHandler?
 
 

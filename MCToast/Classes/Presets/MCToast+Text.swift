@@ -15,6 +15,7 @@ extension MCToast {
         offset: CGFloat = MCToastConfig.shared.text.offset,
         duration: CGFloat,
         respond: RespondPolicy,
+        showHander: ShowHandler? = nil,
         dismissHandler: DismissHandler? = nil
     ) -> UIWindow? {
         
@@ -49,8 +50,8 @@ extension MCToast {
             ])
             
             
-            autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
-            
+            manageLifecycle(window: window, duration: duration, showHandler: showHander, dismissHandler: dismissHandler)
+
             return window
         }
         

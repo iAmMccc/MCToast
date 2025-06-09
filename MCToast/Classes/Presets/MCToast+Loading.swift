@@ -14,6 +14,7 @@ extension MCToast {
         text: String? = nil,
         duration: CGFloat,
         respond: RespondPolicy,
+        showHander: ShowHandler? = nil,
         dismissHandler: DismissHandler? = nil
     ) -> UIWindow? {
         
@@ -68,7 +69,7 @@ extension MCToast {
                 label.trailingAnchor.constraint(equalTo: window.contentView.trailingAnchor, constant: -MCToastConfig.shared.icon.padding.right),
                 label.bottomAnchor.constraint(equalTo: window.contentView.bottomAnchor, constant: -MCToastConfig.shared.icon.padding.bottom)
             ])
-            autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
+            manageLifecycle(window: window, duration: duration, showHandler: showHander, dismissHandler: dismissHandler)
             return window
         }
         var tempWindow: UIWindow?
