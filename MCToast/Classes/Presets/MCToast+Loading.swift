@@ -23,18 +23,14 @@ extension MCToast {
             
             let activity = UIActivityIndicatorView()
             activity.translatesAutoresizingMaskIntoConstraints = false
-            if #available(iOS 13.0, *) {
-                activity.style = .large
-            } else {
-                activity.style = .whiteLarge
-            }
+            activity.style = .large
+            activity.color = .white
+
             activity.startAnimating()
             window.contentView.addSubview(activity)
             
             // 只有纯 icon（不含文字）
             guard let text = text, !text.isEmpty else {
-                activity.color = .black
-                window.contentView.backgroundColor = UIColor.clear
                 NSLayoutConstraint.activate([
                     activity.centerXAnchor.constraint(equalTo: window.contentView.centerXAnchor),
                     activity.centerYAnchor.constraint(equalTo: window.contentView.centerYAnchor),
@@ -45,7 +41,6 @@ extension MCToast {
                 return window
             }
             
-            activity.color = .white
             
             // 含文字的样式
             let label = UILabel()
@@ -57,6 +52,9 @@ extension MCToast {
             label.textAlignment = .center
             label.lineBreakMode = .byCharWrapping
             window.contentView.addSubview(label)
+            
+            // 有文字时，背景默认显示
+            window.contentView.backgroundColor = MCToastConfig.shared.background.resolvedColor
             
             NSLayoutConstraint.activate([
                 activity.topAnchor.constraint(equalTo: window.contentView.topAnchor, constant: MCToastConfig.shared.icon.padding.top),

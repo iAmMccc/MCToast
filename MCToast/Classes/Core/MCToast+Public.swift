@@ -50,10 +50,10 @@ public extension MCToast {
     }
 
     /// 显示一个“加载中” Toast，支持自定义提示文本。
-    /// - Parameter value: 要显示的提示文本，默认是“加载中”。
+    /// - Parameter value: 要显示的提示文本。
     /// - Returns: MCToastBuilder 对象，可继续链式配置样式、时长等。
     @discardableResult
-    static func loadingText(_ value: String = "加载中") -> MCToastBuilder {
+    static func loadingText(_ value: String = "", backgroundVisible: Bool = false) -> MCToastBuilder {
         MCToastBuilder.build(style: .loading, text: value)
     }
 

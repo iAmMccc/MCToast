@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  MCToast
 //
-//  Created by 562863544@qq.com on 11/25/2019.
-//  Copyright (c) 2019 562863544@qq.com. All rights reserved.
+//  Created by Mccc on 11/25/2019.
+//  Copyright (c) 2019 Mccc. All rights reserved.
 //
 
 import UIKit
@@ -41,8 +41,6 @@ class ViewController: UIViewController {
             title: "测试",
             rows: [
                 "测试 - 1",
-                "测试 - 2",
-                "测试 - 3"
             ]
         ),
         (
@@ -51,10 +49,8 @@ class ViewController: UIViewController {
                 "文本 - 短文本",
                 "文本 - 长文本",
                 "文本 - 设置展示时长",
-                "文本 - 展示期间页面禁止响应",
-                "文本 - 展示期间导航栏以下禁止响应",
-                "文本 - 展示期间允许响应",
-                "文本 - 设置偏移量（Y轴展示位置）"
+                "文本 - 设置偏移量（Y轴展示位置）",
+                "文本 - 设置响应策略",
             ]
         ),
         (
@@ -65,19 +61,16 @@ class ViewController: UIViewController {
                 "icon - 警告",
                 "icon - 长文本信息",
                 "icon - 自定义",
-                "icon - 展示期间页面禁止响应",
-                "icon - 展示期间导航栏以下禁止响应",
-                "icon - 展示期间允许响应"
+                "icon - 设置响应策略",
             ]
         ),
         (
             title: "loading",
             rows: [
-                "loading - 固定时间自动隐藏",
-                "loading - 手动控制隐藏",
-                "loading - 展示期间页面禁止响应",
-                "loading - 展示期间导航栏以下禁止响应",
-                "loading - 展示期间允许响应"
+                "loading - 没有文字",
+                "loading - 有文字",
+                "loading - 自定隐藏",
+                "loading - 设置响应策略",
             ]
         ),
         (
@@ -138,6 +131,7 @@ extension ViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
+        
     }
 }
 
@@ -230,14 +224,10 @@ extension ViewController {
         case 2:
             MCToast.plainText("提示文案，设置时长4秒").duration(4)
         case 3:
-            MCToast.plainText("提示文案，交互方式：完全禁止").respond(.forbid)
-        case 4:
-            MCToast.plainText("提示文案，交互方式：仅导航栏").respond(.allowNav)
-        case 5:
-            MCToast.plainText("提示文案，交互方式：完全允许").respond(.allow)
-        case 6:
             MCToast.plainText("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示")
                 .position(.top(offset: 100))
+        case 4:
+            MCToast.plainText("提示文案，交互方式：完全禁止").respond(.forbid)
         default:
             break
         }
@@ -260,12 +250,6 @@ extension ViewController {
         case 5:
             MCToast.iconText("成功", icon: .success)
                 .respond(.forbid)
-        case 6:
-            MCToast.iconText("成功", icon: .success)
-                .respond(.allowNav)
-        case 7:
-            MCToast.iconText("成功", icon: .success)
-                .respond(.allow)
         default:
             break
         }
@@ -277,15 +261,17 @@ extension ViewController {
     func showToastOnSection3(with row: Int) {
         switch row {
         case 0:
-            MCToast.loading(duration: 2)
+            MCToast.loadingText()
+                .duration(2)
         case 1:
-            MCToast.loading(text: "")
+            MCToast.loadingText("加载中...")
+                .duration(2)
         case 2:
-            MCToast.loading(duration: 2, respond: .forbid)
+            MCToast.loadingText("加载中...")
+                .duration(2)
         case 3:
-            MCToast.loading(duration: 2, respond: .allowNav)
-        case 4:
-            MCToast.loading(duration: 2, respond: .allow)
+            MCToast.loadingText("加载中...")
+                .respond(.allow)
         default:
             break
         }
@@ -447,3 +433,5 @@ extension MCToast {
         MCToast.showStatus(text: "发送验证码成功", iconImage: image, duration: 2, respond: .allow)
     }
 }
+
+

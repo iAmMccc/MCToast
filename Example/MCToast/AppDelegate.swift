@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  MCToast
 //
-//  Created by 562863544@qq.com on 11/25/2019.
-//  Copyright (c) 2019 562863544@qq.com. All rights reserved.
+//  Created by Mccc on 11/25/2019.
+//  Copyright (c) 2019 Mccc. All rights reserved.
 //
 
 import UIKit
@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // 设置通配类型
         configToast()
+        
+        // 延迟调用，等布局完成
+        DispatchQueue.main.async {
+            self.window?.addCrosshairLines()
+        }
         
         return true
     }
@@ -72,5 +77,51 @@ extension AppDelegate {
         
         // 6. 设置自动隐藏的时长
         MCToastConfig.shared.duration = 2.5
+    }
+}
+
+
+extension UIView {
+    func addCrosshairLines() {
+        let midX = bounds.midX
+        let midY = bounds.midY
+        
+        // 横线
+        let horizontal = UIView()
+        horizontal.backgroundColor = .red
+        horizontal.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(horizontal)
+        NSLayoutConstraint.activate([
+            horizontal.centerYAnchor.constraint(equalTo: centerYAnchor),
+            horizontal.leadingAnchor.constraint(equalTo: leadingAnchor),
+            horizontal.trailingAnchor.constraint(equalTo: trailingAnchor),
+            horizontal.heightAnchor.constraint(equalToConstant: 1)
+        ])
+        
+        // 竖线
+        let vertical = UIView()
+        vertical.backgroundColor = .red
+        vertical.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(vertical)
+        NSLayoutConstraint.activate([
+            vertical.centerXAnchor.constraint(equalTo: centerXAnchor),
+            vertical.topAnchor.constraint(equalTo: topAnchor),
+            vertical.bottomAnchor.constraint(equalTo: bottomAnchor),
+            vertical.widthAnchor.constraint(equalToConstant: 1)
+        ])
+        
+        // 实心圆圈
+        let circleDiameter: CGFloat = 12
+        let circle = UIView()
+        circle.backgroundColor = .red
+        circle.layer.cornerRadius = circleDiameter / 2
+        circle.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(circle)
+        NSLayoutConstraint.activate([
+            circle.centerXAnchor.constraint(equalTo: centerXAnchor),
+            circle.centerYAnchor.constraint(equalTo: centerYAnchor),
+            circle.widthAnchor.constraint(equalToConstant: circleDiameter),
+            circle.heightAnchor.constraint(equalToConstant: circleDiameter)
+        ])
     }
 }
