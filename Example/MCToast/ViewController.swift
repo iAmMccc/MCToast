@@ -316,7 +316,7 @@ extension ViewController {
             label.backgroundColor = UIColor.red
             customView.addSubview(label)
             
-            self.statusBar(view: customView)
+            MCToast.statusBar(view: customView)
         default:
             break
         }

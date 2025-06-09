@@ -11,32 +11,17 @@ import Foundation
 extension MCToast {
     
     @discardableResult
-    public static func showCustomView(_ customView: UIView,
-                                      duration: CGFloat,
-                                      bgColor: UIColor? = nil,
-                                      respond: RespondPolicy,
-                                      dismissHandler: DismissHandler? = nil) -> UIWindow? {
-        shared.showCustomView(customView, duration: duration, bgColor: bgColor, respond: respond, dismissHandler: dismissHandler)
-    }
-    
-    
-    @discardableResult
     func showCustomView(_ customView: UIView,
                         duration: CGFloat,
-                        bgColor: UIColor? = nil,
                         respond: RespondPolicy,
                         dismissHandler: DismissHandler? = nil) -> UIWindow? {
         
         func getWindow() -> UIWindow? {
             
-            
             let size = customView.frame.size
             
             // 创建窗口
             let window = createWindow(respond: respond, style: .custom, size: size)
-            if let color = bgColor {
-                window.contentView.backgroundColor = color
-            }
             
             // 把 customView 加到 contentView 上
             window.contentView.addSubview(customView)

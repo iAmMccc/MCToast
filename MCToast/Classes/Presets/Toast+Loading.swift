@@ -19,54 +19,10 @@
  6. 
  */
 
-extension UIResponder {
-    
-    
-    /// loading (菊花)
-    /// - Parameters:
-    ///   - text: 显示的内容
-    ///   - duration: 持续时间
-    ///   - respond: 交互方式
-    ///   - callback: 隐藏回调
-    @discardableResult
-    public func loading(text: String = "正在加载中",
-                           duration: CGFloat = 0,
-                           respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
-                           dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
-        if text.isEmpty {
-            return MCToast.shared.loading(duration: duration, respond: respond, dismissHandler: dismissHandler)
-        } else {
-            return MCToast.shared.loading(text: text, duration: duration, respond: respond, dismissHandler: dismissHandler)
-        }
-    }
-}
-
-
-extension MCToast {
-    
-    /// loading (菊花)
-    ///
-    /// - Parameters:
-    ///   - text: 文字内容 默认为 "正在加载中"
-    ///   - duration: 自动隐藏的时间
-    ///   - font: 字体大小
-    @discardableResult
-    public static func loading(text: String = "正在加载中",
-                                  duration: CGFloat = 0,
-                                  respond: RespondPolicy = MCToastConfig.shared.respond,
-                                  dismissHandler: DismissHandler? = nil) -> UIWindow? {
-        
-        if text.isEmpty {
-            return MCToast.shared.loading(duration: duration, respond: respond, dismissHandler: dismissHandler)
-        } else {
-            return MCToast.shared.loading(text: text, duration: duration, respond: respond, dismissHandler: dismissHandler)
-        }
-    }
-}
 
 extension MCToast {
     @discardableResult
-    fileprivate func loading(text: String? = nil,
+    func loading(text: String? = nil,
                                     duration: CGFloat,
                                     respond: RespondPolicy,
                              dismissHandler: DismissHandler? = nil) -> UIWindow? {

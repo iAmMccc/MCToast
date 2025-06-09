@@ -8,23 +8,6 @@
 import Foundation
 
 
-extension UIResponder {
-    
-    /// 移除toast
-    /// - Parameter callback: 移除成功的回调
-    public func remove(dismissHandler: MCToast.DismissHandler? = nil) {
-        MCToast.shared.clearAllToast(dismissHandler: dismissHandler)
-    }
-}
-
-extension MCToast {
-    /// 移除toast
-    /// - Parameter callback: 移除成功的回调
-    public static func remove(dismissHandler: DismissHandler? = nil) {
-        MCToast.shared.clearAllToast(dismissHandler: dismissHandler)
-    }
-}
-
 
 extension MCToast {
     

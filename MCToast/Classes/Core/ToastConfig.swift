@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 
-
-
 public struct MCToastConfig {
     public static let shared = MCToastConfig()
     

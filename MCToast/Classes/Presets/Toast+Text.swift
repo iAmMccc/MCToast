@@ -6,49 +6,6 @@
 //
 
 
-extension UIResponder {
-    
-    /// 展示文字toast
-    /// - Parameters:
-    ///   - text: 文字内容
-    ///   - offset: toast底部距离屏幕底部距离
-    ///   - duration: 显示的时间（秒）
-    ///   - respond: 交互类型
-    ///   - callback: 隐藏的回调
-    @discardableResult
-    public func text(_ text: String,
-                        offset: CGFloat = MCToastConfig.shared.text.offset,
-                        duration: CGFloat = MCToastConfig.shared.duration,
-                        respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
-                        dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow?  {
-        return MCToast.text(text, offset: offset, duration: duration, respond: respond, dismissHandler: dismissHandler)
-    }
-}
-
-
-extension MCToast {
-    
-    
-    /// 展示文字toast
-    /// - Parameters:
-    ///   - text: 文字内容
-    ///   - offset: toast底部距离屏幕底部距离
-    ///   - duration: 显示的时间（秒）
-    ///   - respond: 交互类型
-    ///   - callback: 隐藏的回调
-    @discardableResult
-    public static func text(_ text: String,
-                               offset: CGFloat = MCToastConfig.shared.text.offset,
-                               duration: CGFloat = MCToastConfig.shared.duration,
-                               respond: RespondPolicy = MCToastConfig.shared.respond,
-                               dismissHandler: DismissHandler? = nil) -> UIWindow? {
-        return MCToast.shared.showText(text, offset: offset, duration: duration, respond: respond, dismissHandler: dismissHandler)
-        
-    }
-    
-}
-
-
 // MARK: - 显示纯文字
 extension MCToast {
     

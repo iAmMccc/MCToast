@@ -27,24 +27,7 @@
 import Foundation
 import UIKit
 
-internal let sn_topBar: Int = 1001
-
-
-
 public class MCToast: NSObject {
-    
-    /// 开启键盘适配（注册键盘通知等）
-    public static func enableKeyboardTracking() {
-        KeyboardManager.shared.keyboardHeightChanged = { keyboardHeight, duration in
-            shared.onKeyboardWillChangeFrame(height: keyboardHeight, duration: duration)
-        }
-    }
-
-    /// 开启横竖屏适配（注册方向变化通知等）
-    public static func enableOrientationTracking() {
-        NotificationCenter.default.addObserver(shared, selector: #selector(onOrientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
-    }
-    
     
     internal static let shared = MCToast()
 
@@ -72,7 +55,12 @@ public class MCToast: NSObject {
 
 extension MCToast {
     
-    func createWindow(respond: RespondPolicy, style: Style, offset: CGFloat? = nil, size: CGSize? = nil) -> ToastWindow {
+    func createWindow(
+        respond: RespondPolicy,
+        style: Style,
+        offset: CGFloat? = nil,
+        size: CGSize? = nil
+    ) -> ToastWindow {
         
         guard let windowScene = UIApplication.shared.connectedScenes
             .compactMap({ $0 as? UIWindowScene })
@@ -81,7 +69,7 @@ extension MCToast {
         }
         
         // 创建承载视图
-        let contentView = createcontentView()
+        let contentView = createcontentView(style: style)
         
         // 创建window
         let window = ToastWindow(windowScene: windowScene, contentView: contentView, response: respond)
@@ -95,12 +83,19 @@ extension MCToast {
 
     
     /// 创建主视图区域
-    func createcontentView() -> ToastContentView {
+    func createcontentView(style: Style) -> ToastContentView {
         let contentView = ToastContentView()
-        contentView.layer.cornerRadius = MCToastConfig.shared.icon.cornerRadius
-        contentView.layer.masksToBounds = true
-        contentView.backgroundColor = MCToastConfig.shared.background.resolvedColor
-        contentView.alpha = 0.0
+        
+        switch style {
+        case .custom, .statusBar:
+            contentView.backgroundColor = .clear
+        default:
+            contentView.backgroundColor = MCToastConfig.shared.background.resolvedColor
+            contentView.alpha = 0.0
+            contentView.layer.cornerRadius = MCToastConfig.shared.icon.cornerRadius
+            contentView.layer.masksToBounds = true
+        }
+        
 
         UIView.animate(withDuration: 0.2) {
             contentView.alpha = 1
@@ -108,10 +103,13 @@ extension MCToast {
         return contentView
     }
     
-    func setupContentViewConstraints(_ contentView: ToastContentView, style: MCToast.Style, offset: CGFloat? = nil, size: CGSize? = nil) {
+    func setupContentViewConstraints(
+        _ contentView: ToastContentView,
+        style: MCToast.Style,
+        offset: CGFloat? = nil,
+        size: CGSize? = nil) {
         
         guard let superview = self.toastWindow else { fatalError("need superview") }
-        
         
         switch style {
         case .text:
@@ -165,19 +163,12 @@ extension MCToast {
                 contentView.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
                 contentView.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
             ])
-//            NSLayoutConstraint.activate([
-//                // containerView 约束
-//                contentView.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-//                contentView.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-//                contentView.topAnchor.constraint(equalTo: superview.topAnchor),
-//                contentView.heightAnchor.constraint(equalToConstant: size.height)
-//            ])
         }
     }
 }
 
 extension MCToast {
-    @objc private func onOrientationChanged() {
+    @objc func onOrientationChanged() {
         // 重新读取offset计算属性，更新约束
         UIView.animate(withDuration: 0.3) {
             // 让window重新布局
@@ -186,7 +177,7 @@ extension MCToast {
         }
     }
     
-    @objc private func onKeyboardWillChangeFrame(height: CGFloat, duration: CGFloat) {
+    @objc func onKeyboardWillChangeFrame(height: CGFloat, duration: CGFloat) {
         guard let window = toastWindow,
               let constraint = self.toastWindow?.contentView.bottomConstraint else {
             return
