@@ -11,6 +11,7 @@ import Foundation
 class ToastContentView: UIView {
     
     var bottomConstraint: NSLayoutConstraint?
+    var position: MCToast.Position = .center
 
     override init(frame: CGRect) {
         super.init(frame: frame)

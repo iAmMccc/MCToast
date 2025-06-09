@@ -12,7 +12,7 @@ extension MCToast {
     @discardableResult
     internal func showText(
         _ text: String,
-        offset: CGFloat = MCToastConfig.shared.text.offset,
+        position: Position,
         duration: CGFloat,
         respond: RespondPolicy,
         showHander: ShowHandler? = nil,
@@ -33,7 +33,7 @@ extension MCToast {
         func getWindow() -> UIWindow {
             
             /// 1. 生成window
-            let window = createWindow(respond: respond, style: .text, offset: offset)
+            let window = createWindow(respond: respond, style: .text, position: position)
             
             /// 2. 创建label
             let mainLabel = createLabel()

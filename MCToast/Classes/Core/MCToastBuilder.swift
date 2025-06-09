@@ -21,6 +21,21 @@ extension MCToastBuilder {
         self.duration = value
         return self
     }
+    
+    /// 设置 Toast 的显示位置
+    /// - Parameter value: 显示位置（如居中或距离底部一定偏移）
+    ///
+    /// 使用 `.top(offset)` 表示距离屏幕顶部部向下偏移 `offset` 显示
+    /// 使用 `.center` 表示垂直居中显示
+    /// 使用 `.bottom(offset)` 表示距离屏幕底部向上偏移 `offset` 显示
+    ///
+    /// 默认值为 `.center`
+    @discardableResult
+    public func position(_ value: MCToast.Position) -> Self {
+        self.position = value
+        return self
+    }
+
 
     /// 设置 Toast 的响应策略，控制用户交互时是否允许点击穿透等。
     /// - Parameter policy: 响应策略，见 MCToast.RespondPolicy 枚举定义。
@@ -56,6 +71,10 @@ extension MCToastBuilder {
 public final class MCToastBuilder {
     fileprivate var style: MCToast.Style?
     fileprivate var text: String?
+    /// 内容视图距离屏幕底部的偏移量（默认居中）
+    /// - 若设置为大于 0 的值，toast 将从屏幕底部向上偏移对应距离显示
+    /// - 若未设置（或为 0），toast 将默认垂直居中显示
+    fileprivate var position: MCToast.Position?
     fileprivate var iconType: MCToast.IconType?
     fileprivate var customView: UIView?
 
@@ -94,10 +113,13 @@ extension MCToastBuilder {
     fileprivate func show() {
         onShowHandler?()
 
+        guard let style = style else { return }
         switch style {
         case .text:
+            let position = position ?? .bottom(offset: MCToastConfig.shared.text.offset)
             MCToast.shared.showText(
                 text ?? "",
+                position: position,
                 duration: duration,
                 respond: respond,
                 dismissHandler: dismissHandler
@@ -129,8 +151,6 @@ extension MCToastBuilder {
         case .statusBar:
             guard let view = customView else { return }
             MCToast.shared.noticeOnStatusBar(view: view, duration: duration, respond: respond, dismissHandler: dismissHandler)
-        case .none:
-            break
         }
     }
 }

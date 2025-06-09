@@ -195,7 +195,7 @@ extension MCToast {
                                duration: CGFloat = MCToastConfig.shared.duration,
                                respond: RespondPolicy = MCToastConfig.shared.respond,
                                dismissHandler: DismissHandler? = nil) -> UIWindow? {
-        return MCToast.shared.showText(text, offset: offset, duration: duration, respond: respond, dismissHandler: dismissHandler)
+        return MCToast.shared.showText(text, position: .bottom(offset: offset), duration: duration, respond: respond, dismissHandler: dismissHandler)
         
     }
 }

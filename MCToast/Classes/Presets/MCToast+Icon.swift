@@ -27,7 +27,7 @@ extension MCToast {
         func getWindow() -> UIWindow? {
             
             // 创建主 Toast Window
-            let window = createWindow(respond: respond, style: .icon)
+            let window = createWindow(respond: respond, style: .icon, position: .top(offset: 0))
             
             
             // 图标

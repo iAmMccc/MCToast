@@ -70,7 +70,7 @@ extension MCToast {
     func createWindow(
         respond: RespondPolicy,
         style: Style,
-        offset: CGFloat? = nil,
+        position: Position,
         size: CGSize? = nil
     ) -> ToastWindow {
         
@@ -81,23 +81,23 @@ extension MCToast {
         }
         
         // 创建承载视图
-        let contentView = createcontentView(style: style)
+        let contentView = createcontentView(style: style, position: position)
         
         // 创建window
         let window = ToastWindow(windowScene: windowScene, contentView: contentView, response: respond)
         self.toastWindow = window
         
         // 设置承载视图的约束
-        setupContentViewConstraints(contentView, style: style, offset: offset, size: size)
+        setupContentViewConstraints(contentView, style: style, size: size)
         
         return window
     }
     
     
     /// 创建主视图区域
-    func createcontentView(style: Style) -> ToastContentView {
+    func createcontentView(style: Style, position: Position) -> ToastContentView {
         let contentView = ToastContentView()
-        
+        contentView.position = position
         switch style {
         case .custom, .statusBar:
             contentView.backgroundColor = .clear
@@ -118,71 +118,61 @@ extension MCToast {
     func setupContentViewConstraints(
         _ contentView: ToastContentView,
         style: MCToast.Style,
-        offset: CGFloat? = nil,
-        size: CGSize? = nil) {
-            
-            guard let superview = self.toastWindow else { fatalError("need superview") }
-            
-            switch style {
-            case .text:
-                // 先给个宽最大限制，防止太宽
-                let maxWidth = MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal
-                NSLayoutConstraint.activate([
-                    contentView.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                    // 限制最大宽度
-                    contentView.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth)
-                ])
-                
-                var bottomConstraint: NSLayoutConstraint
-                if KeyboardManager.shared.currentVisibleKeyboardHeight > 0 {
-                    let bottomOffset = -KeyboardManager.shared.currentVisibleKeyboardHeight - MCToastConfig.shared.text.avoidKeyboardOffsetY
-                    bottomConstraint = contentView.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: bottomOffset)
-                } else {
-                    
-                    let bottomOffset: CGFloat = -(offset ?? MCToastConfig.shared.text.offset)
-                    bottomConstraint = contentView.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: bottomOffset)
-                }
+        size: CGSize? = nil
+    ) {
+        guard let superview = self.toastWindow else {
+            fatalError("need superview")
+        }
+
+        // 通用居中X
+        contentView.centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
+
+        switch style {
+        case .text:
+            // 限制最大宽度
+            let maxWidth = MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal
+            contentView.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth).isActive = true
+
+            switch contentView.position {
+            case .center:
+                contentView.centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
+
+            case .bottom(let offset):
+                let keyboardHeight = KeyboardManager.shared.currentVisibleKeyboardHeight
+                let baseOffset = offset
+                let bottomOffset = -abs(baseOffset) - (keyboardHeight > 0 ? keyboardHeight + MCToastConfig.shared.text.avoidKeyboardOffsetY : 0)
+
+                let bottomConstraint = contentView.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: bottomOffset)
                 bottomConstraint.isActive = true
                 contentView.bottomConstraint = bottomConstraint
-                break
-            case .icon:
-                NSLayoutConstraint.activate([
-                    contentView.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                    contentView.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
-                    contentView.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.toastWidth)
-                ])
-            case .loading:
-                NSLayoutConstraint.activate([
-                    contentView.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                    contentView.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
-                    contentView.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.toastWidth)
-                ])
-                
-            case .custom:
-                guard let size = size else { return }
-                NSLayoutConstraint.activate([
-                    contentView.widthAnchor.constraint(equalToConstant: size.width),
-                    contentView.heightAnchor.constraint(equalToConstant: size.height),
-                    contentView.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                    contentView.centerYAnchor.constraint(equalTo: superview.centerYAnchor)
-                ])
-            case .statusBar:
-                guard let size = size else { return }
-                
-                NSLayoutConstraint.activate([
-                    contentView.topAnchor.constraint(equalTo: superview.topAnchor),
-                    contentView.heightAnchor.constraint(equalToConstant: size.height),
-                    contentView.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-                    contentView.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-                ])
+            case .top(offset: let offset):
+                contentView.topAnchor.constraint(equalTo: superview.topAnchor, constant: offset).isActive = true
             }
-            
-            
-            
-           
-            
-            
+
+        case .icon, .loading:
+            // 固定宽度，居中显示
+            contentView.centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
+            contentView.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.toastWidth).isActive = true
+
+        case .custom:
+            guard let size = size else { return }
+            NSLayoutConstraint.activate([
+                contentView.widthAnchor.constraint(equalToConstant: size.width),
+                contentView.heightAnchor.constraint(equalToConstant: size.height),
+                contentView.centerYAnchor.constraint(equalTo: superview.centerYAnchor)
+            ])
+
+        case .statusBar:
+            guard let size = size else { return }
+            NSLayoutConstraint.activate([
+                contentView.topAnchor.constraint(equalTo: superview.topAnchor),
+                contentView.heightAnchor.constraint(equalToConstant: size.height),
+                contentView.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+                contentView.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+            ])
         }
+    }
+
 }
 
 extension MCToast {
@@ -257,5 +247,19 @@ extension MCToast {
         case failure
         /// 警告图标
         case warning
+    }
+    
+    /// Toast 的展示位置枚举
+    public enum Position {
+        
+        case top(offset: CGFloat)
+        
+        /// Toast 居中显示（默认值）
+        case center
+
+        /// Toast 显示在距屏幕底部一定距离的位置
+        /// - Parameter offset: 距离屏幕底部的偏移量（单位：pt）
+        ///   - 例如 offset = 60 表示距离屏幕底部 60pt 显示
+        case bottom(offset: CGFloat)
     }
 }

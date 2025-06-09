@@ -11,7 +11,7 @@ import UIKit
 
 
 public struct MCToastConfig {
-    public static let shared = MCToastConfig()
+    public static var shared = MCToastConfig()
     
     /// 设置交互区域 默认导航栏下禁止交互
     public var respond = MCToast.RespondPolicy.allow

@@ -224,19 +224,20 @@ extension ViewController {
     func showToastOnSection1(with row: Int) {
         switch row {
         case 0:
-            MCToast.text("提示文案", offset: 118)
+            MCToast.plainText("提示文案")
         case 1:
-            MCToast.text("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示", duration: 10)
+            MCToast.plainText("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示")
         case 2:
-            MCToast.text("提示文案", duration: 4)
+            MCToast.plainText("提示文案，设置时长4秒").duration(4)
         case 3:
-            MCToast.text("提示文案", respond: .forbid)
+            MCToast.plainText("提示文案，交互方式：完全禁止").respond(.forbid)
         case 4:
-            MCToast.text("提示文案", respond: .allowNav)
+            MCToast.plainText("提示文案，交互方式：仅导航栏").respond(.allowNav)
         case 5:
-            MCToast.text("提示文案", respond: .allow)
+            MCToast.plainText("提示文案，交互方式：完全允许").respond(.allow)
         case 6:
-            MCToast.text("居中显示", offset: UIScreen.main.bounds.size.height / 2)
+            MCToast.plainText("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示")
+                .position(.top(offset: 100))
         default:
             break
         }

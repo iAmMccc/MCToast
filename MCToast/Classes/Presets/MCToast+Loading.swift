@@ -19,7 +19,7 @@ extension MCToast {
     ) -> UIWindow? {
         
         func getWindow() -> UIWindow {
-            let window = createWindow(respond: respond, style: .loading)
+            let window = createWindow(respond: respond, style: .loading, position: .center)
             
             let activity = UIActivityIndicatorView()
             activity.translatesAutoresizingMaskIntoConstraints = false
