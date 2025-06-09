@@ -7,9 +7,6 @@
 
 import Foundation
 
-extension MCToast {
-    
-}
 // MARK: - 展示各种状态Toast
 extension MCToast {
     

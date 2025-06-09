@@ -19,6 +19,7 @@
  * 支持json动画。
  * 是否要移除windows，只需要一个window，window中持有contentView，contentView中持有底部约束。这样就好处理横竖屏切换，好处理键盘事件
  * 尝试优化，横竖屏切换+键盘弹出的时候，的效果。 不好处理。
+ * 使用链式表达式，onshow，dimissHander等，
  */
 
 
@@ -70,36 +71,6 @@ public class MCToast: NSObject {
 
 
 extension MCToast {
-    // toast消失的回调
-    public typealias DismissHandler = () -> Void
-    
-    public enum RespondPolicy {
-        /// Toast展示期间不允许事件交互
-        case forbid
-        /// Toast展示期间允许事件交互
-        case allow
-        /// Toast展示期间只允许导航条交互
-        case allowNav
-    }
-    
-    
-    public enum Style {
-        /// 文本类型
-        case text
-        /// icon类型
-        case icon
-        /// loading类型
-        case loading
-        /// 自定义类型
-        case custom
-        /// 状态栏
-        case statusBar
-    }
-}
-
-
-extension MCToast {
-    
     
     func createWindow(respond: RespondPolicy, style: Style, offset: CGFloat? = nil, size: CGSize? = nil) -> ToastWindow {
         
@@ -111,10 +82,12 @@ extension MCToast {
         
         // 创建承载视图
         let contentView = createcontentView()
+        
+        // 创建window
         let window = ToastWindow(windowScene: windowScene, contentView: contentView, response: respond)
         self.toastWindow = window
         
-
+        // 设置承载视图的约束
         setupContentViewConstraints(contentView, style: style, offset: offset, size: size)
         
         return window
@@ -137,18 +110,13 @@ extension MCToast {
     
     func setupContentViewConstraints(_ contentView: ToastContentView, style: MCToast.Style, offset: CGFloat? = nil, size: CGSize? = nil) {
         
-        guard let superview = self.toastWindow else {
-            fatalError("need superview")
-        }
-        
+        guard let superview = self.toastWindow else { fatalError("need superview") }
         
         
         switch style {
         case .text:
-            // 让contentView大小刚好包裹label内容
             // 先给个宽最大限制，防止太宽
             let maxWidth = MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal
-
             NSLayoutConstraint.activate([
                 contentView.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
                 // 限制最大宽度
@@ -174,7 +142,6 @@ extension MCToast {
                 contentView.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.toastWidth)
             ])
         case .loading:
-            // 主视图居中 + 宽度约束
             NSLayoutConstraint.activate([
                 contentView.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
                 contentView.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
@@ -182,9 +149,7 @@ extension MCToast {
             ])
 
         case .custom:
-            
             guard let size = size else { return }
-            // contentView 尺寸等于 customView
             NSLayoutConstraint.activate([
                 contentView.widthAnchor.constraint(equalToConstant: size.width),
                 contentView.heightAnchor.constraint(equalToConstant: size.height),
@@ -214,7 +179,6 @@ extension MCToast {
         }
 
         let targetOffset = max(height+MCToastConfig.shared.text.avoidKeyboardOffsetY, MCToastConfig.shared.text.offset)
-
         constraint.constant = -targetOffset
         let curve = UIView.AnimationCurve.easeInOut.rawValue
 
@@ -227,4 +191,33 @@ extension MCToast {
                        completion: nil)
     }
 
+}
+
+
+extension MCToast {
+    // toast消失的回调
+    public typealias DismissHandler = () -> Void
+    
+    public enum RespondPolicy {
+        /// Toast展示期间不允许事件交互
+        case forbid
+        /// Toast展示期间允许事件交互
+        case allow
+        /// Toast展示期间只允许导航条交互
+        case allowNav
+    }
+    
+    
+    public enum Style {
+        /// 文本类型
+        case text
+        /// icon类型
+        case icon
+        /// loading类型
+        case loading
+        /// 自定义类型
+        case custom
+        /// 状态栏
+        case statusBar
+    }
 }
