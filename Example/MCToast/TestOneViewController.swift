@@ -17,7 +17,7 @@ class TestOneViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
         
-        MCToast.mc_text("加载中", duration: 10)
+        MCToast.mc_text("", duration: 10)
 
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //            MCToast.mc_text("加载中", duration: 10)

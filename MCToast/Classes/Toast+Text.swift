@@ -71,51 +71,17 @@ extension MCToast {
         }
         
         func getWindow() -> UIWindow {
-            /// 1. 创建label
+
+            /// 1. 生成window
+            let window = createWindow(respond: respond, style: .text, offset: offset)
+            
+            /// 2. 创建label
             let mainLabel = createLabel()
             
-            
-            /// 2. 生成window
-            let window = createWindow(respond: respond, style: .text)
-
             /// 3. 添加label到contentView
             window.contentView.addSubview(mainLabel)
-            
-            /// 6. contentView 约束
-            switch respond {
-            case .allow:
-                // 让contentView大小刚好包裹label内容
-                // 先给个宽最大限制，防止太宽
-                let maxWidth = MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal
-                
-                NSLayoutConstraint.activate([
-                    window.contentView.centerXAnchor.constraint(equalTo: window.contentView.superview!.centerXAnchor),
-                    // 限制最大宽度
-                    window.contentView.widthAnchor.constraint(lessThanOrEqualToConstant: maxWidth)
-                ])
-                
-                var bottomConstraint: NSLayoutConstraint
-                if KeyboardManager.shared.currentVisibleKeyboardHeight > 0 {
-                    let bottomOffset = -KeyboardManager.shared.currentVisibleKeyboardHeight - MCToastConfig.shared.text.avoidKeyboardOffsetY
-                    bottomConstraint = window.contentView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: bottomOffset)
-                } else {
-                    let bottomOffset = -offset
-                    bottomConstraint = window.contentView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: bottomOffset)
-                }
-                bottomConstraint.isActive = true
-                self.toastWindow?.contentView.bottomConstraint = bottomConstraint
-
-                
-            case .allowNav, .forbid:
-                NSLayoutConstraint.activate([
-                    window.contentView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
-                    window.contentView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -offset),
-                    // 这里可以不限制宽度，或者根据实际需求限制
-                    window.contentView.widthAnchor.constraint(lessThanOrEqualToConstant: MCToastConfig.shared.text.maxWidth + MCToastConfig.shared.text.padding.horizontal)
-                ])
-            }
-            
-            /// 7. label 约束 - 填满contentView，留padding间距
+                        
+            /// 4. label 约束 - 填满contentView，留padding间距
             NSLayoutConstraint.activate([
                 mainLabel.topAnchor.constraint(equalTo: window.contentView.topAnchor, constant: MCToastConfig.shared.text.padding.top),
                 mainLabel.leadingAnchor.constraint(equalTo: window.contentView.leadingAnchor, constant: MCToastConfig.shared.text.padding.left),

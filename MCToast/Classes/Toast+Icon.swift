@@ -137,12 +137,7 @@ extension MCToast {
             // 创建主 Toast Window
             let window = createWindow(respond: respond, style: .icon)
 
-            NSLayoutConstraint.activate([
-                window.contentView.centerXAnchor.constraint(equalTo: window.centerXAnchor),
-                window.contentView.centerYAnchor.constraint(equalTo: window.centerYAnchor),
-                window.contentView.widthAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.toastWidth)
-            ])
-
+            
             // 图标
             let icon = UIImageView(image: iconImage)
             icon.translatesAutoresizingMaskIntoConstraints = false
@@ -171,7 +166,7 @@ extension MCToast {
                 label.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 12),
                 label.leftAnchor.constraint(equalTo: window.contentView.leftAnchor, constant: padding.left),
                 label.rightAnchor.constraint(equalTo: window.contentView.rightAnchor, constant: -padding.right),
-                label.bottomAnchor.constraint(equalTo: window.contentView.bottomAnchor, constant: -padding.bottom)
+                label.bottomAnchor.constraint(equalTo: window.contentView.bottomAnchor, constant: -padding.bottom),
             ])
 
             autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)

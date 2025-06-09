@@ -32,8 +32,11 @@ extension MCToast {
         
         func getWindow() -> UIWindow? {
             
+            
+            let size = customView.frame.size
+            
             // 创建窗口
-            let window = createWindow(respond: respond, style: .custom)
+            let window = createWindow(respond: respond, style: .custom, size: size)
             if let color = bgColor {
                 window.contentView.backgroundColor = color
             }
@@ -43,23 +46,11 @@ extension MCToast {
             
             // 设置 customView 尺寸约束（固定尺寸）
             NSLayoutConstraint.activate([
-                customView.widthAnchor.constraint(equalToConstant: customView.frame.width),
-                customView.heightAnchor.constraint(equalToConstant: customView.frame.height),
+                customView.widthAnchor.constraint(equalToConstant: size.width),
+                customView.heightAnchor.constraint(equalToConstant: size.height),
                 customView.centerXAnchor.constraint(equalTo: window.contentView.centerXAnchor),
                 customView.centerYAnchor.constraint(equalTo: window.contentView.centerYAnchor)
             ])
-            
-            // contentView 尺寸等于 customView
-            NSLayoutConstraint.activate([
-                window.contentView.widthAnchor.constraint(equalToConstant: customView.frame.width),
-                window.contentView.heightAnchor.constraint(equalToConstant: customView.frame.height)
-            ])
-            
-            // contentView 居中约束
-            let centerX = window.contentView.centerXAnchor.constraint(equalTo: window.centerXAnchor)
-            let centerY = window.contentView.centerYAnchor.constraint(equalTo: window.centerYAnchor)
-            
-            NSLayoutConstraint.activate([centerX, centerY])
             
             // 保证 window 会布局约束
             window.layoutIfNeeded()

@@ -226,7 +226,7 @@ extension ViewController {
         case 0:
             MCToast.mc_text("提示文案", offset: 118)
         case 1:
-            MCToast.mc_text("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示", duration: 10)
+            MCToast.mc_text("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示", duration: 10)
         case 2:
             MCToast.mc_text("提示文案", duration: 4)
         case 3:
@@ -331,12 +331,22 @@ extension ViewController {
     func showToastOnSection6(with row: Int) {
         switch row {
         case 0:
+            
+            
+            MCToast.mc_success("123") {
+                
+            }
+            
+            
             if let customWindow = MCToast.mc_success("旋转toast提示方向") {
-                UIView.beginAnimations(nil, context: nil)
-                UIView.setAnimationDuration(0.01) // 跟随视图动画时间
-                let rotate = CGFloat.pi / 2
-                customWindow.transform = customWindow.transform.rotated(by: rotate)
-                UIView.commitAnimations()
+                
+                UIView.animate(withDuration: 0.01,
+                               delay: 0,
+                               options: [.curveLinear],
+                               animations: {
+                                   customWindow.transform = customWindow.transform.rotated(by: .pi / 2)
+                               },
+                               completion: nil)
             }
         case 1:
             MCToast.mc_text("开始上传", dismissHandler: {
