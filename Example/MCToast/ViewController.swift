@@ -224,19 +224,19 @@ extension ViewController {
     func showToastOnSection1(with row: Int) {
         switch row {
         case 0:
-            MCToast.mc_text("提示文案", offset: 118)
+            MCToast.text("提示文案", offset: 118)
         case 1:
-            MCToast.mc_text("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示", duration: 10)
+            MCToast.text("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长的纯文本的展示", duration: 10)
         case 2:
-            MCToast.mc_text("提示文案", duration: 4)
+            MCToast.text("提示文案", duration: 4)
         case 3:
-            MCToast.mc_text("提示文案", respond: .forbid)
+            MCToast.text("提示文案", respond: .forbid)
         case 4:
-            MCToast.mc_text("提示文案", respond: .allowNav)
+            MCToast.text("提示文案", respond: .allowNav)
         case 5:
-            MCToast.mc_text("提示文案", respond: .allow)
+            MCToast.text("提示文案", respond: .allow)
         case 6:
-            MCToast.mc_text("居中显示", offset: UIScreen.main.bounds.size.height / 2)
+            MCToast.text("居中显示", offset: UIScreen.main.bounds.size.height / 2)
         default:
             break
         }
@@ -247,21 +247,21 @@ extension ViewController {
     func showToastOnSection2(with row: Int) {
         switch row {
         case 0:
-            MCToast.mc_success("成功")
+            MCToast.success("成功")
         case 1:
-            MCToast.mc_failure("失败")
+            MCToast.failure("失败")
         case 2:
-            MCToast.mc_warning("警告")
+            MCToast.warning("警告")
         case 3:
-            MCToast.mc_failure("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长失败状态", duration: 2)
+            MCToast.failure("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长失败状态", duration: 2)
         case 4:
-            MCToast.mc_codeSuccess()
+            MCToast.codeSuccess()
         case 5:
-            MCToast.mc_success("成功", respond: .forbid)
+            MCToast.success("成功", respond: .forbid)
         case 6:
-            MCToast.mc_success("成功", respond: .allowNav)
+            MCToast.success("成功", respond: .allowNav)
         case 7:
-            MCToast.mc_success("成功", respond: .allow)
+            MCToast.success("成功", respond: .allow)
         default:
             break
         }
@@ -273,15 +273,15 @@ extension ViewController {
     func showToastOnSection3(with row: Int) {
         switch row {
         case 0:
-            MCToast.mc_loading(duration: 2)
+            MCToast.loading(duration: 2)
         case 1:
-            MCToast.mc_loading(text: "")
+            MCToast.loading(text: "")
         case 2:
-            MCToast.mc_loading(duration: 2, respond: .forbid)
+            MCToast.loading(duration: 2, respond: .forbid)
         case 3:
-            MCToast.mc_loading(duration: 2, respond: .allowNav)
+            MCToast.loading(duration: 2, respond: .allowNav)
         case 4:
-            MCToast.mc_loading(duration: 2, respond: .allow)
+            MCToast.loading(duration: 2, respond: .allow)
         default:
             break
         }
@@ -303,7 +303,20 @@ extension ViewController {
             customView.addSubview(label)
             MCToast.showCustomView(customView, duration: 2, respond: .allow)
         case 1:
-            self.mc_statusBar("有内容更新啦，赶紧看看吧")
+            
+            let customView = UIView()
+            customView.backgroundColor = UIColor.green
+            customView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 88)
+            
+            let label = UILabel()
+            label.text = "自定义的内容"
+            label.textAlignment = .center
+            label.sizeToFit()
+            label.center = customView.center
+            label.backgroundColor = UIColor.red
+            customView.addSubview(label)
+            
+            self.statusBar(view: customView)
         default:
             break
         }
@@ -331,14 +344,7 @@ extension ViewController {
     func showToastOnSection6(with row: Int) {
         switch row {
         case 0:
-            
-            
-            MCToast.mc_success("123") {
-                
-            }
-            
-            
-            if let customWindow = MCToast.mc_success("旋转toast提示方向") {
+            if let customWindow = MCToast.success("旋转toast提示方向") {
                 
                 UIView.animate(withDuration: 0.01,
                                delay: 0,
@@ -349,9 +355,9 @@ extension ViewController {
                                completion: nil)
             }
         case 1:
-            MCToast.mc_text("开始上传", dismissHandler: {
-                MCToast.mc_loading(text: "上传中...", duration: 5, dismissHandler: {
-                    MCToast.mc_success("上传完成")
+            MCToast.text("开始上传", dismissHandler: {
+                MCToast.loading(text: "上传中...", duration: 5, dismissHandler: {
+                    MCToast.success("上传完成")
                 })
             })
         case 2:
@@ -432,7 +438,7 @@ extension ViewController {
 extension MCToast {
     
     /// 发送验证码成功
-    public static func mc_codeSuccess() {
+    public static func codeSuccess() {
         let image = UIImage.init(named: "codesend")
         MCToast.showStatus(text: "发送验证码成功", iconImage: image, duration: 2, respond: .allow)
     }

@@ -91,7 +91,7 @@ extension MCToast {
     ///   - duration: 显示的时间（秒）
     ///   - respond: 交互类型
     ///   - callback: 隐藏的回调
-    public static func mc_text(_ text: String,
+    public static func text(_ text: String,
                                offset: CGFloat? = nil,
                                duration: CGFloat = MCToastConfig.shared.duration,
                                respond: RespondPolicy = MCToastConfig.shared.respond,
@@ -106,13 +106,13 @@ extension MCToast {
 
   ```
 // 简单使用
-MCToast.mc_text("修改成功")
+MCToast.text("修改成功")
  // 长文本的换行使用
-MCToast.mc_text("这是一个很长长长长长长长长长长长长长长长的纯文本的展示")
+MCToast.text("这是一个很长长长长长长长长长长长长长长长的纯文本的展示")
 // 设置文本的偏移量。（以屏幕中心点为原点，正下负上）
-MCToast.mc_text("居中显示", offset: 0)
+MCToast.text("居中显示", offset: 0)
 // 全量设置
-MCToast.mc_text("设置成功", offset: 100, duration: 2, respond: .default) {
+MCToast.text("设置成功", offset: 100, duration: 2, respond: .default) {
    print("移除了")
 }
 ```
@@ -121,16 +121,16 @@ MCToast.mc_text("设置成功", offset: 100, duration: 2, respond: .default) {
 
  ```
   /// 成功的Toast
-  MCToast.mc_success("可能出现的长文本提示长文本内容")
+  MCToast.success("可能出现的长文本提示长文本内容")
   /// 失败的Toast
-  MCToast.mc_failure("失败")
+  MCToast.failure("失败")
   /// 警告的Toast
-  MCToast.mc_warning("警告")
+  MCToast.warning("警告")
   /// 自定义的状态Toast
-  MCToast.mc_codeSuccess()
+  MCToast.codeSuccess()
   extension MCToast {
       /// 发送验证码成功
-      public static func mc_codeSuccess() {
+      public static func codeSuccess() {
           let image = UIImage.init(named: "codesend")
           MCToast.showStatus(nil, text: "发送验证码成功", iconImage: image, duration: 2, respond: .respond)
       }
@@ -140,12 +140,12 @@ MCToast.mc_text("设置成功", offset: 100, duration: 2, respond: .default) {
 * loading
 ```
   /// 系统的loading
-  MCToast.mc_loading()
+  MCToast.loading()
   /// 自定义的帧动画loading
-  MCToast.mc_loading(imageNames: images)
+  MCToast.loading(imageNames: images)
   /// Json动画的loading （集成了Lottie库）
   let animation = Animation.named("JSON动画")
-  MCToast.mc_loading(animation: animation) 
+  MCToast.loading(animation: animation) 
   ```
 
 
@@ -155,17 +155,17 @@ MCToast.mc_text("设置成功", offset: 100, duration: 2, respond: .default) {
 extension UIResponder { }
 ```
 ```
-self.mc_text("这是一个纯文本的展示", duration: 2)
-self.mc_statusBar("有内容更新啦，赶紧看看吧")
+self.text("这是一个纯文本的展示", duration: 2)
+self.statusBar("有内容更新啦，赶紧看看吧")
 ```
 
 * 隐藏
 ```
 // 调用的时候，通过设置展示时间，隐藏
-self.mc_text("这是一个纯文本的展示", duration: 2)
+self.text("这是一个纯文本的展示", duration: 2)
 // 通过其他方法隐藏
-self.mc_remove() 
-// 或者 MCToast.mc_remove()
+self.remove() 
+// 或者 MCToast.remove()
 ```
 
 
@@ -177,5 +177,5 @@ self.mc_remove()
 
 
 # 说明
-1. 由于Toast是展示在Window上的，页面返回正在显示的Toast并不会消失。可以在页面的生命周期内调用MCToast.mc_remove()方法达到页面返回消失的目的。
+1. 由于Toast是展示在Window上的，页面返回正在显示的Toast并不会消失。可以在页面的生命周期内调用MCToast.remove()方法达到页面返回消失的目的。
 

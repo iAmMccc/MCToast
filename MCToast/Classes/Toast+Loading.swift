@@ -29,7 +29,7 @@ extension UIResponder {
     ///   - respond: 交互方式
     ///   - callback: 隐藏回调
     @discardableResult
-    public func mc_loading(text: String = "正在加载中",
+    public func loading(text: String = "正在加载中",
                            duration: CGFloat = 0,
                            respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
                            dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
@@ -51,7 +51,7 @@ extension MCToast {
     ///   - duration: 自动隐藏的时间
     ///   - font: 字体大小
     @discardableResult
-    public static func mc_loading(text: String = "正在加载中",
+    public static func loading(text: String = "正在加载中",
                                   duration: CGFloat = 0,
                                   respond: RespondPolicy = MCToastConfig.shared.respond,
                                   dismissHandler: DismissHandler? = nil) -> UIWindow? {

@@ -21,7 +21,7 @@ class ResponseTestViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        MCToast.mc_text("加载中", duration: 4, respond: response)
+        MCToast.text("加载中", duration: 4, respond: response)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,7 +31,7 @@ class ResponseTestViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        MCToast.mc_remove()
+        MCToast.remove()
     }
 }
 

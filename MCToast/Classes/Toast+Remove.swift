@@ -12,7 +12,7 @@ extension UIResponder {
     
     /// 移除toast
     /// - Parameter callback: 移除成功的回调
-    public func mc_remove(dismissHandler: MCToast.DismissHandler? = nil) {
+    public func remove(dismissHandler: MCToast.DismissHandler? = nil) {
         MCToast.shared.clearAllToast(dismissHandler: dismissHandler)
     }
 }
@@ -20,7 +20,7 @@ extension UIResponder {
 extension MCToast {
     /// 移除toast
     /// - Parameter callback: 移除成功的回调
-    public static func mc_remove(dismissHandler: DismissHandler? = nil) {
+    public static func remove(dismissHandler: DismissHandler? = nil) {
         MCToast.shared.clearAllToast(dismissHandler: dismissHandler)
     }
 }

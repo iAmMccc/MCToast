@@ -16,11 +16,11 @@ extension UIResponder {
     ///   - respond: 交互类型
     ///   - callback: 隐藏的回调
     @discardableResult
-    public func mc_success(_ text:String,
+    public func success(_ text:String,
                            duration: CGFloat = MCToastConfig.shared.duration,
                            respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
                            dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
-        return MCToast.mc_success(text, duration: duration, respond: respond, dismissHandler: dismissHandler)
+        return MCToast.success(text, duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
     
     
@@ -31,11 +31,11 @@ extension UIResponder {
     ///   - respond: 交互类型
     ///   - callback: 隐藏的回调
     @discardableResult
-    public func mc_failure(_ text: String,
+    public func failure(_ text: String,
                            duration:CGFloat = MCToastConfig.shared.duration,
                            respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
                            dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
-        return MCToast.mc_failure(text, duration: duration, respond: respond, dismissHandler: dismissHandler)
+        return MCToast.failure(text, duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
     
     
@@ -46,11 +46,11 @@ extension UIResponder {
     ///   - respond: 交互类型
     ///   - callback: 隐藏的回调
     @discardableResult
-    public func mc_warning(_ text: String,
+    public func warning(_ text: String,
                            duration:CGFloat = MCToastConfig.shared.duration,
                            respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
                            dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
-        return MCToast.mc_warning(text, duration: duration, respond: respond, dismissHandler: dismissHandler)
+        return MCToast.warning(text, duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
 }
 
@@ -65,7 +65,7 @@ extension MCToast {
     ///   - respond: 交互类型
     ///   - callback: 隐藏的回调
     @discardableResult
-    public static func mc_success(_ text:String,
+    public static func success(_ text:String,
                                   duration: CGFloat = MCToastConfig.shared.duration,
                                   respond: RespondPolicy = MCToastConfig.shared.respond,
                                   dismissHandler: DismissHandler? = nil) -> UIWindow? {
@@ -81,7 +81,7 @@ extension MCToast {
     ///   - respond: 交互类型
     ///   - callback: 隐藏的回调
     @discardableResult
-    public static func mc_failure(_ text: String,
+    public static func failure(_ text: String,
                                   duration:CGFloat = MCToastConfig.shared.duration,
                                   respond: RespondPolicy = MCToastConfig.shared.respond,
                                   dismissHandler: DismissHandler? = nil) -> UIWindow?  {
@@ -96,7 +96,7 @@ extension MCToast {
     ///   - respond: 交互类型
     ///   - callback: 隐藏的回调
     @discardableResult
-    public static func mc_warning(_ text: String,
+    public static func warning(_ text: String,
                                   duration: CGFloat = MCToastConfig.shared.duration,
                                   respond: RespondPolicy = MCToastConfig.shared.respond,
                                   dismissHandler: DismissHandler? = nil) -> UIWindow? {

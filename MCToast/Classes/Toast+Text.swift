@@ -16,12 +16,12 @@ extension UIResponder {
     ///   - respond: 交互类型
     ///   - callback: 隐藏的回调
     @discardableResult
-    public func mc_text(_ text: String,
+    public func text(_ text: String,
                         offset: CGFloat = MCToastConfig.shared.text.offset,
                         duration: CGFloat = MCToastConfig.shared.duration,
                         respond: MCToast.RespondPolicy = MCToastConfig.shared.respond,
                         dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow?  {
-        return MCToast.mc_text(text, offset: offset, duration: duration, respond: respond, dismissHandler: dismissHandler)
+        return MCToast.text(text, offset: offset, duration: duration, respond: respond, dismissHandler: dismissHandler)
     }
 }
 
@@ -37,7 +37,7 @@ extension MCToast {
     ///   - respond: 交互类型
     ///   - callback: 隐藏的回调
     @discardableResult
-    public static func mc_text(_ text: String,
+    public static func text(_ text: String,
                                offset: CGFloat = MCToastConfig.shared.text.offset,
                                duration: CGFloat = MCToastConfig.shared.duration,
                                respond: RespondPolicy = MCToastConfig.shared.respond,

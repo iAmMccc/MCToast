@@ -16,7 +16,7 @@ class KeyboardTestViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
                 
-//        MCToast.mc_loading(text: "loading")
+//        MCToast.loading(text: "loading")
         
         view.addSubview(textField)
         
@@ -54,7 +54,7 @@ class KeyboardTestViewController: UIViewController {
     }()
     
     @objc func showEvent() {
-        MCToast.mc_text("加载中", duration: 16, respond: .allow)
+        MCToast.text("加载中", duration: 16, respond: .allow)
 
     }
     
@@ -64,11 +64,11 @@ class KeyboardTestViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-//        MCToast.mc_success("成功了", duration: 0, respond: .allowNav)
+//        MCToast.success("成功了", duration: 0, respond: .allowNav)
         
-//        MCToast.mc_loading(text: "", duration: 0, respond: .allow)
+//        MCToast.loading(text: "", duration: 0, respond: .allow)
         
-//        MCToast.mc_statusBar("更新的信息", duration: 4, backgroundColor: UIColor.red)
+//        MCToast.statusBar("更新的信息", duration: 4, backgroundColor: UIColor.red)
         
         
 //        let customView = UIView()
@@ -87,7 +87,7 @@ class KeyboardTestViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        MCToast.mc_remove()
+        MCToast.remove()
     }
 }
 

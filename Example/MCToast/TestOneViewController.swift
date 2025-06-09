@@ -17,27 +17,27 @@ class TestOneViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
         
-        MCToast.mc_text("", duration: 10)
+        MCToast.text("", duration: 10)
 
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//            MCToast.mc_text("加载中", duration: 10)
+//            MCToast.text("加载中", duration: 10)
 //        }
         
-//        let toastWindow = MCToast.mc_text("加载中", duration: 10)
+//        let toastWindow = MCToast.text("加载中", duration: 10)
 //
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //            print("window.isHidden = \(toastWindow?.isHidden)")
 //            print("toastView superview = \(toastWindow?.superview)")
 //        }
         
-//        MCToast.mc_text("加载中", duration: 10)
+//        MCToast.text("加载中", duration: 10)
 
     }
     
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        MCToast.mc_remove()
+        MCToast.remove()
     }
 }
 

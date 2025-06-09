@@ -157,7 +157,21 @@ extension MCToast {
                 contentView.centerYAnchor.constraint(equalTo: superview.centerYAnchor)
             ])
         case .statusBar:
-            break
+            guard let size = size else { return }
+  
+            NSLayoutConstraint.activate([
+                contentView.topAnchor.constraint(equalTo: superview.topAnchor),
+                contentView.heightAnchor.constraint(equalToConstant: size.height),
+                contentView.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+                contentView.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+            ])
+//            NSLayoutConstraint.activate([
+//                // containerView 约束
+//                contentView.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+//                contentView.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+//                contentView.topAnchor.constraint(equalTo: superview.topAnchor),
+//                contentView.heightAnchor.constraint(equalToConstant: size.height)
+//            ])
         }
     }
 }

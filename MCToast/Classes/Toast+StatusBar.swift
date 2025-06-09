@@ -17,12 +17,12 @@ extension UIResponder {
     ///   - backgroundColor: 背景颜色
     ///   - callback: 隐藏的回调
     @discardableResult
-    public func mc_statusBar( _ text: String,
-                              duration: CGFloat = MCToastConfig.shared.duration,
-                              font: UIFont = MCToastConfig.shared.text.font,
-                              backgroundColor: UIColor? = nil,
-                              dismissHandler: MCToast.DismissHandler? = nil) -> UIWindow? {
-        return MCToast.mc_statusBar(text, duration: duration, font: font, backgroundColor: backgroundColor, dismissHandler: dismissHandler)
+    public func statusBar(
+        view: UIView,
+        duration: CGFloat = MCToastConfig.shared.duration,
+        dismissHandler: MCToast.DismissHandler? = nil
+    ) -> UIWindow? {
+        return MCToast.shared.noticeOnStatusBar(view: view, duration: duration, dismissHandler: dismissHandler)
     }
 }
 
@@ -37,14 +37,13 @@ extension MCToast {
     ///   - backgroundColor: 背景颜色
     ///   - callback: 隐藏的回调
     @discardableResult
-    public static func mc_statusBar(
-        _ text: String,
+    public static func statusBar(
+        view: UIView,
         duration: CGFloat = MCToastConfig.shared.duration,
-        font: UIFont = MCToastConfig.shared.text.font,
-        backgroundColor: UIColor? = nil,
-        dismissHandler: DismissHandler? = nil) -> UIWindow? {
-            return MCToast.shared.noticeOnStatusBar(text, duration: duration, backgroundColor: backgroundColor, font: font, dismissHandler: dismissHandler)
-        }
+        dismissHandler: DismissHandler? = nil
+    ) -> UIWindow? {
+        return MCToast.shared.noticeOnStatusBar(view: view, duration: duration, dismissHandler: dismissHandler)
+    }
 }
 
 
@@ -54,63 +53,32 @@ extension MCToast {
     
     @discardableResult
     internal func noticeOnStatusBar(
-        _ text: String,
+        view: UIView,
         duration: CGFloat,
-        backgroundColor: UIColor?,
-        font: UIFont,
         dismissHandler: DismissHandler? = nil
     ) -> UIWindow? {
         
-        guard !text.isEmpty else { return nil }
-
+        let contentHeight = view.frame.size.height
+        if contentHeight <= 0 {
+            return nil
+        }
         func getWindow() -> UIWindow {
             clearAllToast()
-
-            let window = createWindow(respond: .allow, style: .statusBar)
-
-            let containerView = ToastContentView()
-            containerView.backgroundColor = backgroundColor ?? UIColor(red: 0x6a/255.0, green: 0xb4/255.0, blue: 0x9f/255.0, alpha: 1)
-            containerView.tag = sn_topBar
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.textAlignment = .center
-            label.font = font
-            label.textColor = .white
-            label.text = text
-            label.numberOfLines = 0
-            containerView.addSubview(label)
-
-            window.contentView = containerView
-
-            let topSafeArea = UIDevice.topSafeAreaHeight
-            let labelPadding: CGFloat = 5.0
-
-            // 添加约束
-            NSLayoutConstraint.activate([
-                // containerView 约束
-                containerView.leadingAnchor.constraint(equalTo: window.leadingAnchor),
-                containerView.trailingAnchor.constraint(equalTo: window.trailingAnchor),
-                containerView.topAnchor.constraint(equalTo: window.topAnchor),
-                containerView.heightAnchor.constraint(equalToConstant: topSafeArea + 44),
-
-                // label 约束（放在 safeArea 下方）
-                label.topAnchor.constraint(equalTo: containerView.topAnchor, constant: topSafeArea + labelPadding),
-                label.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 12),
-                label.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12),
-                label.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -labelPadding)
-            ])
             
-
+            let window = createWindow(respond: .allow, style: .statusBar, size: CGSize(width: 0, height: contentHeight))
+            window.contentView.backgroundColor = view.backgroundColor
+            window.contentView.addSubview(view)
+            window.contentView.tag = sn_topBar
             // 动画滑入
             UIView.animate(withDuration: 0.3, animations: {
                 window.frame.origin.y = 0
             }, completion: { _ in
                 self.autoRemove(window: window, duration: duration, dismissHandler: dismissHandler)
             })
-
+            
             return window
         }
-
+        
         var result: UIWindow?
         DispatchQueue.main.safeSync {
             result = getWindow()
