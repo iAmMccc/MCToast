@@ -11,10 +11,12 @@ import Foundation
 extension MCToast {
     
     @discardableResult
-    func showCustomView(_ customView: UIView,
-                        duration: CGFloat,
-                        respond: RespondPolicy,
-                        dismissHandler: DismissHandler? = nil) -> UIWindow? {
+    func showCustomView(
+        _ customView: UIView,
+        duration: CGFloat,
+        respond: RespondPolicy,
+        dismissHandler: DismissHandler? = nil
+    ) -> UIWindow? {
         
         func getWindow() -> UIWindow? {
             

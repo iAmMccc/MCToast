@@ -24,6 +24,18 @@
 
 
 
+/**
+ loading 里面新增
+ 
+ 1. 帧动画
+ 2. json动画
+ 3. 系统loading
+ 4. 是否需要文字提示
+ 5. 如何动态更新文字 （比如上传图片的数量的改动）
+ 6.
+ */
+
+
 import Foundation
 import UIKit
 
@@ -225,4 +237,15 @@ extension MCToast {
         /// 状态栏
         case statusBar
     }
+    
+    /// Icon Toast 类型
+    public enum IconType {
+        /// 成功
+        case success
+        /// 失败
+        case failure
+        /// 警告
+        case warning
+    }
 }
+

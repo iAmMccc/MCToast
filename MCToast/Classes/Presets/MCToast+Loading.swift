@@ -8,28 +8,18 @@
 
 
 
-/**
- loading 里面新增
- 
- 1. 帧动画
- 2. json动画
- 3. 系统loading
- 4. 是否需要文字提示
- 5. 如何动态更新文字 （比如上传图片的数量的改动）
- 6. 
- */
-
-
 extension MCToast {
     @discardableResult
-    func loading(text: String? = nil,
-                                    duration: CGFloat,
-                                    respond: RespondPolicy,
-                             dismissHandler: DismissHandler? = nil) -> UIWindow? {
+    func loading(
+        text: String? = nil,
+        duration: CGFloat,
+        respond: RespondPolicy,
+        dismissHandler: DismissHandler? = nil
+    ) -> UIWindow? {
         
         func getWindow() -> UIWindow {
             let window = createWindow(respond: respond, style: .loading)
-                        
+            
             let activity = UIActivityIndicatorView()
             activity.translatesAutoresizingMaskIntoConstraints = false
             if #available(iOS 13.0, *) {
@@ -55,7 +45,7 @@ extension MCToast {
             }
             
             activity.color = .white
-
+            
             // 含文字的样式
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false

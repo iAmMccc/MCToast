@@ -10,11 +10,13 @@
 extension MCToast {
     
     @discardableResult
-    internal func showText(_ text: String,
-                                  offset: CGFloat = MCToastConfig.shared.text.offset,
-                                  duration: CGFloat,
-                                  respond: RespondPolicy,
-                           dismissHandler: DismissHandler? = nil) -> UIWindow? {
+    internal func showText(
+        _ text: String,
+        offset: CGFloat = MCToastConfig.shared.text.offset,
+        duration: CGFloat,
+        respond: RespondPolicy,
+        dismissHandler: DismissHandler? = nil
+    ) -> UIWindow? {
         
         func createLabel() -> UILabel {
             let label = UILabel()
@@ -28,7 +30,7 @@ extension MCToast {
         }
         
         func getWindow() -> UIWindow {
-
+            
             /// 1. 生成window
             let window = createWindow(respond: respond, style: .text, offset: offset)
             
@@ -37,7 +39,7 @@ extension MCToast {
             
             /// 3. 添加label到contentView
             window.contentView.addSubview(mainLabel)
-                        
+            
             /// 4. label 约束 - 填满contentView，留padding间距
             NSLayoutConstraint.activate([
                 mainLabel.topAnchor.constraint(equalTo: window.contentView.topAnchor, constant: MCToastConfig.shared.text.padding.top),

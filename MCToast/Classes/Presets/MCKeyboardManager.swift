@@ -22,7 +22,6 @@ class KeyboardManager {
     
     /// 当前键盘真实高度（动态获取，若键盘未展示则为 0）
     var currentVisibleKeyboardHeight: CGFloat {
-
         if keyboardState.isVisible {
             return lastKnownKeyboardHeight ?? savedKeyboardHeight()
         }
