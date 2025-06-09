@@ -248,21 +248,24 @@ extension ViewController {
     func showToastOnSection2(with row: Int) {
         switch row {
         case 0:
-            MCToast.success("成功")
+            MCToast.iconText("成功", icon: .success)
         case 1:
-            MCToast.failure("失败")
+            MCToast.iconText("失败", icon: .failure)
         case 2:
-            MCToast.warning("警告")
+            MCToast.iconText("警告", icon: .warning)
         case 3:
-            MCToast.failure("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长失败状态", duration: 2)
+            MCToast.iconText("这是一个很长长长长长长长长长长长长长长长长长长长长长长长长成功状态", icon: .success)
         case 4:
-            MCToast.codeSuccess()
+            MCToast.iconText("自定义", icon: .custom(UIImage(named: "codesend")))
         case 5:
-            MCToast.success("成功", respond: .forbid)
+            MCToast.iconText("成功", icon: .success)
+                .respond(.forbid)
         case 6:
-            MCToast.success("成功", respond: .allowNav)
+            MCToast.iconText("成功", icon: .success)
+                .respond(.allowNav)
         case 7:
-            MCToast.success("成功", respond: .allow)
+            MCToast.iconText("成功", icon: .success)
+                .respond(.allow)
         default:
             break
         }

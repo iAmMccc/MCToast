@@ -247,6 +247,8 @@ extension MCToast {
         case failure
         /// 警告图标
         case warning
+        /// 自定义图标
+        case custom(UIImage?)
     }
     
     /// Toast 的展示位置枚举

@@ -99,6 +99,8 @@ extension MCToast.IconType {
             } else {
                 showImage = MCToast.loadImage("toast_warning")
             }
+        case .custom(let image):
+            showImage = image
         }
         return showImage
     }

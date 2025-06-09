@@ -71,6 +71,6 @@ extension AppDelegate {
         
         
         // 6. 设置自动隐藏的时长
-        MCToastConfig.shared.duration = 4
+        MCToastConfig.shared.duration = 2.5
     }
 }

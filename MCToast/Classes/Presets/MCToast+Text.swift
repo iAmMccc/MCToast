@@ -26,6 +26,8 @@ extension MCToast {
             label.font = MCToastConfig.shared.text.font
             label.textAlignment = .center
             label.textColor = MCToastConfig.shared.text.textColor
+            label.lineBreakMode = .byCharWrapping
+            label.lineBreakMode = .byTruncatingTail
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }
