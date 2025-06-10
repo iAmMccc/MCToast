@@ -1,6 +1,6 @@
 {
   "name": "MCToast",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "summary": "Swift版本的HUD，支持多种自定义方案。使用方便。",
   "homepage": "https://github.com/iAmMccc/MCToast",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/iAmMccc/MCToast.git",
-    "tag": "0.2.1"
+    "tag": "1.0.0"
   },
   "platforms": {
     "ios": "13.0"

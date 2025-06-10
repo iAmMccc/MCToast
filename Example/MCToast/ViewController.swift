@@ -9,7 +9,7 @@
 import UIKit
 import MCToast
 import SnapKit
-
+import Lottie
 
 class ViewController: UIViewController {
 
@@ -74,7 +74,8 @@ class ViewController: UIViewController {
             title: "自定义",
             rows: [
                 "自定义 - 自定义视图",
-                "自定义 - 显示在状态栏"
+                "自定义 - 显示在状态栏",
+                "自定义 - lottie动画"
             ]
         ),
         (
@@ -304,6 +305,16 @@ extension ViewController {
             
             MCToast.statusBarView(customView)
             
+        case 2:
+            // 加载 JSON 动画
+            let animation = LottieAnimation.named("waiting")
+            let animView = LottieAnimationView(animation: animation)
+            animView.backgroundColor = UIColor.black
+            animView.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
+            animView.contentMode = .scaleAspectFit
+            animView.loopMode = .loop
+            animView.play()
+            MCToast.custom(animView)
         default:
             break
         }

@@ -1,13 +1,16 @@
 PODS:
-  - MCToast (0.2.1)
+  - lottie-ios (4.5.2)
+  - MCToast (1.0.0)
   - SnapKit (5.7.1)
 
 DEPENDENCIES:
+  - lottie-ios
   - MCToast (from `../`)
   - SnapKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - lottie-ios
     - SnapKit
 
 EXTERNAL SOURCES:
@@ -15,9 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MCToast: 69674df810351fa6958e00480b19909be9ed23a4
+  lottie-ios: 96784afc26ea031d3e2b6cae342a4b8915072489
+  MCToast: 0fcc2a8880d8d9a5e6693fffac0e4f371142574d
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
-PODFILE CHECKSUM: a82c4d9d5237e1578df0f9162bd82646bfd74ecc
+PODFILE CHECKSUM: 7616df774d73f4e361e6c9897c28f85f79b6a9b8
 
 COCOAPODS: 1.15.2
