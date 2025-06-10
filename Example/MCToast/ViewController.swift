@@ -285,13 +285,24 @@ extension ViewController {
         case 0:
             let customView = UIView()
             customView.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
+            customView.backgroundColor = UIColor.black
             let label = UILabel()
             label.text = "自定义的内容"
             label.sizeToFit()
             label.center = customView.center
             label.backgroundColor = UIColor.red
             customView.addSubview(label)
-            MCToast.showCustomView(customView, duration: 2, respond: .allow)
+            
+            MCToast.custom(customView)
+                .duration(2.5)
+                .respond(.allow)
+                .showHandler({
+                    print("显示了")
+                })
+                .dismissHandler {
+                    print("消失了")
+                }
+            
         case 1:
             
             let customView = UIView()
@@ -306,7 +317,8 @@ extension ViewController {
             label.backgroundColor = UIColor.red
             customView.addSubview(label)
             
-            MCToast.statusBar(view: customView)
+            MCToast.statusBarView(customView)
+            
         default:
             break
         }
