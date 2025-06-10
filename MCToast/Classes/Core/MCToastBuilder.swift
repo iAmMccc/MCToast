@@ -63,6 +63,10 @@ extension MCToastBuilder {
         self.dismissHandler = handler
         return self
     }
+    
+    public func show() {
+        showToast()
+    }
 }
 
 
@@ -83,16 +87,20 @@ public final class MCToastBuilder {
     var onShowHandler: MCToast.ShowHandler?
     var dismissHandler: MCToast.DismissHandler?
 
+    public var window: MCToastWindow?
 
     // MARK: - 初始化入口（内部调用）
-    static func build(style: MCToast.Style, text: String? = nil, icon: MCToast.IconType? = nil, view: UIView? = nil) -> MCToastBuilder {
+    static func build(style: MCToast.Style, text: String? = nil, icon: MCToast.IconType? = nil, view: UIView? = nil, autoShow: Bool) -> MCToastBuilder {
         let builder = MCToastBuilder()
         builder.style = style
         builder.text = text
         builder.iconType = icon
         builder.customView = view
 
-        builder.tryScheduleShowIfNeeded()
+        if autoShow {
+            builder.tryScheduleShowIfNeeded()
+        }
+        
         return builder
     }
 }
@@ -105,19 +113,20 @@ extension MCToastBuilder {
     // 因此在它真正执行 .show() 时，链式设置早已完成。
     private func tryScheduleShowIfNeeded() {
         DispatchQueue.main.async {
-            self.show()
+            self.showToast()
         }
     }
 
 
-    fileprivate func show() {
+    fileprivate func showToast() {
         onShowHandler?()
 
+        let window: MCToastWindow?
         guard let style = style else { return }
         switch style {
         case .text:
             let position = position ?? .bottom(offset: MCToastConfig.shared.text.offset)
-            MCToast.shared.showText(
+            window = MCToast.shared.showText(
                 text ?? "",
                 position: position,
                 duration: duration,
@@ -126,7 +135,7 @@ extension MCToastBuilder {
             )
         case .icon:
             guard let icon = iconType else { return }
-            MCToast.shared.showStatus(
+            window = MCToast.shared.showStatus(
                 text: text ?? "",
                 iconImage: icon.getImage(),
                 duration: duration,
@@ -134,7 +143,7 @@ extension MCToastBuilder {
                 dismissHandler: dismissHandler
             )
         case .loading:
-            MCToast.shared.loading(
+            window = MCToast.shared.loading(
                 text: text ?? "",
                 duration: duration,
                 respond: respond,
@@ -142,7 +151,7 @@ extension MCToastBuilder {
             )
         case .custom:
             guard let view = customView else { return }
-            MCToast.shared.showCustomView(
+            window = MCToast.shared.showCustomView(
                 view,
                 duration: duration,
                 respond: respond,
@@ -150,7 +159,9 @@ extension MCToastBuilder {
             )
         case .statusBar:
             guard let view = customView else { return }
-            MCToast.shared.noticeOnStatusBar(view: view, duration: duration, respond: respond, dismissHandler: dismissHandler)
+            window = MCToast.shared.noticeOnStatusBar(view: view, duration: duration, respond: respond, dismissHandler: dismissHandler)
         }
+        self.window = window
+        onShowHandler?()
     }
 }

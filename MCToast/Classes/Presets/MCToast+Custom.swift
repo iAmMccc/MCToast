@@ -17,9 +17,9 @@ extension MCToast {
         respond: RespondPolicy,
         showHander: ShowHandler? = nil,
         dismissHandler: DismissHandler? = nil
-    ) -> UIWindow? {
+    ) -> MCToastWindow? {
         
-        func getWindow() -> UIWindow? {
+        func getWindow() -> MCToastWindow? {
             
             let size = customView.frame.size
             
@@ -50,7 +50,7 @@ extension MCToast {
             return nil
         }
         
-        var tempWindow: UIWindow?
+        var tempWindow: MCToastWindow?
         DispatchQueue.main.safeSync {
             clearAllToast()
             tempWindow = getWindow()

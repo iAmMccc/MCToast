@@ -93,7 +93,6 @@ class ViewController: UIViewController {
             rows: [
                 "组合使用 - 旋转toast",
                 "组合使用 - 多个状态切换的处理",
-                "组合使用 - 动态改变文字内容"
             ]
         ),
         (
@@ -346,71 +345,26 @@ extension ViewController {
     func showToastOnSection6(with row: Int) {
         switch row {
         case 0:
-            if let customWindow = MCToast.success("旋转toast提示方向") {
-                
+            
+            
+            let builder = MCToast.iconText("旋转方向", icon: .success, autoShow: false)
+            builder.showHandler {
                 UIView.animate(withDuration: 0.01,
                                delay: 0,
                                options: [.curveLinear],
                                animations: {
-                                   customWindow.transform = customWindow.transform.rotated(by: .pi / 2)
-                               },
+                    builder.window?.transform = builder.window!.transform.rotated(by: .pi / 2)
+                },
                                completion: nil)
             }
+            builder.show()
+            
+            
         case 1:
-            MCToast.text("开始上传", dismissHandler: {
-                MCToast.loading(text: "上传中...", duration: 5, dismissHandler: {
-                    MCToast.success("上传完成")
-                })
-            })
-        case 2:
-            let image = UIImage.init(named: "codesend")
-            let window = MCToast.showStatus(text: "倒计时开始", iconImage: image, duration: 5, respond: .allow)
             
-
-            guard let tempWindow = window  else { return }
-            
-            var contentView: UIView?
-            
-            var textLabel: UILabel?
-            var imageView: UIImageView?
-
-            for subview in tempWindow.subviews {
-                
-                if subview.isKind(of: UIView.self) {
-                    contentView = subview
-                    break
-                }
-            }
-            
-            for subview in contentView?.subviews ?? [] {
-                if subview.isKind(of: UILabel.self) {
-                    textLabel = subview as? UILabel
-                }
-                
-                if subview.isKind(of: UIImageView.self) {
-                    imageView = subview as? UIImageView
-                }
-            }
-            
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                UIView.animate(withDuration: 0.2) {
-                    textLabel?.text = "倒计时 3"
-                    imageView?.image = UIImage.init(named: "toast_success")
-                }
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-                UIView.animate(withDuration: 0.2) {
-                    textLabel?.text = "倒计时 2"
-                    imageView?.image = UIImage.init(named: "toast_failure")
-                }
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-                UIView.animate(withDuration: 0.2) {
-                    textLabel?.text = "倒计时 1"
-                    imageView?.image = UIImage.init(named: "toast_warning")
+            MCToast.plainText("开始上传").dismissHandler {
+                MCToast.loadingText("上传中").dismissHandler {
+                    MCToast.iconText("上传成功", icon: .success)
                 }
             }
         default:

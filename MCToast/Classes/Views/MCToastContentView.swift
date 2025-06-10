@@ -1,5 +1,5 @@
 //
-//  ToastContentView.swift
+//  MCToastContentView.swift
 //  MCToast
 //
 //  Created by qixin on 2025/6/6.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-class ToastContentView: UIView {
+public class MCToastContentView: UIView {
     
     var bottomConstraint: NSLayoutConstraint?
     var position: MCToast.Position = .center

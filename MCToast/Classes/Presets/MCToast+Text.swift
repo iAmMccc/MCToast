@@ -17,7 +17,7 @@ extension MCToast {
         respond: RespondPolicy,
         showHander: ShowHandler? = nil,
         dismissHandler: DismissHandler? = nil
-    ) -> UIWindow? {
+    ) -> MCToastWindow? {
         
         func createLabel() -> UILabel {
             let label = UILabel()
@@ -32,7 +32,7 @@ extension MCToast {
             return label
         }
         
-        func getWindow() -> UIWindow {
+        func getWindow() -> MCToastWindow {
             
             /// 1. 生成window
             let window = createWindow(respond: respond, style: .text, position: position)
@@ -59,7 +59,7 @@ extension MCToast {
         
         if text.isEmpty { return nil }
         
-        var temp: UIWindow?
+        var temp: MCToastWindow?
         DispatchQueue.main.safeSync {
             clearAllToast()
             temp = getWindow()

@@ -16,9 +16,9 @@ extension MCToast {
         respond: RespondPolicy,
         showHander: ShowHandler? = nil,
         dismissHandler: DismissHandler? = nil
-    ) -> UIWindow? {
+    ) -> MCToastWindow? {
         
-        func getWindow() -> UIWindow {
+        func getWindow() -> MCToastWindow {
             let window = createWindow(respond: respond, style: .loading, position: .center)
             
             let activity = UIActivityIndicatorView()
@@ -70,7 +70,7 @@ extension MCToast {
             manageLifecycle(window: window, duration: duration, showHandler: showHander, dismissHandler: dismissHandler)
             return window
         }
-        var tempWindow: UIWindow?
+        var tempWindow: MCToastWindow?
         DispatchQueue.main.safeSync {
             clearAllToast()
             tempWindow = getWindow()

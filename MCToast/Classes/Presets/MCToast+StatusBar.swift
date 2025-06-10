@@ -20,13 +20,13 @@ extension MCToast {
         respond: MCToast.RespondPolicy,
         showHander: ShowHandler? = nil,
         dismissHandler: DismissHandler? = nil
-    ) -> UIWindow? {
+    ) -> MCToastWindow? {
         
         let contentHeight = view.frame.size.height
         if contentHeight <= 0 {
             return nil
         }
-        func getWindow() -> UIWindow {
+        func getWindow() -> MCToastWindow {
             clearAllToast()
             
             let window = createWindow(respond: respond, style: .statusBar, position: .center, size: CGSize(width: 0, height: contentHeight))
@@ -42,7 +42,7 @@ extension MCToast {
             return window
         }
         
-        var result: UIWindow?
+        var result: MCToastWindow?
         DispatchQueue.main.safeSync {
             result = getWindow()
         }

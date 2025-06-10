@@ -44,7 +44,7 @@ public class MCToast: NSObject {
     internal static let shared = MCToast()
     
     /// 管理所有的windows
-    internal var toastWindow: ToastWindow?
+    internal var toastWindow: MCToastWindow?
     
     internal static var keyWindow: UIWindow? {
         if #available(iOS 13.0, *) {
@@ -72,7 +72,7 @@ extension MCToast {
         style: Style,
         position: Position,
         size: CGSize? = nil
-    ) -> ToastWindow {
+    ) -> MCToastWindow {
         
         guard let windowScene = UIApplication.shared.connectedScenes
             .compactMap({ $0 as? UIWindowScene })
@@ -84,7 +84,7 @@ extension MCToast {
         let contentView = createcontentView(style: style, position: position)
         
         // 创建window
-        let window = ToastWindow(windowScene: windowScene, contentView: contentView, response: respond)
+        let window = MCToastWindow(windowScene: windowScene, contentView: contentView, response: respond)
         self.toastWindow = window
         
         // 设置承载视图的约束
@@ -95,8 +95,8 @@ extension MCToast {
     
     
     /// 创建主视图区域
-    func createcontentView(style: Style, position: Position) -> ToastContentView {
-        let contentView = ToastContentView()
+    func createcontentView(style: Style, position: Position) -> MCToastContentView {
+        let contentView = MCToastContentView()
         contentView.position = position
         switch style {
         case .custom, .statusBar:
@@ -116,7 +116,7 @@ extension MCToast {
     }
     
     func setupContentViewConstraints(
-        _ contentView: ToastContentView,
+        _ contentView: MCToastContentView,
         style: MCToast.Style,
         size: CGSize? = nil
     ) {
@@ -139,10 +139,11 @@ extension MCToast {
 
             case .bottom(let offset):
                 let keyboardHeight = KeyboardManager.shared.currentVisibleKeyboardHeight
-                let baseOffset = offset
-                let bottomOffset = -abs(baseOffset) - (keyboardHeight > 0 ? keyboardHeight + MCToastConfig.shared.text.avoidKeyboardOffsetY : 0)
+                let bottomOffset = keyboardHeight > 0 ? keyboardHeight + MCToastConfig.shared.text.avoidKeyboardOffsetY : offset
 
-                let bottomConstraint = contentView.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: bottomOffset)
+                let tempY = -abs(bottomOffset)
+                
+                let bottomConstraint = contentView.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: tempY)
                 bottomConstraint.isActive = true
                 contentView.bottomConstraint = bottomConstraint
             case .top(offset: let offset):
