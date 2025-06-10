@@ -1,181 +1,163 @@
 
-# Toast For Swift
+# MCToast - Toast For Swift
+
+<table>
+<tr>
+<td width="20%">
+  <img src="https://github.com/iAmMccc/MCToast/blob/master/gif1-min.gif" width="100%">
+</td>
+<td width="100%">
+  <strong>MCToast</strong> 
+    <p>一个轻量、灵活、现代化的 Toast 组件，支持图标、文本、加载、状态栏提示等多种样式，具备键盘避让、响应策略、链式调用等能力，适用于 iOS 应用快速提示交互场景。</p>
+  <strong>特性</strong>
+  <ul>
+    <li>支持文字、图标+文字、加载、状态栏提示等样式</li>
+    <li>自动适配键盘弹出，避免 Toast 被遮挡</li>
+    <li>支持自动消失、手动关闭、响应遮挡策略</li>
+    <li>可设置回调：展示完成、隐藏完成</li>
+    <li>链式调用结构，配置灵活优雅</li>
+    <li>支持横竖屏切换</li>
+  </ul>
+</td>
+</tr>
+</table>
 
 
-## 概要说明
 
-**MCToast** 是Swift版本的HUD库，提供了显示纯文本的Toast，带有状态图片的Toast，带有loading样式的Toast。
-![Toast.gif](https://upload-images.jianshu.io/upload_images/3424061-20f13f467069cc45.gif?imageMogr2/auto-orient/strip)
+## 安装方式
 
-
-主要优点：
-
-* Swift语言实现的Toast交互功能库。
-* MCToast内部控制显示在主线程中，保证了线程安全性。
-* 提供了多种使用方式，方便快捷。
-* **支持UI的高度自定义**。配置toast的小图标，文字大小和颜色等
-* 内部处理了多个toast提示重叠显示的问题。
-
-
-
-Demo地址
-
-[https://github.com/mancongiOS/MCToast](https://github.com/mancongiOS/MCToast)
- 
-
-
-# 配置
-MCToast已经提供了一套默认值，如果与您的要求不相符，您完全可以根据以下方法通配它。
-  
-在`func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool`中进行配置项的设置。
+**CocoaPods**
 
 ```
-extension AppDelegate {
-    func configToast() {
-        // 1. 配置Toast弹出过程中的交互类型（MCToastRespond：禁止交互，导航栏下禁止交互，允许交互）
-        MCToastConfig.shared.respond = RespondPolicy.respond
-        
-  
-        // 2. 配置Toast核心区域（黑色区域）
-        // 颜色
-        MCToastConfig.shared.background.color = UIColor.black
-        // 大小
-        MCToastConfig.shared.background.size = CGSize(width: 120, height: 120)
-        
-        
-        // 3. 配置状态Toast（成功，失败，警告等状态）的Icon
-        MCToastConfig.shared.icon.size = CGSize(width: 50, height: 50)
-        MCToastConfig.shared.icon.successImage = UIImage(named: "你成功状态的Icon")
-        MCToastConfig.shared.icon.failureImage = UIImage(named: "你失败状态的Icon")
-        MCToastConfig.shared.icon.warningImage = UIImage(named: "你警告状态的Icon")
+pod 'MCToast'
+```
 
-        
-        // 4. 配置文字
-        MCToastConfig.shared.text.font = UIFont.systemFont(ofSize: 15)
-        MCToastConfig.shared.text.textColor = UIColor.white
-        MCToastConfig.shared.text.offset = (UIScreen.main.bounds.size.height / 2 - 120 - 150)
-        
-        
-        // 5. 配置间距
-        // 外边距（toast距离屏幕边的最小边距
-        MCToastConfig.shared.spacing.margin = 55
-        // 内边距（toast和其中的内容的最小边距）
-        MCToastConfig.shared.spacing.padding = 15
-        
-        
-        // 6. 设置自动隐藏的时长
-        MCToastConfig.shared.duration = 1.5
+
+
+## 使用方法
+
+### 显示Toast
+
+| 风格             | 代码展示                                       |
+| ---------------- | ---------------------------------------------- |
+| 纯文本风格       | ``` MCToast.plainText("提示文案")```           |
+| 带状态icon的风格 | ```MCToast.iconText("成功", icon: .success)``` |
+| 加载中风格       | ```MCToast.loadingText("加载中...")```         |
+| 自定义UI风格     | ```MCToast.custom(customView)```               |
+| 顶部显示风格     | ```MCToast.statusBarView(customView)```        |
+
+
+
+### 配置Toast
+
+支持配置 **隐藏时间**、 **响应策略**、 **显示回调**和 **隐藏回调**。
+
+```
+MCToast.plainText("加载成功")
+    .duration(2)
+    .respond(.allow)
+    .showHandler {
+        print("开始显示了")
     }
+    .dismissHandler {
+        print("Toast 隐藏了")
+    }
+```
+
+
+
+### 隐藏Toast
+
+```
+MCToast.remove()
+```
+
+
+
+## 全局配置
+MCToast已经提供了一套默认UI，你也可以自主配置它。
+
+```
+public struct MCToastConfig {
+    public static var shared = MCToastConfig()
+    
+    /// 设置交互区域 默认导航栏下禁止交互
+    public var respond = MCToast.RespondPolicy.allow
+    
+    /// 背景的设置
+    public var background = Background()
+    
+    /// 状态Icon的设置
+    public var icon = Icon()
+    
+    /// 文本的设置
+    public var text = Text()
+    
+    /// 自动隐藏的时长
+    public var duration: CGFloat = 1.8
 }
-```
 
 
-# 使用
-#### 支持cocoPods
-
-  ```
-  pod 'MCToast'
-  ```
-
-
-#### 使用
-
-* 显示纯文本
-
-```
-extension MCToast {
-    /// 展示文字toast
-    /// - Parameters:
-    ///   - text: 文字内容
-    ///   - offset: 距离屏幕Y轴中心的距离（正下，负上）
-    ///   - duration: 显示的时间（秒）
-    ///   - respond: 交互类型
-    ///   - callback: 隐藏的回调
-    public static func text(_ text: String,
-                               offset: CGFloat? = nil,
-                               duration: CGFloat = MCToastConfig.shared.duration,
-                               respond: RespondPolicy = MCToastConfig.shared.respond,
-                               callback: DismissHandler? = nil) {
+extension MCToastConfig {
+    public struct Background {
+        /// toast 的背景颜色
+        public var color: UIColor = UIColor.black.withAlphaComponent(0.9)
+        public var colorAlpha: CGFloat = 0.8
         
-        DispatchQueue.main.async {
-            MCToast.showText(text, offset: offset, duration: duration, respond: respond, callback: callback)
+        var resolvedColor: UIColor {
+            color.withAlphaComponent(colorAlpha)
+        }
+    }
+    
+    public struct Icon {
+        /// icon类型的toast的宽度，高度根据文字动态计算
+        public var toastWidth: CGFloat = 160
+        /// 内边距（toast和其中的内容的最小边距）
+        public var padding: UIEdgeInsets = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
+        /// 圆角
+        public var cornerRadius: CGFloat = 8
+        /// 图片size
+        public var imageSize: CGSize = CGSize.init(width: 50, height: 50)
+        
+        /// 自定义成功的icon
+        public var successImage: UIImage?
+        /// 自定义失败的icon
+        public var failureImage: UIImage?
+        /// 自定义警告的icon
+        public var warningImage: UIImage?
+        
+        public var textColor: UIColor = UIColor.white
+        public var font: UIFont = UIFont.systemFont(ofSize: 14)
+    }
+    
+    public struct Text {
+        public var textColor: UIColor = UIColor.white
+        public var font: UIFont = UIFont.systemFont(ofSize: 14)
+        /// 圆角
+        public var cornerRadius: CGFloat = 4
+        /// 内边距（toast和其中的内容的最小边距）
+        public var padding: UIEdgeInsets = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        
+        /// 文字的最大宽度 （最大宽度 + 内边距 = toast的宽度）
+        public var maxWidth: CGFloat = 224
+        /// 文字的最小宽度 （最小宽度 + 内边距 = toast的宽度）
+        public var minWidth: CGFloat = 88
+        
+        /// 横竖屏配置
+        public var landscapeTextOffset: CGFloat = 60
+        public var portraitTextOffset: CGFloat = 118
+        public var avoidKeyboardOffsetY: CGFloat = 40
+        /// toast底部距离屏幕底部距离
+        public var offset: CGFloat {
+            let isLandscape = UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isLandscape ?? false
+            if isLandscape {
+                return landscapeTextOffset
+            } else {
+                return portraitTextOffset
+            }
         }
     }
 }
 ```
 
-  ```
-// 简单使用
-MCToast.text("修改成功")
- // 长文本的换行使用
-MCToast.text("这是一个很长长长长长长长长长长长长长长长的纯文本的展示")
-// 设置文本的偏移量。（以屏幕中心点为原点，正下负上）
-MCToast.text("居中显示", offset: 0)
-// 全量设置
-MCToast.text("设置成功", offset: 100, duration: 2, respond: .default) {
-   print("移除了")
-}
-```
-
-* 带状态的Toast
-
- ```
-  /// 成功的Toast
-  MCToast.success("可能出现的长文本提示长文本内容")
-  /// 失败的Toast
-  MCToast.failure("失败")
-  /// 警告的Toast
-  MCToast.warning("警告")
-  /// 自定义的状态Toast
-  MCToast.codeSuccess()
-  extension MCToast {
-      /// 发送验证码成功
-      public static func codeSuccess() {
-          let image = UIImage.init(named: "codesend")
-          MCToast.showStatus(nil, text: "发送验证码成功", iconImage: image, duration: 2, respond: .respond)
-      }
-  }
-```
-
-* loading
-```
-  /// 系统的loading
-  MCToast.loading()
-  /// 自定义的帧动画loading
-  MCToast.loading(imageNames: images)
-  /// Json动画的loading （集成了Lottie库）
-  let animation = Animation.named("JSON动画")
-  MCToast.loading(animation: animation) 
-  ```
-
-
-* 您也可以直接用self调用。
-作者通过给`UIResponder `添加扩展，达到了使用`self`调用的功能。
-```
-extension UIResponder { }
-```
-```
-self.text("这是一个纯文本的展示", duration: 2)
-self.statusBar("有内容更新啦，赶紧看看吧")
-```
-
-* 隐藏
-```
-// 调用的时候，通过设置展示时间，隐藏
-self.text("这是一个纯文本的展示", duration: 2)
-// 通过其他方法隐藏
-self.remove() 
-// 或者 MCToast.remove()
-```
-
-
-* 其他更详细的使用请查看[Demo](https://github.com/mancongiOS/MCToast)
-
-
-
-
-
-
-# 说明
-1. 由于Toast是展示在Window上的，页面返回正在显示的Toast并不会消失。可以在页面的生命周期内调用MCToast.remove()方法达到页面返回消失的目的。
 

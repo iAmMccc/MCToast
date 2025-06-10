@@ -27,7 +27,7 @@ public struct MCToastConfig {
     
     
     /// 自动隐藏的时长
-    public var duration: CGFloat = 1.5
+    public var duration: CGFloat = 1.8
 }
 
 
