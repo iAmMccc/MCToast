@@ -92,7 +92,9 @@ class KeyboardTestViewController: UIViewController {
     // MARK: - Actions
 
     @objc private func showEvent() {
-        MCToast.text("加载中", duration: 8, respond: .allow)
+        MCToast.plainText("加载中")
+            .duration(8)
+            .respond(.allow)
     }
 
     @objc private func hiddenEvent() {

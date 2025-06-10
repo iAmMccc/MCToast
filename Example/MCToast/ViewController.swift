@@ -17,9 +17,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        // 最好写在appdelegate中
-        configToast()
 
         baseSetting()
 
@@ -106,17 +103,6 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController {
-    func configToast() {
-        /// 是否需要配置UI
-        //        MCToastConfig.shared.background.size = CGSize.init(width: 200, height: 200)
-        //        MCToastConfig.shared.icon.size = CGSize.init(width: 150, height: 150)
-        //        MCToastConfig.shared.icon.successImage = UIImage.init(named: "code")
-        
-//        MCToastConfig.shared.text.offset = (UIScreen.main.bounds.size.height / 2 - 120 - 150)
-//        MCToastConfig.shared.respond = RespondPolicy.noRespond
-    }
-}
 
 //MARK: UI的处理,通知的接收
 extension ViewController {
@@ -387,16 +373,6 @@ extension ViewController {
 //            break
 //        }
         navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-
-extension MCToast {
-    
-    /// 发送验证码成功
-    public static func codeSuccess() {
-        let image = UIImage.init(named: "codesend")
-        MCToast.showStatus(text: "发送验证码成功", iconImage: image, duration: 2, respond: .allow)
     }
 }
 
