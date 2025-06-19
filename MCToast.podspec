@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MCToast'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Swift版本的HUD，支持多种自定义方案。使用方便。'
   s.homepage         = 'https://github.com/iAmMccc/MCToast'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

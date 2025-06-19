@@ -251,10 +251,10 @@ extension ViewController {
                 .duration(2)
         case 1:
             MCToast.loadingText("加载中...")
-                .duration(2)
+                .duration(3)
         case 2:
             MCToast.loadingText("加载中...")
-                .duration(2)
+                .duration(4)
         case 3:
             MCToast.loadingText("加载中...")
                 .respond(.allow)

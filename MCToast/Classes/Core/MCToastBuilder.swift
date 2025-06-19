@@ -82,7 +82,7 @@ public final class MCToastBuilder {
     fileprivate var iconType: MCToast.IconType?
     fileprivate var customView: UIView?
 
-    var duration: CGFloat = MCToastConfig.shared.duration
+    var duration: CGFloat?
     var respond: MCToast.RespondPolicy = MCToastConfig.shared.respond
     var onShowHandler: MCToast.ShowHandler?
     var dismissHandler: MCToast.DismissHandler?
@@ -125,6 +125,8 @@ extension MCToastBuilder {
         guard let style = style else { return }
         switch style {
         case .text:
+            let duration = duration ?? MCToastConfig.shared.duration
+            
             let position = position ?? .bottom(offset: MCToastConfig.shared.text.offset)
             window = MCToast.shared.showText(
                 text ?? "",
@@ -135,6 +137,7 @@ extension MCToastBuilder {
             )
         case .icon:
             guard let icon = iconType else { return }
+            let duration = duration ?? MCToastConfig.shared.duration
             window = MCToast.shared.showStatus(
                 text: text ?? "",
                 iconImage: icon.getImage(),
@@ -143,6 +146,8 @@ extension MCToastBuilder {
                 dismissHandler: dismissHandler
             )
         case .loading:
+            
+            let duration = duration ?? 0
             window = MCToast.shared.loading(
                 text: text ?? "",
                 duration: duration,
@@ -151,6 +156,7 @@ extension MCToastBuilder {
             )
         case .custom:
             guard let view = customView else { return }
+            let duration = duration ?? MCToastConfig.shared.duration
             window = MCToast.shared.showCustomView(
                 view,
                 duration: duration,
@@ -159,6 +165,7 @@ extension MCToastBuilder {
             )
         case .statusBar:
             guard let view = customView else { return }
+            let duration = duration ?? MCToastConfig.shared.duration
             window = MCToast.shared.noticeOnStatusBar(view: view, duration: duration, respond: respond, dismissHandler: dismissHandler)
         }
         self.window = window

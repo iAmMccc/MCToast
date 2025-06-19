@@ -38,6 +38,7 @@ extension MCToast {
                     activity.heightAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.imageSize.height),
                     window.contentView.heightAnchor.constraint(equalToConstant: MCToastConfig.shared.icon.imageSize.height + MCToastConfig.shared.icon.padding.vertical)
                 ])
+                manageLifecycle(window: window, duration: duration, showHandler: showHander, dismissHandler: dismissHandler)
                 return window
             }
             
