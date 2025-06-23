@@ -119,8 +119,6 @@ extension MCToastBuilder {
 
 
     fileprivate func showToast() {
-        onShowHandler?()
-
         let window: MCToastWindow?
         guard let style = style else { return }
         switch style {

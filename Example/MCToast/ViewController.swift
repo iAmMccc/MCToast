@@ -23,6 +23,10 @@ class ViewController: UIViewController {
         initUI()
     }
     
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     
     // MARK: - Setter & Getter

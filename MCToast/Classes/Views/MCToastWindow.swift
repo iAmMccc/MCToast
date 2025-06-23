@@ -29,7 +29,7 @@ public class MCToastWindow: UIWindow {
         backgroundColor = .clear
         
         // 如果不设置，将无法使用现代 UIKit 的很多功能（比如自动旋转支持、键盘避让、响应链传递等）
-        rootViewController = UIViewController()
+        rootViewController = MCToastRootViewController()
         rootViewController?.view.backgroundColor = .clear
     }
 
@@ -58,3 +58,50 @@ public class MCToastWindow: UIWindow {
         }
     }
 }
+
+
+/// 用来处理状态栏颜色
+final class MCToastRootViewController: UIViewController {
+    
+    private var topViewController: UIViewController? {
+        return UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first(where: { $0.isKeyWindow && $0 !== self.view.window })?
+            .rootViewController
+            .flatMap { UIApplication.shared.topMostViewController(base: $0) }
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        topViewController?.preferredStatusBarStyle ?? .default
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        topViewController?.prefersStatusBarHidden ?? false
+    }
+}
+
+extension UIApplication {
+    /// 获取当前正在展示的最顶层 ViewController
+    func topMostViewController(base: UIViewController? = UIApplication.shared._mainKeyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topMostViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            return topMostViewController(base: tab.selectedViewController)
+        }
+        if let presented = base?.presentedViewController {
+            return topMostViewController(base: presented)
+        }
+        return base
+    }
+
+    /// 获取主 App 的 keyWindow（排除 toast 自己的 window）
+    fileprivate var _mainKeyWindow: UIWindow? {
+        return self.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first(where: { $0.isKeyWindow })
+    }
+}
+
