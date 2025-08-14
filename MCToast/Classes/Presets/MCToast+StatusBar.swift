@@ -26,10 +26,10 @@ extension MCToast {
         if contentHeight <= 0 {
             return nil
         }
-        func getWindow() -> MCToastWindow {
+        func getWindow() -> MCToastWindow? {
             clearAllToast()
             
-            let window = createWindow(respond: respond, style: .statusBar, position: .center, size: CGSize(width: 0, height: contentHeight))
+            guard let window = createWindow(respond: respond, style: .statusBar, position: .center, size: CGSize(width: 0, height: contentHeight)) else { return nil }
             window.contentView.addSubview(view)
             window.contentView.tag = sn_topBar
             // 动画滑入

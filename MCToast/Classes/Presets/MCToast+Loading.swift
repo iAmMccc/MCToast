@@ -18,8 +18,8 @@ extension MCToast {
         dismissHandler: DismissHandler? = nil
     ) -> MCToastWindow? {
         
-        func getWindow() -> MCToastWindow {
-            let window = createWindow(respond: respond, style: .loading, position: .center)
+        func getWindow() -> MCToastWindow? {
+            guard let window = createWindow(respond: respond, style: .loading, position: .center) else { return nil }
             
             let activity = UIActivityIndicatorView()
             activity.translatesAutoresizingMaskIntoConstraints = false

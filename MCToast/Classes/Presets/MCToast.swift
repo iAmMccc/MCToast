@@ -72,13 +72,21 @@ extension MCToast {
         style: Style,
         position: Position,
         size: CGSize? = nil
-    ) -> MCToastWindow {
+    ) -> MCToastWindow? {
         
-        guard let windowScene = UIApplication.shared.connectedScenes
-            .compactMap({ $0 as? UIWindowScene })
-            .first(where: { $0.activationState == .foregroundActive }) else {
-            fatalError("无法获取当前活跃 Scene")
-        }
+        
+        let windowScene = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .first(where: { $0.activationState == .foregroundActive })
+            ?? UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .first
+        
+        
+        guard let windowScene = windowScene else { return nil }
+        
+        
+        
         
         // 创建承载视图
         let contentView = createcontentView(style: style, position: position)
@@ -121,7 +129,7 @@ extension MCToast {
         size: CGSize? = nil
     ) {
         guard let superview = self.toastWindow else {
-            fatalError("need superview")
+            return
         }
 
         // 通用居中X

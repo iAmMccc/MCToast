@@ -32,10 +32,10 @@ extension MCToast {
             return label
         }
         
-        func getWindow() -> MCToastWindow {
+        func getWindow() -> MCToastWindow? {
             
             /// 1. 生成window
-            let window = createWindow(respond: respond, style: .text, position: position)
+            guard let window = createWindow(respond: respond, style: .text, position: position) else { return nil }
             
             /// 2. 创建label
             let mainLabel = createLabel()

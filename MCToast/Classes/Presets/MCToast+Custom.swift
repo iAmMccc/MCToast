@@ -24,7 +24,7 @@ extension MCToast {
             let size = customView.frame.size
             
             // 创建窗口
-            let window = createWindow(respond: respond, style: .custom, position: .center, size: size)
+            guard let window = createWindow(respond: respond, style: .custom, position: .center, size: size) else { return nil }
             
             // 把 customView 加到 contentView 上
             window.contentView.addSubview(customView)
