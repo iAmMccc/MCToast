@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
 
+        // 开启键盘避让适配
         MCToast.enableKeyboardTracking()
+        // 开启屏幕旋转适配
         MCToast.enableOrientationTracking()
 
         // 设置通配类型

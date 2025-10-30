@@ -11,6 +11,11 @@ import MCToast
 import SnapKit
 import Lottie
 
+
+//修复bug：
+//1. 第一次运行app，未能注册成功键盘通知， 键盘已经弹出了，记录的状态还是unknown，获取的键盘高度为0了。
+//2. 为开启时，为什么第二次也可以避让？
+//
 class ViewController: UIViewController {
 
     // life cycle
