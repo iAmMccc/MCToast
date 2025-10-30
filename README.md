@@ -50,7 +50,7 @@ pod 'MCToast'
 
 ### 配置Toast
 
-支持配置 **隐藏时间**、 **响应策略**、 **显示回调**和 **隐藏回调**。
+#### 1. 支持配置 **隐藏时间**、 **响应策略**、 **显示回调**和 **隐藏回调**。
 
 ```
 MCToast.plainText("加载成功")
@@ -62,6 +62,24 @@ MCToast.plainText("加载成功")
     .dismissHandler {
         print("Toast 隐藏了")
     }
+```
+
+#### 2. 支持**键盘遮挡避让**
+
+需要在键盘弹起之前开启，推荐在 App 启动或页面初始化时调用。开启之后：
+
+* 如果键盘未弹出：继续使用设置的offset
+
+* 如果键盘弹出：并且设置了距离底部的position，会使用`keyboardHeight + avoidKeyboardOffsetY`
+
+```
+MCToast.enableKeyboardTracking()
+```
+
+* 支持**横竖屏切换适配**
+
+```
+MCToast.enableOrientationTracking()
 ```
 
 
@@ -159,5 +177,4 @@ extension MCToastConfig {
     }
 }
 ```
-
 
