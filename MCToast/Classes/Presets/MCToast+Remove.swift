@@ -38,6 +38,10 @@ extension MCToast {
     /// 清空所有 Toast
     func clearAllToast(dismissHandler: DismissHandler? = nil) {
         DispatchQueue.main.safeSync {
+            // 取消还未执行的 autoShow 任务，防止 remove 后 toast 才显示出来
+            self.pendingShowTask?.cancel()
+            self.pendingShowTask = nil
+
             self.toastWindow?.subviews.forEach { $0.removeFromSuperview() }
             self.toastWindow?.isHidden = true
             self.toastWindow = nil

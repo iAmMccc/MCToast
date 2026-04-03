@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         (
             title: "测试",
             rows: [
-                "测试 - 1",
+                "测试 - autoShow 竞态 Bug 演示",
             ]
         ),
         (

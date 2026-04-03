@@ -112,9 +112,15 @@ extension MCToastBuilder {
     // tryScheduleShowIfNeeded() 里的 DispatchQueue.main.async { self.show() } 是异步执行的，
     // 因此在它真正执行 .show() 时，链式设置早已完成。
     private func tryScheduleShowIfNeeded() {
-        DispatchQueue.main.async {
+        // 取消前一个还未执行的 pending 任务（快速连续调用时，只保留最后一个）
+        MCToast.shared.pendingShowTask?.cancel()
+
+        let task = DispatchWorkItem {
+            MCToast.shared.pendingShowTask = nil
             self.showToast()
         }
+        MCToast.shared.pendingShowTask = task
+        DispatchQueue.main.async(execute: task)
     }
 
 

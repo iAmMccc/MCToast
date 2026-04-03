@@ -1,6 +1,6 @@
 PODS:
   - lottie-ios (4.5.2)
-  - MCToast (1.0.4)
+  - MCToast (1.0.6)
   - SnapKit (5.7.1)
 
 DEPENDENCIES:
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   lottie-ios: 96784afc26ea031d3e2b6cae342a4b8915072489
-  MCToast: 7df14b772189e235bf5ca53e94919c2dd8d779b0
+  MCToast: 78d2685ebe87a28a687d97626ece5e68d7dd971e
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
 
 PODFILE CHECKSUM: 7616df774d73f4e361e6c9897c28f85f79b6a9b8

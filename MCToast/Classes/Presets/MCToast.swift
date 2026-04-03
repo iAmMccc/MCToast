@@ -45,7 +45,10 @@ public class MCToast: NSObject {
     
     /// 管理所有的windows
     internal var toastWindow: MCToastWindow?
-    
+
+    /// autoShow 模式下待执行的显示任务，remove 时需要取消它
+    internal var pendingShowTask: DispatchWorkItem?
+
     private override init() { }
     
     deinit {
