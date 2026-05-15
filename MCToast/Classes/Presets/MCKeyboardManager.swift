@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 class KeyboardManager {
     
     static let shared = KeyboardManager()

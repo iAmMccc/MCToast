@@ -5,7 +5,7 @@
 //  Created by Mccc on 2020/6/24.
 //
 
-
+import UIKit
 // MARK: - 显示纯文字
 extension MCToast {
     

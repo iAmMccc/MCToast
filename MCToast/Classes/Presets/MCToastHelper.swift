@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 class BundleImage {
 
     static func loadImage(named: String) -> UIImage? {

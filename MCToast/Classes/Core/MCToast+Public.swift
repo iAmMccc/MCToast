@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 extension MCToast {
     /// 开启键盘适配功能，Toast 会自动避让键盘位置。
     /// 推荐在 App 启动或页面初始化时调用。

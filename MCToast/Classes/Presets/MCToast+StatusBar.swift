@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 internal let sn_topBar: Int = 1001
 

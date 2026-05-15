@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 public class MCToastWindow: UIWindow {
     
